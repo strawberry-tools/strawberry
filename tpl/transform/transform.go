@@ -22,15 +22,15 @@ import (
 	"html/template"
 	"strings"
 
-	"github.com/gohugoio/hugo/cache/dynacache"
-	"github.com/gohugoio/hugo/markup/converter/hooks"
-	"github.com/gohugoio/hugo/markup/highlight"
-	"github.com/gohugoio/hugo/markup/highlight/chromalexers"
-	"github.com/gohugoio/hugo/resources"
-	"github.com/gohugoio/hugo/tpl"
+	"github.com/strawberry-tools/strawberry/cache/dynacache"
+	"github.com/strawberry-tools/strawberry/markup/converter/hooks"
+	"github.com/strawberry-tools/strawberry/markup/highlight"
+	"github.com/strawberry-tools/strawberry/markup/highlight/chromalexers"
+	"github.com/strawberry-tools/strawberry/resources"
+	"github.com/strawberry-tools/strawberry/tpl"
 
-	"github.com/gohugoio/hugo/deps"
-	"github.com/gohugoio/hugo/helpers"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/spf13/cast"
 )
 

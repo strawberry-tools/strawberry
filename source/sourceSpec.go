@@ -18,11 +18,11 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/gohugoio/hugo/hugofs/glob"
+	"github.com/strawberry-tools/strawberry/hugofs/glob"
 
 	"github.com/spf13/afero"
 
-	"github.com/gohugoio/hugo/helpers"
+	"github.com/strawberry-tools/strawberry/helpers"
 )
 
 // SourceSpec abstracts language-specific file creation.

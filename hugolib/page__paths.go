@@ -17,10 +17,10 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/gohugoio/hugo/output"
+	"github.com/strawberry-tools/strawberry/output"
 
-	"github.com/gohugoio/hugo/resources/kinds"
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
+	"github.com/strawberry-tools/strawberry/resources/page"
 )
 
 func newPagePaths(ps *pageState) (pagePaths, error) {

@@ -18,12 +18,12 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/helpers"
-	"github.com/gohugoio/hugo/resources"
-	"github.com/gohugoio/hugo/resources/internal"
-	"github.com/gohugoio/hugo/resources/resource"
-	"github.com/gohugoio/hugo/tpl"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/strawberry-tools/strawberry/resources"
+	"github.com/strawberry-tools/strawberry/resources/internal"
+	"github.com/strawberry-tools/strawberry/resources/resource"
+	"github.com/strawberry-tools/strawberry/tpl"
 )
 
 // Client contains methods to perform template processing of Resource objects.

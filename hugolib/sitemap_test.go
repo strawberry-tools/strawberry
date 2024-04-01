@@ -18,7 +18,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gohugoio/hugo/config"
+	"github.com/strawberry-tools/strawberry/config"
 )
 
 func TestSitemapBasic(t *testing.T) {

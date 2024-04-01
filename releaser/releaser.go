@@ -23,8 +23,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/hexec"
-	"github.com/gohugoio/hugo/common/hugo"
+	"github.com/strawberry-tools/strawberry/common/hexec"
+	"github.com/strawberry-tools/strawberry/common/hugo"
 )
 
 const commitPrefix = "releaser:"

@@ -18,9 +18,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/parser"
-	"github.com/gohugoio/hugo/parser/metadecoders"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/parser"
+	"github.com/strawberry-tools/strawberry/parser/metadecoders"
 
 	qt "github.com/frankban/quicktest"
 )

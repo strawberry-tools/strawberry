@@ -24,16 +24,16 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/gohugoio/hugo/common/hexec"
-	"github.com/gohugoio/hugo/common/loggers"
+	"github.com/strawberry-tools/strawberry/common/hexec"
+	"github.com/strawberry-tools/strawberry/common/loggers"
 
 	"github.com/spf13/afero"
 
-	"github.com/gohugoio/hugo/markup/converter"
+	"github.com/strawberry-tools/strawberry/markup/converter"
 
-	"github.com/gohugoio/hugo/markup"
+	"github.com/strawberry-tools/strawberry/markup"
 
-	"github.com/gohugoio/hugo/config"
+	"github.com/strawberry-tools/strawberry/config"
 )
 
 var (

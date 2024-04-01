@@ -22,14 +22,14 @@ import (
 	"time"
 
 	"github.com/bep/simplecobra"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/helpers"
-	"github.com/gohugoio/hugo/hugofs"
-	"github.com/gohugoio/hugo/hugolib"
-	"github.com/gohugoio/hugo/parser"
-	"github.com/gohugoio/hugo/parser/metadecoders"
-	"github.com/gohugoio/hugo/parser/pageparser"
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/strawberry-tools/strawberry/hugofs"
+	"github.com/strawberry-tools/strawberry/hugolib"
+	"github.com/strawberry-tools/strawberry/parser"
+	"github.com/strawberry-tools/strawberry/parser/metadecoders"
+	"github.com/strawberry-tools/strawberry/parser/pageparser"
+	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/spf13/cobra"
 )
 

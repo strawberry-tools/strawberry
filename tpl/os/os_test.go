@@ -17,8 +17,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/gohugoio/hugo/hugolib"
-	"github.com/gohugoio/hugo/tpl/os"
+	"github.com/strawberry-tools/strawberry/hugolib"
+	"github.com/strawberry-tools/strawberry/tpl/os"
 
 	qt "github.com/frankban/quicktest"
 )

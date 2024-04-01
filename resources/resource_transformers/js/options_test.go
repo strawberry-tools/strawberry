@@ -18,12 +18,12 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/config/testconfig"
-	"github.com/gohugoio/hugo/hugofs"
-	"github.com/gohugoio/hugo/hugolib/filesystems"
-	"github.com/gohugoio/hugo/hugolib/paths"
-	"github.com/gohugoio/hugo/media"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/config/testconfig"
+	"github.com/strawberry-tools/strawberry/hugofs"
+	"github.com/strawberry-tools/strawberry/hugolib/filesystems"
+	"github.com/strawberry-tools/strawberry/hugolib/paths"
+	"github.com/strawberry-tools/strawberry/media"
 
 	"github.com/spf13/afero"
 

@@ -16,7 +16,7 @@ package page_test
 import (
 	"testing"
 
-	"github.com/gohugoio/hugo/hugolib"
+	"github.com/strawberry-tools/strawberry/hugolib"
 )
 
 func TestGroupByLocalizedDate(t *testing.T) {

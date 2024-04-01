@@ -25,13 +25,13 @@ import (
 
 	"github.com/bep/golibsass/libsass"
 	"github.com/bep/golibsass/libsass/libsasserrors"
-	"github.com/gohugoio/hugo/common/herrors"
-	"github.com/gohugoio/hugo/helpers"
-	"github.com/gohugoio/hugo/hugofs"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/media"
-	"github.com/gohugoio/hugo/resources"
-	"github.com/gohugoio/hugo/resources/resource_transformers/tocss/internal/sass"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/strawberry-tools/strawberry/hugofs"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/media"
+	"github.com/strawberry-tools/strawberry/resources"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/tocss/internal/sass"
 )
 
 // Used in tests. This feature requires Hugo to be built with the extended tag.

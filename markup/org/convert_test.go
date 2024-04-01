@@ -16,12 +16,12 @@ package org_test
 import (
 	"testing"
 
-	"github.com/gohugoio/hugo/common/loggers"
-	"github.com/gohugoio/hugo/config/testconfig"
+	"github.com/strawberry-tools/strawberry/common/loggers"
+	"github.com/strawberry-tools/strawberry/config/testconfig"
 	"github.com/spf13/afero"
 
-	"github.com/gohugoio/hugo/markup/converter"
-	"github.com/gohugoio/hugo/markup/org"
+	"github.com/strawberry-tools/strawberry/markup/converter"
+	"github.com/strawberry-tools/strawberry/markup/org"
 
 	qt "github.com/frankban/quicktest"
 )

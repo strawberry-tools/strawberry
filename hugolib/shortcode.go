@@ -27,19 +27,19 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gohugoio/hugo/common/herrors"
-	"github.com/gohugoio/hugo/common/types"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/common/types"
 
-	"github.com/gohugoio/hugo/parser/pageparser"
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/parser/pageparser"
+	"github.com/strawberry-tools/strawberry/resources/page"
 
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/common/text"
-	"github.com/gohugoio/hugo/common/urls"
-	"github.com/gohugoio/hugo/output"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/common/text"
+	"github.com/strawberry-tools/strawberry/common/urls"
+	"github.com/strawberry-tools/strawberry/output"
 
-	bp "github.com/gohugoio/hugo/bufferpool"
-	"github.com/gohugoio/hugo/tpl"
+	bp "github.com/strawberry-tools/strawberry/bufferpool"
+	"github.com/strawberry-tools/strawberry/tpl"
 )
 
 var (

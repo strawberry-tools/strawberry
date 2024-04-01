@@ -20,10 +20,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gohugoio/hugo/htesting/hqt"
+	"github.com/strawberry-tools/strawberry/htesting/hqt"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/common/hugo"
+	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/spf13/cast"
 )
 

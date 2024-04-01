@@ -16,9 +16,9 @@ package htesting
 import (
 	"path/filepath"
 
-	"github.com/gohugoio/hugo/common/hugio"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/resources"
+	"github.com/strawberry-tools/strawberry/common/hugio"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/resources"
 	"github.com/spf13/afero"
 )
 

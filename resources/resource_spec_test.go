@@ -17,9 +17,9 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/common/hugio"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/resources"
+	"github.com/strawberry-tools/strawberry/common/hugio"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/resources"
 )
 
 func TestNewResource(t *testing.T) {

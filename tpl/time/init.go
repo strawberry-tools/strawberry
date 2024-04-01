@@ -17,9 +17,9 @@ import (
 	"context"
 	"errors"
 
-	"github.com/gohugoio/hugo/deps"
-	"github.com/gohugoio/hugo/langs"
-	"github.com/gohugoio/hugo/tpl/internal"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/langs"
+	"github.com/strawberry-tools/strawberry/tpl/internal"
 )
 
 const name = "time"

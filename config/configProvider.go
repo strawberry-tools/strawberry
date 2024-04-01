@@ -16,12 +16,12 @@ package config
 import (
 	"time"
 
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/common/types"
-	"github.com/gohugoio/hugo/common/urls"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/langs"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/common/urls"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/langs"
 )
 
 // AllProvider is a sub set of all config settings.

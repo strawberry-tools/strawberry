@@ -18,7 +18,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gohugoio/hugo/deps"
+	"github.com/strawberry-tools/strawberry/deps"
 )
 
 func TestRSSOutput(t *testing.T) {

@@ -22,8 +22,8 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/config/testconfig"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/config/testconfig"
 	"github.com/spf13/afero"
 	"github.com/spf13/cast"
 )

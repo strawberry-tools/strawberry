@@ -17,12 +17,12 @@ import (
 	"context"
 	"sort"
 
-	"github.com/gohugoio/hugo/common/collections"
-	"github.com/gohugoio/hugo/langs"
+	"github.com/strawberry-tools/strawberry/common/collections"
+	"github.com/strawberry-tools/strawberry/langs"
 
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 
-	"github.com/gohugoio/hugo/compare"
+	"github.com/strawberry-tools/strawberry/compare"
 	"github.com/spf13/cast"
 )
 

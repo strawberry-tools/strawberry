@@ -24,14 +24,14 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/herrors"
-	"github.com/gohugoio/hugo/common/text"
-	"github.com/gohugoio/hugo/htesting"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/common/text"
+	"github.com/strawberry-tools/strawberry/htesting"
 
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/hugofs"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/hugofs"
 
-	"github.com/gohugoio/hugo/common/hugio"
+	"github.com/strawberry-tools/strawberry/common/hugio"
 	"github.com/spf13/afero"
 )
 

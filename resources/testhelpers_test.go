@@ -7,17 +7,17 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/hugio"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/config/testconfig"
-	"github.com/gohugoio/hugo/deps"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/resources"
+	"github.com/strawberry-tools/strawberry/common/hugio"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/config/testconfig"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/resources"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/hugofs"
-	"github.com/gohugoio/hugo/resources/images"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/hugofs"
+	"github.com/strawberry-tools/strawberry/resources/images"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 	"github.com/spf13/afero"
 )
 

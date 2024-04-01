@@ -14,8 +14,8 @@
 package tplimpl
 
 import (
-	"github.com/gohugoio/hugo/deps"
-	"github.com/gohugoio/hugo/tpl"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/tpl"
 )
 
 // TemplateProvider manages templates.

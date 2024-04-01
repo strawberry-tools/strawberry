@@ -28,24 +28,24 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gohugoio/hugo/common/collections"
-	"github.com/gohugoio/hugo/common/herrors"
-	"github.com/gohugoio/hugo/common/hexec"
-	"github.com/gohugoio/hugo/common/loggers"
+	"github.com/strawberry-tools/strawberry/common/collections"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/common/hexec"
+	"github.com/strawberry-tools/strawberry/common/loggers"
 
-	hglob "github.com/gohugoio/hugo/hugofs/glob"
+	hglob "github.com/strawberry-tools/strawberry/hugofs/glob"
 
 	"github.com/gobwas/glob"
 
-	"github.com/gohugoio/hugo/hugofs"
+	"github.com/strawberry-tools/strawberry/hugofs"
 
-	"github.com/gohugoio/hugo/hugofs/files"
+	"github.com/strawberry-tools/strawberry/hugofs/files"
 
-	"github.com/gohugoio/hugo/config"
+	"github.com/strawberry-tools/strawberry/config"
 
 	"golang.org/x/mod/module"
 
-	"github.com/gohugoio/hugo/common/hugio"
+	"github.com/strawberry-tools/strawberry/common/hugio"
 
 	"github.com/spf13/afero"
 )

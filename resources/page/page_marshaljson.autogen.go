@@ -19,7 +19,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/gohugoio/hugo/config"
+	"github.com/strawberry-tools/strawberry/config"
 )
 
 func MarshalPageToJSON(p Page) ([]byte, error) {

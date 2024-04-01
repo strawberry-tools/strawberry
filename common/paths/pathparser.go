@@ -20,9 +20,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gohugoio/hugo/common/types"
-	"github.com/gohugoio/hugo/hugofs/files"
-	"github.com/gohugoio/hugo/identity"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/hugofs/files"
+	"github.com/strawberry-tools/strawberry/identity"
 )
 
 var defaultPathParser PathParser

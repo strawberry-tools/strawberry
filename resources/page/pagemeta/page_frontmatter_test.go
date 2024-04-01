@@ -18,10 +18,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/config/testconfig"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/config/testconfig"
 
-	"github.com/gohugoio/hugo/resources/page/pagemeta"
+	"github.com/strawberry-tools/strawberry/resources/page/pagemeta"
 
 	qt "github.com/frankban/quicktest"
 )

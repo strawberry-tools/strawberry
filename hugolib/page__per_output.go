@@ -22,26 +22,26 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gohugoio/hugo/common/text"
-	"github.com/gohugoio/hugo/common/types/hstring"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/parser/pageparser"
+	"github.com/strawberry-tools/strawberry/common/text"
+	"github.com/strawberry-tools/strawberry/common/types/hstring"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/parser/pageparser"
 	"github.com/mitchellh/mapstructure"
 	"github.com/spf13/cast"
 
-	"github.com/gohugoio/hugo/markup/converter/hooks"
-	"github.com/gohugoio/hugo/markup/highlight/chromalexers"
-	"github.com/gohugoio/hugo/markup/tableofcontents"
+	"github.com/strawberry-tools/strawberry/markup/converter/hooks"
+	"github.com/strawberry-tools/strawberry/markup/highlight/chromalexers"
+	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
 
-	"github.com/gohugoio/hugo/markup/converter"
+	"github.com/strawberry-tools/strawberry/markup/converter"
 
-	bp "github.com/gohugoio/hugo/bufferpool"
-	"github.com/gohugoio/hugo/tpl"
+	bp "github.com/strawberry-tools/strawberry/bufferpool"
+	"github.com/strawberry-tools/strawberry/tpl"
 
-	"github.com/gohugoio/hugo/helpers"
-	"github.com/gohugoio/hugo/output"
-	"github.com/gohugoio/hugo/resources/page"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/strawberry-tools/strawberry/output"
+	"github.com/strawberry-tools/strawberry/resources/page"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 )
 
 var (

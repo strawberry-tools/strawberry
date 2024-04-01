@@ -30,24 +30,24 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/gohugoio/hugo/common/types"
-	"github.com/gohugoio/hugo/output/layouts"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/output/layouts"
 
-	"github.com/gohugoio/hugo/helpers"
+	"github.com/strawberry-tools/strawberry/helpers"
 
-	"github.com/gohugoio/hugo/output"
+	"github.com/strawberry-tools/strawberry/output"
 
-	"github.com/gohugoio/hugo/deps"
+	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/spf13/afero"
 
-	"github.com/gohugoio/hugo/common/herrors"
-	"github.com/gohugoio/hugo/hugofs"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/hugofs"
 
-	htmltemplate "github.com/gohugoio/hugo/tpl/internal/go_templates/htmltemplate"
-	texttemplate "github.com/gohugoio/hugo/tpl/internal/go_templates/texttemplate"
+	htmltemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/htmltemplate"
+	texttemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate"
 
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/tpl"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/tpl"
 )
 
 const (

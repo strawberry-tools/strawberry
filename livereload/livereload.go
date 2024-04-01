@@ -45,7 +45,7 @@ import (
 
 	_ "embed"
 
-	"github.com/gohugoio/hugo/media"
+	"github.com/strawberry-tools/strawberry/media"
 	"github.com/gorilla/websocket"
 )
 

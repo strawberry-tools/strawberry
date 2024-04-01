@@ -21,7 +21,7 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/transform"
+	"github.com/strawberry-tools/strawberry/transform"
 )
 
 func TestLiveReloadInject(t *testing.T) {

@@ -17,7 +17,7 @@ import (
 	"testing"
 
 	"github.com/bep/logg"
-	"github.com/gohugoio/hugo/hugolib"
+	"github.com/strawberry-tools/strawberry/hugolib"
 )
 
 func TestTimer(t *testing.T) {

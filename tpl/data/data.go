@@ -24,18 +24,18 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gohugoio/hugo/cache/filecache"
-	"github.com/gohugoio/hugo/common/hugo"
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/config/security"
+	"github.com/strawberry-tools/strawberry/cache/filecache"
+	"github.com/strawberry-tools/strawberry/common/hugo"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/config/security"
 
-	"github.com/gohugoio/hugo/common/types"
+	"github.com/strawberry-tools/strawberry/common/types"
 
-	"github.com/gohugoio/hugo/common/constants"
+	"github.com/strawberry-tools/strawberry/common/constants"
 
 	"github.com/spf13/cast"
 
-	"github.com/gohugoio/hugo/deps"
+	"github.com/strawberry-tools/strawberry/deps"
 )
 
 // New returns a new instance of the data-namespaced template functions.

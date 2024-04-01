@@ -15,15 +15,15 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gohugoio/hugo/codegen"
-	"github.com/gohugoio/hugo/resources/page/page_generate"
+	"github.com/strawberry-tools/strawberry/codegen"
+	"github.com/strawberry-tools/strawberry/resources/page/page_generate"
 
 	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
 )
 
 const (
-	packageName  = "github.com/gohugoio/hugo"
+	packageName  = "github.com/strawberry-tools/strawberry"
 	noGitLdflags = "-X github.com/gohugoio/hugo/common/hugo.vendorInfo=mage"
 )
 
@@ -198,7 +198,7 @@ func Fmt() error {
 }
 
 var (
-	pkgPrefixLen = len("github.com/gohugoio/hugo")
+	pkgPrefixLen = len("github.com/strawberry-tools/strawberry")
 	pkgs         []string
 	pkgsInit     sync.Once
 )

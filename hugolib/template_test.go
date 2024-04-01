@@ -18,12 +18,12 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/config/allconfig"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/config/allconfig"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/deps"
-	"github.com/gohugoio/hugo/hugofs"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/hugofs"
 )
 
 func TestTemplateLookupOrder(t *testing.T) {

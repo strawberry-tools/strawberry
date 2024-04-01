@@ -16,8 +16,8 @@ package hugolib
 import (
 	"fmt"
 
-	"github.com/gohugoio/hugo/common/types"
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/resources/page"
 )
 
 // Wraps a Page.

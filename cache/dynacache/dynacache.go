@@ -25,15 +25,15 @@ import (
 
 	"github.com/bep/lazycache"
 	"github.com/bep/logg"
-	"github.com/gohugoio/hugo/common/collections"
-	"github.com/gohugoio/hugo/common/herrors"
-	"github.com/gohugoio/hugo/common/loggers"
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/common/rungroup"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/helpers"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/common/collections"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/common/loggers"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/common/rungroup"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 )
 
 const minMaxSize = 10

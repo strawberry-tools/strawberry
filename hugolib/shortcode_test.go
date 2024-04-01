@@ -21,10 +21,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/resources/kinds"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
 
-	"github.com/gohugoio/hugo/parser/pageparser"
+	"github.com/strawberry-tools/strawberry/parser/pageparser"
 
 	qt "github.com/frankban/quicktest"
 )

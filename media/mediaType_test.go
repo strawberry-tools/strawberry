@@ -22,7 +22,7 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/common/paths"
+	"github.com/strawberry-tools/strawberry/common/paths"
 )
 
 func TestGetByType(t *testing.T) {

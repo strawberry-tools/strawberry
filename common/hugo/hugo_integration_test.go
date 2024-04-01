@@ -17,7 +17,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gohugoio/hugo/hugolib"
+	"github.com/strawberry-tools/strawberry/hugolib"
 )
 
 func TestIsMultilingualAndIsMultihost(t *testing.T) {

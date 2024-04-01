@@ -24,23 +24,23 @@ import (
 	"sync"
 
 	"github.com/bep/overlayfs"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/htesting"
-	"github.com/gohugoio/hugo/hugofs/glob"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/htesting"
+	"github.com/strawberry-tools/strawberry/hugofs/glob"
 
-	"github.com/gohugoio/hugo/common/herrors"
-	"github.com/gohugoio/hugo/common/loggers"
-	"github.com/gohugoio/hugo/common/types"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/common/loggers"
+	"github.com/strawberry-tools/strawberry/common/types"
 
 	"github.com/rogpeppe/go-internal/lockedfile"
 
-	"github.com/gohugoio/hugo/hugofs/files"
+	"github.com/strawberry-tools/strawberry/hugofs/files"
 
-	"github.com/gohugoio/hugo/modules"
+	"github.com/strawberry-tools/strawberry/modules"
 
-	hpaths "github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/hugofs"
-	"github.com/gohugoio/hugo/hugolib/paths"
+	hpaths "github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/hugofs"
+	"github.com/strawberry-tools/strawberry/hugolib/paths"
 	"github.com/spf13/afero"
 )
 

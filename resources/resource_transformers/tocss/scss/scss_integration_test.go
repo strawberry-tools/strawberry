@@ -20,9 +20,9 @@ import (
 
 	qt "github.com/frankban/quicktest"
 
-	"github.com/gohugoio/hugo/htesting"
-	"github.com/gohugoio/hugo/hugolib"
-	"github.com/gohugoio/hugo/resources/resource_transformers/tocss/scss"
+	"github.com/strawberry-tools/strawberry/htesting"
+	"github.com/strawberry-tools/strawberry/hugolib"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/tocss/scss"
 )
 
 func TestTransformIncludePaths(t *testing.T) {

@@ -28,37 +28,37 @@ import (
 	"time"
 
 	"github.com/bep/logg"
-	"github.com/gohugoio/hugo/common/htime"
-	"github.com/gohugoio/hugo/common/hugio"
-	"github.com/gohugoio/hugo/common/types"
-	"github.com/gohugoio/hugo/hugolib/doctree"
+	"github.com/strawberry-tools/strawberry/common/htime"
+	"github.com/strawberry-tools/strawberry/common/hugio"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/hugolib/doctree"
 	"golang.org/x/text/unicode/norm"
 
-	"github.com/gohugoio/hugo/common/paths"
+	"github.com/strawberry-tools/strawberry/common/paths"
 
-	"github.com/gohugoio/hugo/identity"
+	"github.com/strawberry-tools/strawberry/identity"
 
-	"github.com/gohugoio/hugo/markup/converter/hooks"
+	"github.com/strawberry-tools/strawberry/markup/converter/hooks"
 
-	"github.com/gohugoio/hugo/markup/converter"
+	"github.com/strawberry-tools/strawberry/markup/converter"
 
-	"github.com/gohugoio/hugo/common/text"
+	"github.com/strawberry-tools/strawberry/common/text"
 
-	"github.com/gohugoio/hugo/publisher"
+	"github.com/strawberry-tools/strawberry/publisher"
 
-	"github.com/gohugoio/hugo/langs"
+	"github.com/strawberry-tools/strawberry/langs"
 
-	"github.com/gohugoio/hugo/resources/kinds"
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
+	"github.com/strawberry-tools/strawberry/resources/page"
 
-	"github.com/gohugoio/hugo/lazy"
+	"github.com/strawberry-tools/strawberry/lazy"
 
 	"github.com/fsnotify/fsnotify"
-	bp "github.com/gohugoio/hugo/bufferpool"
-	"github.com/gohugoio/hugo/helpers"
-	"github.com/gohugoio/hugo/navigation"
-	"github.com/gohugoio/hugo/output"
-	"github.com/gohugoio/hugo/tpl"
+	bp "github.com/strawberry-tools/strawberry/bufferpool"
+	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/strawberry-tools/strawberry/navigation"
+	"github.com/strawberry-tools/strawberry/output"
+	"github.com/strawberry-tools/strawberry/tpl"
 )
 
 func (s *Site) Taxonomies() page.TaxonomyList {

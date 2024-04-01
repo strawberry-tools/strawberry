@@ -22,10 +22,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 
-	"github.com/gohugoio/hugo/cache/dynacache"
-	"github.com/gohugoio/hugo/cache/filecache"
+	"github.com/strawberry-tools/strawberry/cache/dynacache"
+	"github.com/strawberry-tools/strawberry/cache/filecache"
 )
 
 func newResourceCache(rs *Spec, memCache *dynacache.Cache) *ResourceCache {

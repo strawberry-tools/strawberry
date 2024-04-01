@@ -19,8 +19,8 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/gohugoio/hugo/common/urls"
-	"github.com/gohugoio/hugo/deps"
+	"github.com/strawberry-tools/strawberry/common/urls"
+	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/spf13/cast"
 )
 

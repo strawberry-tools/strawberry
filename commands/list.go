@@ -23,9 +23,9 @@ import (
 	"time"
 
 	"github.com/bep/simplecobra"
-	"github.com/gohugoio/hugo/hugolib"
-	"github.com/gohugoio/hugo/resources/page"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/hugolib"
+	"github.com/strawberry-tools/strawberry/resources/page"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 )
 
 // newListCommand creates a new list command and its subcommands.

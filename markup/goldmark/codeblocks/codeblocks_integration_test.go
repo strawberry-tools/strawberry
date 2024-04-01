@@ -20,7 +20,7 @@ import (
 
 	qt "github.com/frankban/quicktest"
 
-	"github.com/gohugoio/hugo/hugolib"
+	"github.com/strawberry-tools/strawberry/hugolib"
 )
 
 func TestCodeblocks(t *testing.T) {

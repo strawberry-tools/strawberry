@@ -21,13 +21,13 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"github.com/gohugoio/hugo/common/hexec"
-	"github.com/gohugoio/hugo/config/security"
-	"github.com/gohugoio/hugo/hugofs/glob"
+	"github.com/strawberry-tools/strawberry/common/hexec"
+	"github.com/strawberry-tools/strawberry/config/security"
+	"github.com/strawberry-tools/strawberry/hugofs/glob"
 
-	"github.com/gohugoio/hugo/htesting"
+	"github.com/strawberry-tools/strawberry/htesting"
 
-	"github.com/gohugoio/hugo/hugofs"
+	"github.com/strawberry-tools/strawberry/hugofs"
 
 	qt "github.com/frankban/quicktest"
 )

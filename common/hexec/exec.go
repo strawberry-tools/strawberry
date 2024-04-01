@@ -25,8 +25,8 @@ import (
 	"strings"
 
 	"github.com/cli/safeexec"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/config/security"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/config/security"
 )
 
 var WithDir = func(dir string) func(c *commandeer) {

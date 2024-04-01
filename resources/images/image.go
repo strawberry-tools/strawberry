@@ -26,17 +26,17 @@ import (
 	"sync"
 
 	"github.com/bep/gowebp/libwebp/webpoptions"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/resources/images/webp"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/resources/images/webp"
 
-	"github.com/gohugoio/hugo/media"
-	"github.com/gohugoio/hugo/resources/images/exif"
+	"github.com/strawberry-tools/strawberry/media"
+	"github.com/strawberry-tools/strawberry/resources/images/exif"
 
 	"github.com/disintegration/gift"
 	"golang.org/x/image/bmp"
 	"golang.org/x/image/tiff"
 
-	"github.com/gohugoio/hugo/common/hugio"
+	"github.com/strawberry-tools/strawberry/common/hugio"
 )
 
 func NewImage(f Format, proc *ImageProcessor, img image.Image, s Spec) *Image {

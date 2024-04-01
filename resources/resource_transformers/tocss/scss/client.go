@@ -16,9 +16,9 @@ package scss
 import (
 	"regexp"
 
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/hugolib/filesystems"
-	"github.com/gohugoio/hugo/resources"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/hugolib/filesystems"
+	"github.com/strawberry-tools/strawberry/resources"
 	"github.com/spf13/afero"
 
 	"github.com/mitchellh/mapstructure"

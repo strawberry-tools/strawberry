@@ -17,8 +17,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/config/allconfig"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/config/allconfig"
 	"github.com/spf13/afero"
 )
 

@@ -21,11 +21,11 @@ import (
 
 	iofs "io/fs"
 
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/hugofs/glob"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/hugofs/glob"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/htesting"
+	"github.com/strawberry-tools/strawberry/htesting"
 	"github.com/spf13/afero"
 )
 

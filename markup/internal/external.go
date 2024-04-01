@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/collections"
-	"github.com/gohugoio/hugo/common/hexec"
-	"github.com/gohugoio/hugo/markup/converter"
+	"github.com/strawberry-tools/strawberry/common/collections"
+	"github.com/strawberry-tools/strawberry/common/hexec"
+	"github.com/strawberry-tools/strawberry/markup/converter"
 )
 
 func ExternallyRenderContent(

@@ -17,11 +17,11 @@ import (
 	"context"
 	"testing"
 
-	"github.com/gohugoio/hugo/config/testconfig"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/config/testconfig"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/resources/resource_transformers/htesting"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/htesting"
 )
 
 func TestTransform(t *testing.T) {

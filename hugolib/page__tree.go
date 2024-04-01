@@ -18,11 +18,11 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/common/types"
-	"github.com/gohugoio/hugo/hugolib/doctree"
-	"github.com/gohugoio/hugo/resources/kinds"
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/hugolib/doctree"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
+	"github.com/strawberry-tools/strawberry/resources/page"
 )
 
 // pageTree holds the treen navigational method for a Page.

@@ -20,8 +20,8 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/hreflect"
-	"github.com/gohugoio/hugo/tpl"
+	"github.com/strawberry-tools/strawberry/common/hreflect"
+	"github.com/strawberry-tools/strawberry/tpl"
 )
 
 // Apply takes an array or slice c and returns a new slice with the function fname applied over it.

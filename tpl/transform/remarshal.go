@@ -5,8 +5,8 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/gohugoio/hugo/parser"
-	"github.com/gohugoio/hugo/parser/metadecoders"
+	"github.com/strawberry-tools/strawberry/parser"
+	"github.com/strawberry-tools/strawberry/parser/metadecoders"
 	"github.com/spf13/cast"
 )
 

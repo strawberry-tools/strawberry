@@ -29,16 +29,16 @@ import (
 	"github.com/mitchellh/mapstructure"
 
 	"github.com/bep/godartsass/v2"
-	"github.com/gohugoio/hugo/common/hexec"
-	"github.com/gohugoio/hugo/common/loggers"
-	"github.com/gohugoio/hugo/hugofs/files"
+	"github.com/strawberry-tools/strawberry/common/hexec"
+	"github.com/strawberry-tools/strawberry/common/loggers"
+	"github.com/strawberry-tools/strawberry/hugofs/files"
 
 	"github.com/spf13/afero"
 
 	iofs "io/fs"
 
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/hugofs"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/hugofs"
 )
 
 const (

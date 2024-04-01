@@ -16,10 +16,10 @@ package hugolib
 import (
 	"fmt"
 
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/output"
-	"github.com/gohugoio/hugo/resources/page"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/output"
+	"github.com/strawberry-tools/strawberry/resources/page"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 )
 
 func newPageOutput(

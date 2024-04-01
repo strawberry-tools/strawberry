@@ -17,12 +17,12 @@ import (
 	"image"
 	"io"
 
-	"github.com/gohugoio/hugo/common/hugio"
-	"github.com/gohugoio/hugo/resources/images"
+	"github.com/strawberry-tools/strawberry/common/hugio"
+	"github.com/strawberry-tools/strawberry/resources/images"
 
-	"github.com/gohugoio/hugo/cache/dynacache"
-	"github.com/gohugoio/hugo/cache/filecache"
-	"github.com/gohugoio/hugo/helpers"
+	"github.com/strawberry-tools/strawberry/cache/dynacache"
+	"github.com/strawberry-tools/strawberry/cache/filecache"
+	"github.com/strawberry-tools/strawberry/helpers"
 )
 
 // ImageCache is a cache for image resources. The backing caches are shared between all sites.

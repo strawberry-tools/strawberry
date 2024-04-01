@@ -21,11 +21,11 @@ import (
 	"testing"
 
 	"github.com/bep/logg"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/config/allconfig"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/config/allconfig"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/common/maps"
+	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/spf13/afero"
 )
 

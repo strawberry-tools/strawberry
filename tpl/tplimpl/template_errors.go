@@ -16,9 +16,9 @@ package tplimpl
 import (
 	"fmt"
 
-	"github.com/gohugoio/hugo/common/herrors"
-	"github.com/gohugoio/hugo/hugofs"
-	"github.com/gohugoio/hugo/identity"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/hugofs"
+	"github.com/strawberry-tools/strawberry/identity"
 )
 
 var _ identity.Identity = (*templateInfo)(nil)

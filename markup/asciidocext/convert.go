@@ -17,9 +17,9 @@
 package asciidocext
 
 import (
-	"github.com/gohugoio/hugo/htesting"
-	"github.com/gohugoio/hugo/markup/asciidocext/internal"
-	"github.com/gohugoio/hugo/markup/converter"
+	"github.com/strawberry-tools/strawberry/htesting"
+	"github.com/strawberry-tools/strawberry/markup/asciidocext/internal"
+	"github.com/strawberry-tools/strawberry/markup/converter"
 )
 
 // Provider is the package entry point.

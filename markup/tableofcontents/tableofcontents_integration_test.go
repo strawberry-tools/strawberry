@@ -16,7 +16,7 @@ package tableofcontents_test
 import (
 	"testing"
 
-	"github.com/gohugoio/hugo/hugolib"
+	"github.com/strawberry-tools/strawberry/hugolib"
 )
 
 // Issue #10776

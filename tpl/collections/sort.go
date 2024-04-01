@@ -20,9 +20,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/langs"
-	"github.com/gohugoio/hugo/tpl/compare"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/langs"
+	"github.com/strawberry-tools/strawberry/tpl/compare"
 	"github.com/spf13/cast"
 )
 

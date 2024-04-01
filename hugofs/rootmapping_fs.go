@@ -23,12 +23,12 @@ import (
 	"strings"
 	"sync/atomic"
 
-	"github.com/gohugoio/hugo/common/herrors"
-	"github.com/gohugoio/hugo/common/paths"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/common/paths"
 
 	"github.com/bep/overlayfs"
-	"github.com/gohugoio/hugo/hugofs/files"
-	"github.com/gohugoio/hugo/hugofs/glob"
+	"github.com/strawberry-tools/strawberry/hugofs/files"
+	"github.com/strawberry-tools/strawberry/hugofs/glob"
 
 	radix "github.com/armon/go-radix"
 	"github.com/spf13/afero"

@@ -6,8 +6,8 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/hugolib"
-	"github.com/gohugoio/hugo/tpl"
+	"github.com/strawberry-tools/strawberry/hugolib"
+	"github.com/strawberry-tools/strawberry/tpl"
 )
 
 func TestPrintUnusedTemplates(t *testing.T) {

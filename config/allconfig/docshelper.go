@@ -14,9 +14,9 @@
 package allconfig
 
 import (
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/docshelper"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/docshelper"
 )
 
 // This is is just some helpers used to create some JSON used in the Hugo docs.

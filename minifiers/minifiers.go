@@ -20,11 +20,11 @@ import (
 	"io"
 	"regexp"
 
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/output"
-	"github.com/gohugoio/hugo/transform"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/output"
+	"github.com/strawberry-tools/strawberry/transform"
 
-	"github.com/gohugoio/hugo/media"
+	"github.com/strawberry-tools/strawberry/media"
 	"github.com/tdewolff/minify/v2"
 )
 

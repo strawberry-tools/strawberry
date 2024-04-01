@@ -22,9 +22,9 @@ import (
 
 	"github.com/bep/logg"
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/htesting"
-	"github.com/gohugoio/hugo/hugofs"
-	"github.com/gohugoio/hugo/hugolib"
+	"github.com/strawberry-tools/strawberry/htesting"
+	"github.com/strawberry-tools/strawberry/hugofs"
+	"github.com/strawberry-tools/strawberry/hugolib"
 )
 
 const postCSSIntegrationTestFiles = `

@@ -20,12 +20,12 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gohugoio/hugo/resources/kinds"
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
+	"github.com/strawberry-tools/strawberry/resources/page"
 
 	qt "github.com/frankban/quicktest"
 
-	"github.com/gohugoio/hugo/deps"
+	"github.com/strawberry-tools/strawberry/deps"
 )
 
 func TestTaxonomiesCountOrder(t *testing.T) {

@@ -21,19 +21,19 @@ import (
 	"github.com/pelletier/go-toml/v2"
 	"github.com/spf13/cast"
 
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/config/testconfig"
-	"github.com/gohugoio/hugo/markup/converter/hooks"
-	"github.com/gohugoio/hugo/markup/goldmark"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/config/testconfig"
+	"github.com/strawberry-tools/strawberry/markup/converter/hooks"
+	"github.com/strawberry-tools/strawberry/markup/goldmark"
 
-	"github.com/gohugoio/hugo/markup/highlight"
+	"github.com/strawberry-tools/strawberry/markup/highlight"
 
-	"github.com/gohugoio/hugo/markup/markup_config"
+	"github.com/strawberry-tools/strawberry/markup/markup_config"
 
-	"github.com/gohugoio/hugo/common/loggers"
-	"github.com/gohugoio/hugo/common/maps"
+	"github.com/strawberry-tools/strawberry/common/loggers"
+	"github.com/strawberry-tools/strawberry/common/maps"
 
-	"github.com/gohugoio/hugo/markup/converter"
+	"github.com/strawberry-tools/strawberry/markup/converter"
 
 	qt "github.com/frankban/quicktest"
 )

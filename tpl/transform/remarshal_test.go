@@ -16,9 +16,9 @@ package transform_test
 import (
 	"testing"
 
-	"github.com/gohugoio/hugo/htesting"
-	"github.com/gohugoio/hugo/hugolib"
-	"github.com/gohugoio/hugo/tpl/transform"
+	"github.com/strawberry-tools/strawberry/htesting"
+	"github.com/strawberry-tools/strawberry/hugolib"
+	"github.com/strawberry-tools/strawberry/tpl/transform"
 
 	qt "github.com/frankban/quicktest"
 )

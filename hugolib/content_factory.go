@@ -21,13 +21,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gohugoio/hugo/common/htime"
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/hugofs"
+	"github.com/strawberry-tools/strawberry/common/htime"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/hugofs"
 
-	"github.com/gohugoio/hugo/source"
+	"github.com/strawberry-tools/strawberry/source"
 
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/resources/page"
 
 	"github.com/spf13/afero"
 )

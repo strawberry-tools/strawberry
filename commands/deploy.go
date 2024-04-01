@@ -32,8 +32,8 @@ package commands
 import (
 	"context"
 
-	"github.com/gohugoio/hugo/deploy"
-	"github.com/gohugoio/hugo/deploy/deployconfig"
+	"github.com/strawberry-tools/strawberry/deploy"
+	"github.com/strawberry-tools/strawberry/deploy/deployconfig"
 
 	"github.com/bep/simplecobra"
 	"github.com/spf13/cobra"

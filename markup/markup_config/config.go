@@ -14,12 +14,12 @@
 package markup_config
 
 import (
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/markup/asciidocext/asciidocext_config"
-	"github.com/gohugoio/hugo/markup/goldmark/goldmark_config"
-	"github.com/gohugoio/hugo/markup/highlight"
-	"github.com/gohugoio/hugo/markup/tableofcontents"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/markup/asciidocext/asciidocext_config"
+	"github.com/strawberry-tools/strawberry/markup/goldmark/goldmark_config"
+	"github.com/strawberry-tools/strawberry/markup/highlight"
+	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
 	"github.com/mitchellh/mapstructure"
 )
 

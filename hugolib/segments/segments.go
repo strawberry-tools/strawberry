@@ -17,10 +17,10 @@ import (
 	"fmt"
 
 	"github.com/gobwas/glob"
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/common/predicate"
-	"github.com/gohugoio/hugo/config"
-	hglob "github.com/gohugoio/hugo/hugofs/glob"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/common/predicate"
+	"github.com/strawberry-tools/strawberry/config"
+	hglob "github.com/strawberry-tools/strawberry/hugofs/glob"
 	"github.com/mitchellh/mapstructure"
 )
 

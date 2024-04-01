@@ -18,11 +18,11 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/loggers"
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/hugofs/glob"
-	"github.com/gohugoio/hugo/resources/kinds"
+	"github.com/strawberry-tools/strawberry/common/loggers"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/hugofs/glob"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
 	"github.com/mitchellh/mapstructure"
 )
 

@@ -18,9 +18,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gohugoio/hugo/hugolib"
+	"github.com/strawberry-tools/strawberry/hugolib"
 
-	"github.com/gohugoio/hugo/tpl/internal"
+	"github.com/strawberry-tools/strawberry/tpl/internal"
 )
 
 func TestTemplateFuncsExamples(t *testing.T) {

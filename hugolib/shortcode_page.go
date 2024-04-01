@@ -17,8 +17,8 @@ import (
 	"context"
 	"html/template"
 
-	"github.com/gohugoio/hugo/common/types"
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/resources/page"
 )
 
 // A placeholder for the TableOfContents markup. This is what we pass to the Goldmark etc. renderers.

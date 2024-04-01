@@ -21,7 +21,7 @@ import (
 	"sync"
 
 	"github.com/bep/logg"
-	"github.com/gohugoio/hugo/identity"
+	"github.com/strawberry-tools/strawberry/identity"
 )
 
 // PanicOnWarningHook panics on warnings.

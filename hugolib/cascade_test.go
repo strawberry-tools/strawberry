@@ -20,11 +20,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gohugoio/hugo/common/maps"
+	"github.com/strawberry-tools/strawberry/common/maps"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/parser"
-	"github.com/gohugoio/hugo/parser/metadecoders"
+	"github.com/strawberry-tools/strawberry/parser"
+	"github.com/strawberry-tools/strawberry/parser/metadecoders"
 )
 
 func BenchmarkCascade(b *testing.B) {

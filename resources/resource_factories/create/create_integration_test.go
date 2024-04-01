@@ -21,7 +21,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gohugoio/hugo/hugolib"
+	"github.com/strawberry-tools/strawberry/hugolib"
 )
 
 func TestGetRemoteHead(t *testing.T) {

@@ -20,19 +20,19 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/config/allconfig"
-	"github.com/gohugoio/hugo/config/testconfig"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/config/allconfig"
+	"github.com/strawberry-tools/strawberry/config/testconfig"
 
-	"github.com/gohugoio/hugo/deps"
+	"github.com/strawberry-tools/strawberry/deps"
 
-	"github.com/gohugoio/hugo/hugolib"
+	"github.com/strawberry-tools/strawberry/hugolib"
 
-	"github.com/gohugoio/hugo/hugofs"
+	"github.com/strawberry-tools/strawberry/hugofs"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/create"
-	"github.com/gohugoio/hugo/helpers"
+	"github.com/strawberry-tools/strawberry/create"
+	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/spf13/afero"
 )
 

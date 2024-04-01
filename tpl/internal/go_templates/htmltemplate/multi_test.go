@@ -15,7 +15,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gohugoio/hugo/tpl/internal/go_templates/texttemplate/parse"
+	"github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate/parse"
 )
 
 var multiExecTests = []execTest{

@@ -19,11 +19,11 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/common/urls"
-	"github.com/gohugoio/hugo/helpers"
-	"github.com/gohugoio/hugo/output"
-	"github.com/gohugoio/hugo/resources/kinds"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/common/urls"
+	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/strawberry-tools/strawberry/output"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
 )
 
 const slash = "/"

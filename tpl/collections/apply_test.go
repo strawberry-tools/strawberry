@@ -21,11 +21,11 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/config/testconfig"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/output"
-	"github.com/gohugoio/hugo/output/layouts"
-	"github.com/gohugoio/hugo/tpl"
+	"github.com/strawberry-tools/strawberry/config/testconfig"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/output"
+	"github.com/strawberry-tools/strawberry/output/layouts"
+	"github.com/strawberry-tools/strawberry/tpl"
 )
 
 type templateFinder int

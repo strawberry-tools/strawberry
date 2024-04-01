@@ -23,13 +23,13 @@ import (
 	"testing"
 
 	"github.com/gobuffalo/flect"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/publisher"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/publisher"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/deps"
-	"github.com/gohugoio/hugo/resources/kinds"
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
+	"github.com/strawberry-tools/strawberry/resources/page"
 )
 
 func TestDraftAndFutureRender(t *testing.T) {

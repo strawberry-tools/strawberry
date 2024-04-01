@@ -22,8 +22,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/gohugoio/hugo/cache/filecache"
-	"github.com/gohugoio/hugo/helpers"
+	"github.com/strawberry-tools/strawberry/cache/filecache"
+	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/spf13/afero"
 )
 

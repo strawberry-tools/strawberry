@@ -19,7 +19,7 @@ package modules
 import (
 	"time"
 
-	"github.com/gohugoio/hugo/config"
+	"github.com/strawberry-tools/strawberry/config"
 )
 
 var _ Module = (*moduleAdapter)(nil)

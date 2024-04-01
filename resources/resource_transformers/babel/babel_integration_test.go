@@ -17,8 +17,8 @@ import (
 	"testing"
 
 	"github.com/bep/logg"
-	"github.com/gohugoio/hugo/htesting"
-	"github.com/gohugoio/hugo/hugolib"
+	"github.com/strawberry-tools/strawberry/htesting"
+	"github.com/strawberry-tools/strawberry/hugolib"
 )
 
 func TestTransformBabel(t *testing.T) {

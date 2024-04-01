@@ -16,7 +16,7 @@ package goldmark_test
 import (
 	"testing"
 
-	"github.com/gohugoio/hugo/hugolib"
+	"github.com/strawberry-tools/strawberry/hugolib"
 )
 
 func TestTableOfContents(t *testing.T) {

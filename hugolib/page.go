@@ -20,32 +20,32 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/gohugoio/hugo/hugofs"
-	"github.com/gohugoio/hugo/hugolib/doctree"
-	"github.com/gohugoio/hugo/hugolib/segments"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/media"
-	"github.com/gohugoio/hugo/output"
-	"github.com/gohugoio/hugo/output/layouts"
-	"github.com/gohugoio/hugo/related"
+	"github.com/strawberry-tools/strawberry/hugofs"
+	"github.com/strawberry-tools/strawberry/hugolib/doctree"
+	"github.com/strawberry-tools/strawberry/hugolib/segments"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/media"
+	"github.com/strawberry-tools/strawberry/output"
+	"github.com/strawberry-tools/strawberry/output/layouts"
+	"github.com/strawberry-tools/strawberry/related"
 	"github.com/spf13/afero"
 
-	"github.com/gohugoio/hugo/markup/converter"
-	"github.com/gohugoio/hugo/markup/tableofcontents"
+	"github.com/strawberry-tools/strawberry/markup/converter"
+	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
 
-	"github.com/gohugoio/hugo/tpl"
+	"github.com/strawberry-tools/strawberry/tpl"
 
-	"github.com/gohugoio/hugo/common/herrors"
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/common/types"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/common/types"
 
-	"github.com/gohugoio/hugo/source"
+	"github.com/strawberry-tools/strawberry/source"
 
-	"github.com/gohugoio/hugo/common/collections"
-	"github.com/gohugoio/hugo/common/text"
-	"github.com/gohugoio/hugo/resources/kinds"
-	"github.com/gohugoio/hugo/resources/page"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/common/collections"
+	"github.com/strawberry-tools/strawberry/common/text"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
+	"github.com/strawberry-tools/strawberry/resources/page"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 )
 
 var (

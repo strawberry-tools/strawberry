@@ -21,12 +21,12 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/gohugoio/hugo/compare"
-	"github.com/gohugoio/hugo/langs"
+	"github.com/strawberry-tools/strawberry/compare"
+	"github.com/strawberry-tools/strawberry/langs"
 
-	"github.com/gohugoio/hugo/common/hreflect"
-	"github.com/gohugoio/hugo/common/htime"
-	"github.com/gohugoio/hugo/common/types"
+	"github.com/strawberry-tools/strawberry/common/hreflect"
+	"github.com/strawberry-tools/strawberry/common/htime"
+	"github.com/strawberry-tools/strawberry/common/types"
 )
 
 // New returns a new instance of the compare-namespaced template functions.

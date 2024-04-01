@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/deps"
+	"github.com/strawberry-tools/strawberry/deps"
 	translators "github.com/gohugoio/localescompressed"
 )
 

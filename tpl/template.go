@@ -22,15 +22,15 @@ import (
 	"strings"
 	"unicode"
 
-	bp "github.com/gohugoio/hugo/bufferpool"
-	"github.com/gohugoio/hugo/common/hcontext"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/output/layouts"
+	bp "github.com/strawberry-tools/strawberry/bufferpool"
+	"github.com/strawberry-tools/strawberry/common/hcontext"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/output/layouts"
 
-	"github.com/gohugoio/hugo/output"
+	"github.com/strawberry-tools/strawberry/output"
 
-	htmltemplate "github.com/gohugoio/hugo/tpl/internal/go_templates/htmltemplate"
-	texttemplate "github.com/gohugoio/hugo/tpl/internal/go_templates/texttemplate"
+	htmltemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/htmltemplate"
+	texttemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate"
 )
 
 // TemplateManager manages the collection of templates.

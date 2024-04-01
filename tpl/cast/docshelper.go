@@ -14,12 +14,12 @@
 package cast
 
 import (
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/config/testconfig"
-	"github.com/gohugoio/hugo/deps"
-	"github.com/gohugoio/hugo/docshelper"
-	"github.com/gohugoio/hugo/resources/page"
-	"github.com/gohugoio/hugo/tpl/internal"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/config/testconfig"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/docshelper"
+	"github.com/strawberry-tools/strawberry/resources/page"
+	"github.com/strawberry-tools/strawberry/tpl/internal"
 )
 
 // This file provides documentation support and is randomly put into this package.

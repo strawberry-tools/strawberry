@@ -21,24 +21,24 @@ import (
 	"html/template"
 	"time"
 
-	"github.com/gohugoio/hugo/hugofs/files"
-	"github.com/gohugoio/hugo/markup/converter"
-	"github.com/gohugoio/hugo/markup/tableofcontents"
+	"github.com/strawberry-tools/strawberry/hugofs/files"
+	"github.com/strawberry-tools/strawberry/markup/converter"
+	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
 
-	"github.com/gohugoio/hugo/hugofs"
+	"github.com/strawberry-tools/strawberry/hugofs"
 
-	"github.com/gohugoio/hugo/navigation"
+	"github.com/strawberry-tools/strawberry/navigation"
 
-	"github.com/gohugoio/hugo/common/hugo"
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/source"
+	"github.com/strawberry-tools/strawberry/common/hugo"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/source"
 
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/langs"
-	"github.com/gohugoio/hugo/media"
-	"github.com/gohugoio/hugo/related"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/langs"
+	"github.com/strawberry-tools/strawberry/media"
+	"github.com/strawberry-tools/strawberry/related"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 )
 
 var (

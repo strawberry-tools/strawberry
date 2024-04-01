@@ -19,7 +19,7 @@ import (
 	"regexp"
 	"runtime"
 
-	"github.com/gohugoio/hugo/common/types"
+	"github.com/strawberry-tools/strawberry/common/types"
 
 	"github.com/spf13/afero"
 )

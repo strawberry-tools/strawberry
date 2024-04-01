@@ -16,7 +16,7 @@ package resource
 import (
 	"time"
 
-	"github.com/gohugoio/hugo/common/htime"
+	"github.com/strawberry-tools/strawberry/common/htime"
 )
 
 // Dated wraps a "dated resource". These are the 4 dates that makes

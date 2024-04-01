@@ -23,17 +23,17 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gohugoio/hugo/cache/filecache"
-	"github.com/gohugoio/hugo/common/loggers"
+	"github.com/strawberry-tools/strawberry/cache/filecache"
+	"github.com/strawberry-tools/strawberry/common/loggers"
 
-	"github.com/gohugoio/hugo/config/testconfig"
+	"github.com/strawberry-tools/strawberry/config/testconfig"
 
-	"github.com/gohugoio/hugo/helpers"
+	"github.com/strawberry-tools/strawberry/helpers"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/deps"
-	"github.com/gohugoio/hugo/hugofs"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/hugofs"
 	"github.com/spf13/afero"
 )
 

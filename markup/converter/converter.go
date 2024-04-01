@@ -17,14 +17,14 @@ import (
 	"bytes"
 	"context"
 
-	"github.com/gohugoio/hugo/common/hexec"
-	"github.com/gohugoio/hugo/common/loggers"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/markup/converter/hooks"
-	"github.com/gohugoio/hugo/markup/highlight"
-	"github.com/gohugoio/hugo/markup/markup_config"
-	"github.com/gohugoio/hugo/markup/tableofcontents"
+	"github.com/strawberry-tools/strawberry/common/hexec"
+	"github.com/strawberry-tools/strawberry/common/loggers"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/markup/converter/hooks"
+	"github.com/strawberry-tools/strawberry/markup/highlight"
+	"github.com/strawberry-tools/strawberry/markup/markup_config"
+	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
 	"github.com/spf13/afero"
 )
 

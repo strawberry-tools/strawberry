@@ -22,31 +22,31 @@ import (
 	"sync/atomic"
 
 	"github.com/bep/logg"
-	"github.com/gohugoio/hugo/cache/dynacache"
-	"github.com/gohugoio/hugo/config/allconfig"
-	"github.com/gohugoio/hugo/hugofs/glob"
-	"github.com/gohugoio/hugo/hugolib/doctree"
-	"github.com/gohugoio/hugo/resources"
+	"github.com/strawberry-tools/strawberry/cache/dynacache"
+	"github.com/strawberry-tools/strawberry/config/allconfig"
+	"github.com/strawberry-tools/strawberry/hugofs/glob"
+	"github.com/strawberry-tools/strawberry/hugolib/doctree"
+	"github.com/strawberry-tools/strawberry/resources"
 
 	"github.com/fsnotify/fsnotify"
 
-	"github.com/gohugoio/hugo/output"
-	"github.com/gohugoio/hugo/parser/metadecoders"
+	"github.com/strawberry-tools/strawberry/output"
+	"github.com/strawberry-tools/strawberry/parser/metadecoders"
 
-	"github.com/gohugoio/hugo/common/hugo"
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/common/para"
-	"github.com/gohugoio/hugo/common/types"
-	"github.com/gohugoio/hugo/hugofs"
+	"github.com/strawberry-tools/strawberry/common/hugo"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/common/para"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/hugofs"
 
-	"github.com/gohugoio/hugo/source"
+	"github.com/strawberry-tools/strawberry/source"
 
-	"github.com/gohugoio/hugo/common/herrors"
-	"github.com/gohugoio/hugo/deps"
-	"github.com/gohugoio/hugo/helpers"
-	"github.com/gohugoio/hugo/lazy"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/strawberry-tools/strawberry/lazy"
 
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/resources/page"
 )
 
 // HugoSites represents the sites to build. Each site represents a language.

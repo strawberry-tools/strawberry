@@ -17,10 +17,10 @@ import (
 	"context"
 	"io"
 
-	"github.com/gohugoio/hugo/common/hugio"
-	"github.com/gohugoio/hugo/common/text"
-	"github.com/gohugoio/hugo/common/types/hstring"
-	"github.com/gohugoio/hugo/markup/internal/attributes"
+	"github.com/strawberry-tools/strawberry/common/hugio"
+	"github.com/strawberry-tools/strawberry/common/text"
+	"github.com/strawberry-tools/strawberry/common/types/hstring"
+	"github.com/strawberry-tools/strawberry/markup/internal/attributes"
 )
 
 var _ AttributesOptionsSliceProvider = (*attributes.AttributesHolder)(nil)

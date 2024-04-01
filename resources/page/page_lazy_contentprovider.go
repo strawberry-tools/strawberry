@@ -17,9 +17,9 @@ import (
 	"context"
 	"html/template"
 
-	"github.com/gohugoio/hugo/lazy"
-	"github.com/gohugoio/hugo/markup/converter"
-	"github.com/gohugoio/hugo/markup/tableofcontents"
+	"github.com/strawberry-tools/strawberry/lazy"
+	"github.com/strawberry-tools/strawberry/markup/converter"
+	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
 )
 
 // OutputFormatContentProvider represents the method set that is "outputFormat aware" and that we

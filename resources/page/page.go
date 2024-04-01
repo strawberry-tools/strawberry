@@ -19,19 +19,19 @@ import (
 	"context"
 	"html/template"
 
-	"github.com/gohugoio/hugo/markup/converter"
-	"github.com/gohugoio/hugo/markup/tableofcontents"
+	"github.com/strawberry-tools/strawberry/markup/converter"
+	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
 
-	"github.com/gohugoio/hugo/config"
+	"github.com/strawberry-tools/strawberry/config"
 
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/compare"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/compare"
 
-	"github.com/gohugoio/hugo/navigation"
-	"github.com/gohugoio/hugo/related"
-	"github.com/gohugoio/hugo/resources/resource"
-	"github.com/gohugoio/hugo/source"
+	"github.com/strawberry-tools/strawberry/navigation"
+	"github.com/strawberry-tools/strawberry/related"
+	"github.com/strawberry-tools/strawberry/resources/resource"
+	"github.com/strawberry-tools/strawberry/source"
 )
 
 // Clear clears any global package state.
