@@ -16,10 +16,10 @@ package htesting
 import (
 	"path/filepath"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/hugio"
 	"github.com/strawberry-tools/strawberry/identity"
 	"github.com/strawberry-tools/strawberry/resources"
-	"github.com/spf13/afero"
 )
 
 func NewResourceTransformerForSpec(spec *resources.Spec, filename, content string) (resources.ResourceTransformer, error) {

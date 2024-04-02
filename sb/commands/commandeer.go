@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2024 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,14 +30,6 @@ import (
 	"syscall"
 	"time"
 
-	"go.uber.org/automaxprocs/maxprocs"
-
-	"github.com/bep/clocks"
-	"github.com/bep/lazycache"
-	"github.com/bep/logg"
-	"github.com/bep/overlayfs"
-	"github.com/bep/simplecobra"
-
 	"github.com/strawberry-tools/strawberry/common/hstrings"
 	"github.com/strawberry-tools/strawberry/common/htime"
 	"github.com/strawberry-tools/strawberry/common/hugo"
@@ -48,8 +41,15 @@ import (
 	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/hugofs"
 	"github.com/strawberry-tools/strawberry/hugolib"
+
+	"github.com/bep/clocks"
+	"github.com/bep/lazycache"
+	"github.com/bep/logg"
+	"github.com/bep/overlayfs"
+	"github.com/bep/simplecobra"
 	"github.com/spf13/afero"
 	"github.com/spf13/cobra"
+	"go.uber.org/automaxprocs/maxprocs"
 )
 
 var errHelp = errors.New("help requested")
@@ -321,7 +321,7 @@ func (r *rootCommand) Hugo(cfg config.Provider) (*hugolib.HugoSites, error) {
 }
 
 func (r *rootCommand) Name() string {
-	return "hugo"
+	return "strawberry"
 }
 
 func (r *rootCommand) Run(ctx context.Context, cd *simplecobra.Commandeer, args []string) error {
@@ -471,11 +471,11 @@ func (r *rootCommand) IsTestRun() bool {
 
 func (r *rootCommand) Init(cd *simplecobra.Commandeer) error {
 	cmd := cd.CobraCommand
-	cmd.Use = "hugo [flags]"
-	cmd.Short = "hugo builds your site"
-	cmd.Long = `hugo is the main command, used to build your Hugo site.
+	cmd.Use = "strawberry [flags]"
+	cmd.Short = "strawberry builds your site"
+	cmd.Long = `strawberry is the main command, used to build your Strawberry site.
 
-Hugo is a Fast and Flexible Static Site Generator
+Strawberry is a Fast and Flexible Static Site Generator
 built with love by spf13 and friends in Go.
 
 Complete documentation is available at https://gohugo.io/.`
@@ -489,7 +489,7 @@ Complete documentation is available at https://gohugo.io/.`
 	cmd.PersistentFlags().StringVarP(&r.environment, "environment", "e", "", "build environment")
 	cmd.PersistentFlags().StringP("themesDir", "", "", "filesystem path to themes directory")
 	cmd.PersistentFlags().StringP("ignoreVendorPaths", "", "", "ignores any _vendor for module paths matching the given Glob pattern")
-	cmd.PersistentFlags().String("clock", "", "set the clock used by Hugo, e.g. --clock 2021-11-06T22:30:00.00+09:00")
+	cmd.PersistentFlags().String("clock", "", "set the clock used by Strawberry, e.g. --clock 2021-11-06T22:30:00.00+09:00")
 
 	cmd.PersistentFlags().StringVar(&r.cfgFile, "config", "", "config file (default is hugo.yaml|json|toml)")
 	cmd.PersistentFlags().StringVar(&r.cfgDir, "configDir", "config", "config dir")

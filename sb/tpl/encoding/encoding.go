@@ -22,9 +22,9 @@ import (
 
 	bp "github.com/strawberry-tools/strawberry/bufferpool"
 
-	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/mitchellh/mapstructure"
 	"github.com/spf13/cast"
+	"github.com/strawberry-tools/strawberry/common/maps"
 )
 
 // New returns a new instance of the encoding-namespaced template functions.

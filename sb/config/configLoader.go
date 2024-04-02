@@ -23,9 +23,9 @@ import (
 
 	"github.com/strawberry-tools/strawberry/common/paths"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/parser/metadecoders"
-	"github.com/spf13/afero"
 )
 
 var (

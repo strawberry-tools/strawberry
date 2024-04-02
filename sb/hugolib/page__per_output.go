@@ -22,12 +22,12 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/mitchellh/mapstructure"
+	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/common/text"
 	"github.com/strawberry-tools/strawberry/common/types/hstring"
 	"github.com/strawberry-tools/strawberry/identity"
 	"github.com/strawberry-tools/strawberry/parser/pageparser"
-	"github.com/mitchellh/mapstructure"
-	"github.com/spf13/cast"
 
 	"github.com/strawberry-tools/strawberry/markup/converter/hooks"
 	"github.com/strawberry-tools/strawberry/markup/highlight/chromalexers"

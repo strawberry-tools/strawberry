@@ -27,14 +27,14 @@ import (
 	"github.com/alecthomas/chroma/v2/formatters/html"
 	"github.com/alecthomas/chroma/v2/styles"
 	"github.com/bep/simplecobra"
+	"github.com/spf13/cobra"
+	"github.com/spf13/cobra/doc"
 	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/strawberry-tools/strawberry/docshelper"
 	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/hugofs"
 	"github.com/strawberry-tools/strawberry/hugolib"
 	"github.com/strawberry-tools/strawberry/parser"
-	"github.com/spf13/cobra"
-	"github.com/spf13/cobra/doc"
 	"gopkg.in/yaml.v2"
 )
 

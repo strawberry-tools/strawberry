@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2017 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,9 +22,10 @@ import (
 	"path/filepath"
 	"testing"
 
-	qt "github.com/frankban/quicktest"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/config/testconfig"
+
+	qt "github.com/frankban/quicktest"
 	"github.com/spf13/afero"
 	"github.com/spf13/cast"
 )

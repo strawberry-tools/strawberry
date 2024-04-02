@@ -22,21 +22,21 @@ import (
 
 	"github.com/strawberry-tools/strawberry/output"
 
-	"github.com/strawberry-tools/strawberry/parser/metadecoders"
 	"github.com/google/go-cmp/cmp"
+	"github.com/strawberry-tools/strawberry/parser/metadecoders"
 
 	"github.com/strawberry-tools/strawberry/parser"
 
 	"github.com/fsnotify/fsnotify"
+	"github.com/sanity-io/litter"
+	"github.com/spf13/afero"
+	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/common/hexec"
 	"github.com/strawberry-tools/strawberry/common/loggers"
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/strawberry-tools/strawberry/resources/page"
-	"github.com/sanity-io/litter"
-	"github.com/spf13/afero"
-	"github.com/spf13/cast"
 
 	"github.com/strawberry-tools/strawberry/helpers"
 

@@ -22,9 +22,9 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
+	"github.com/google/go-cmp/cmp"
 	"github.com/strawberry-tools/strawberry/common/para"
 	"github.com/strawberry-tools/strawberry/hugolib/doctree"
-	"github.com/google/go-cmp/cmp"
 )
 
 var eq = qt.CmpEquals(

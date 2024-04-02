@@ -20,10 +20,10 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/mitchellh/mapstructure"
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/media"
-	"github.com/mitchellh/mapstructure"
 
 	"github.com/bep/gowebp/libwebp/webpoptions"
 

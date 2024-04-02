@@ -21,8 +21,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/strawberry-tools/strawberry/htesting/hqt"
 	"github.com/google/go-cmp/cmp"
+	"github.com/strawberry-tools/strawberry/htesting/hqt"
 
 	qt "github.com/frankban/quicktest"
 )

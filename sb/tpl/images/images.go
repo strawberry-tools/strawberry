@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2019 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,18 +20,16 @@ import (
 	"image"
 	"sync"
 
-	"github.com/bep/overlayfs"
-	"github.com/strawberry-tools/strawberry/resources/images"
-
-	// Importing image codecs for image.DecodeConfig
 	_ "image/gif"
 	_ "image/jpeg"
 	_ "image/png"
 
-	// Import webp codec
 	_ "golang.org/x/image/webp"
 
 	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/resources/images"
+
+	"github.com/bep/overlayfs"
 	"github.com/spf13/afero"
 	"github.com/spf13/cast"
 )

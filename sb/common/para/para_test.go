@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2019 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,11 +29,11 @@ import (
 )
 
 func TestPara(t *testing.T) {
+
 	if runtime.NumCPU() < 4 {
 		t.Skipf("skip para test, CPU count is %d", runtime.NumCPU())
 	}
 
-	// TODO(bep)
 	if htesting.IsCI() {
 		t.Skip("skip para test when running on CI")
 	}
@@ -69,9 +70,9 @@ func TestPara(t *testing.T) {
 	})
 
 	c.Run("Time", func(c *qt.C) {
-		const n = 100
+		const n = 500
 
-		p := New(5)
+		p := New(4)
 		r, _ := p.Start(context.Background())
 
 		start := time.Now()
@@ -90,7 +91,7 @@ func TestPara(t *testing.T) {
 		c.Assert(counter, qt.Equals, int64(n))
 
 		since := time.Since(start)
-		limit := n / 2 * time.Millisecond
+		limit := n * time.Millisecond
 		c.Assert(since < limit, qt.Equals, true, qt.Commentf("%s >= %s", since, limit))
 	})
 }

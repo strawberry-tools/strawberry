@@ -1,3 +1,5 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
+
 package transform
 
 import (
@@ -7,6 +9,7 @@ import (
 
 	"github.com/strawberry-tools/strawberry/parser"
 	"github.com/strawberry-tools/strawberry/parser/metadecoders"
+
 	"github.com/spf13/cast"
 )
 

@@ -28,8 +28,8 @@ import (
 	"github.com/strawberry-tools/strawberry/config/testconfig"
 	"github.com/strawberry-tools/strawberry/helpers"
 
-	"github.com/strawberry-tools/strawberry/hugofs"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/hugofs"
 
 	qt "github.com/frankban/quicktest"
 )

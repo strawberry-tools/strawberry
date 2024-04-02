@@ -21,6 +21,7 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/collections"
 	"github.com/strawberry-tools/strawberry/common/hexec"
 	"github.com/strawberry-tools/strawberry/common/loggers"
@@ -31,7 +32,6 @@ import (
 	"github.com/strawberry-tools/strawberry/markup/asciidocext/internal"
 	"github.com/strawberry-tools/strawberry/markup/converter"
 	"github.com/strawberry-tools/strawberry/markup/markup_config"
-	"github.com/spf13/afero"
 
 	qt "github.com/frankban/quicktest"
 )

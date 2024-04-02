@@ -18,12 +18,12 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/mitchellh/mapstructure"
 	"github.com/strawberry-tools/strawberry/common/loggers"
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/hugofs/glob"
 	"github.com/strawberry-tools/strawberry/resources/kinds"
-	"github.com/mitchellh/mapstructure"
 )
 
 // A PageMatcher can be used to match a Page with Glob patterns.

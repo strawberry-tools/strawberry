@@ -26,14 +26,14 @@ import (
 
 	xmaps "golang.org/x/exp/maps"
 
+	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/common/collections"
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/compare"
 	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
-	"github.com/spf13/cast"
 
-	"github.com/strawberry-tools/strawberry/common/types"
 	"github.com/mitchellh/mapstructure"
+	"github.com/strawberry-tools/strawberry/common/types"
 )
 
 const (

@@ -19,6 +19,7 @@ import (
 
 	qt "github.com/frankban/quicktest"
 	"github.com/fsnotify/fsnotify"
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/herrors"
 	"github.com/strawberry-tools/strawberry/common/hexec"
 	"github.com/strawberry-tools/strawberry/common/loggers"
@@ -30,7 +31,6 @@ import (
 	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/htesting"
 	"github.com/strawberry-tools/strawberry/hugofs"
-	"github.com/spf13/afero"
 	"golang.org/x/text/unicode/norm"
 	"golang.org/x/tools/txtar"
 )

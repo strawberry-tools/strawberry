@@ -20,9 +20,9 @@ import (
 
 	"github.com/strawberry-tools/strawberry/identity"
 
-	"github.com/strawberry-tools/strawberry/markup/converter"
 	"github.com/niklasfasching/go-org/org"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/markup/converter"
 )
 
 // Provider is the package entry point.

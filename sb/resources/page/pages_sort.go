@@ -22,8 +22,8 @@ import (
 
 	"github.com/strawberry-tools/strawberry/resources/resource"
 
-	"github.com/strawberry-tools/strawberry/compare"
 	"github.com/spf13/cast"
+	"github.com/strawberry-tools/strawberry/compare"
 )
 
 var spc = newPageCache()

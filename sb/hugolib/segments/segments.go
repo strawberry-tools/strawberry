@@ -17,11 +17,11 @@ import (
 	"fmt"
 
 	"github.com/gobwas/glob"
+	"github.com/mitchellh/mapstructure"
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/common/predicate"
 	"github.com/strawberry-tools/strawberry/config"
 	hglob "github.com/strawberry-tools/strawberry/hugofs/glob"
-	"github.com/mitchellh/mapstructure"
 )
 
 // Segments is a collection of named segments.

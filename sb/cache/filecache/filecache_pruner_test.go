@@ -18,8 +18,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/strawberry-tools/strawberry/cache/filecache"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/cache/filecache"
 
 	qt "github.com/frankban/quicktest"
 )

@@ -1,3 +1,4 @@
+//Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2017 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,6 +22,7 @@ import (
 
 	"github.com/strawberry-tools/strawberry/common/urls"
 	"github.com/strawberry-tools/strawberry/deps"
+
 	"github.com/spf13/cast"
 )
 

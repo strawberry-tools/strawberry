@@ -35,9 +35,9 @@ import (
 
 	"github.com/strawberry-tools/strawberry/common/hugo"
 
-	"github.com/strawberry-tools/strawberry/resources/internal"
 	"github.com/spf13/afero"
 	"github.com/spf13/cast"
+	"github.com/strawberry-tools/strawberry/resources/internal"
 
 	"github.com/mitchellh/mapstructure"
 

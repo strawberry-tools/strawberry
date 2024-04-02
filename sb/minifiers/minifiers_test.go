@@ -20,12 +20,12 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/config/testconfig"
 	"github.com/strawberry-tools/strawberry/media"
 	"github.com/strawberry-tools/strawberry/minifiers"
 	"github.com/strawberry-tools/strawberry/output"
-	"github.com/spf13/afero"
 	"github.com/tdewolff/minify/v2/html"
 )
 

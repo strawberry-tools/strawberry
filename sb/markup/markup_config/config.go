@@ -14,13 +14,13 @@
 package markup_config
 
 import (
+	"github.com/mitchellh/mapstructure"
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/markup/asciidocext/asciidocext_config"
 	"github.com/strawberry-tools/strawberry/markup/goldmark/goldmark_config"
 	"github.com/strawberry-tools/strawberry/markup/highlight"
 	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
-	"github.com/mitchellh/mapstructure"
 )
 
 type Config struct {

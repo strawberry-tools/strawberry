@@ -17,6 +17,7 @@ import (
 	"bytes"
 	"context"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/hexec"
 	"github.com/strawberry-tools/strawberry/common/loggers"
 	"github.com/strawberry-tools/strawberry/config"
@@ -25,7 +26,6 @@ import (
 	"github.com/strawberry-tools/strawberry/markup/highlight"
 	"github.com/strawberry-tools/strawberry/markup/markup_config"
 	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
-	"github.com/spf13/afero"
 )
 
 // ProviderConfig configures a new Provider.

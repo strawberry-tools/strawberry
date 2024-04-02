@@ -17,10 +17,10 @@ import (
 	"io"
 	"path"
 
-	"github.com/strawberry-tools/strawberry/common/herrors"
-	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/hairyhenderson/go-codeowners"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/resources/page"
 )
 
 var afs = afero.NewOsFs()

@@ -1,3 +1,5 @@
+//Copyright 2024 The Strawberry Tools team. All rights reserved.
+
 // Copyright 2016 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,13 +19,12 @@ import (
 	"errors"
 	"fmt"
 
-	htmltemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/htmltemplate"
-	texttemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate"
-
-	"github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate/parse"
-
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/tpl"
+	htmltemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/htmltemplate"
+	texttemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate"
+	"github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate/parse"
+
 	"github.com/mitchellh/mapstructure"
 )
 

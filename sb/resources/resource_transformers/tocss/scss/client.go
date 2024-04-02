@@ -16,10 +16,10 @@ package scss
 import (
 	"regexp"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/paths"
 	"github.com/strawberry-tools/strawberry/hugolib/filesystems"
 	"github.com/strawberry-tools/strawberry/resources"
-	"github.com/spf13/afero"
 
 	"github.com/mitchellh/mapstructure"
 )

@@ -20,6 +20,7 @@ import (
 	"sync"
 	"sync/atomic"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/hugofs"
 	"github.com/strawberry-tools/strawberry/hugolib/doctree"
 	"github.com/strawberry-tools/strawberry/hugolib/segments"
@@ -28,7 +29,6 @@ import (
 	"github.com/strawberry-tools/strawberry/output"
 	"github.com/strawberry-tools/strawberry/output/layouts"
 	"github.com/strawberry-tools/strawberry/related"
-	"github.com/spf13/afero"
 
 	"github.com/strawberry-tools/strawberry/markup/converter"
 	"github.com/strawberry-tools/strawberry/markup/tableofcontents"

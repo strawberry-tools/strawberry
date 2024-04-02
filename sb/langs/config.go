@@ -16,8 +16,8 @@ package langs
 import (
 	"errors"
 
-	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/mitchellh/mapstructure"
+	"github.com/strawberry-tools/strawberry/common/maps"
 )
 
 // LanguageConfig holds the configuration for a single language.

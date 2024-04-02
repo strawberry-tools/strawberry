@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	"github.com/gobwas/glob"
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/herrors"
 	"github.com/strawberry-tools/strawberry/common/hexec"
 	"github.com/strawberry-tools/strawberry/common/hugo"
@@ -34,7 +35,6 @@ import (
 	hglob "github.com/strawberry-tools/strawberry/hugofs/glob"
 	"github.com/strawberry-tools/strawberry/modules"
 	"github.com/strawberry-tools/strawberry/parser/metadecoders"
-	"github.com/spf13/afero"
 )
 
 //lint:ignore ST1005 end user message.

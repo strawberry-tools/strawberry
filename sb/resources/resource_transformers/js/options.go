@@ -20,16 +20,16 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/common/paths"
 	"github.com/strawberry-tools/strawberry/identity"
-	"github.com/spf13/afero"
 
 	"github.com/evanw/esbuild/pkg/api"
 
+	"github.com/mitchellh/mapstructure"
 	"github.com/strawberry-tools/strawberry/hugofs"
 	"github.com/strawberry-tools/strawberry/media"
-	"github.com/mitchellh/mapstructure"
 )
 
 const (

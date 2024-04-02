@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2017 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,9 +19,9 @@ import (
 	"testing"
 	"time"
 
-	qt "github.com/frankban/quicktest"
-
 	"github.com/strawberry-tools/strawberry/common/htime"
+
+	qt "github.com/frankban/quicktest"
 	translators "github.com/gohugoio/localescompressed"
 )
 

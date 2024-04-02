@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2017 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,14 +24,14 @@ import (
 	"strings"
 
 	"github.com/strawberry-tools/strawberry/cache/dynacache"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/markup/converter/hooks"
 	"github.com/strawberry-tools/strawberry/markup/highlight"
 	"github.com/strawberry-tools/strawberry/markup/highlight/chromalexers"
 	"github.com/strawberry-tools/strawberry/resources"
 	"github.com/strawberry-tools/strawberry/tpl"
 
-	"github.com/strawberry-tools/strawberry/deps"
-	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/spf13/cast"
 )
 

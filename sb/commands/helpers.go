@@ -22,8 +22,8 @@ import (
 	"strings"
 
 	"github.com/bep/simplecobra"
-	"github.com/strawberry-tools/strawberry/config"
 	"github.com/spf13/pflag"
+	"github.com/strawberry-tools/strawberry/config"
 )
 
 const (

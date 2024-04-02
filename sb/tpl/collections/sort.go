@@ -20,10 +20,10 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/langs"
 	"github.com/strawberry-tools/strawberry/tpl/compare"
-	"github.com/spf13/cast"
 )
 
 // Sort returns a sorted copy of the list l.

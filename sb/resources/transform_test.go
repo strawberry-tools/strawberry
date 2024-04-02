@@ -38,8 +38,8 @@ import (
 
 	"github.com/strawberry-tools/strawberry/helpers"
 
-	"github.com/strawberry-tools/strawberry/resources/resource"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 
 	qt "github.com/frankban/quicktest"
 )

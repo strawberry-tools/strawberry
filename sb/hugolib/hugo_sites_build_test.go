@@ -11,9 +11,9 @@ import (
 	"github.com/strawberry-tools/strawberry/htesting"
 	"github.com/strawberry-tools/strawberry/resources/kinds"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/hugofs"
-	"github.com/spf13/afero"
 )
 
 func TestMultiSitesMainLangInRoot(t *testing.T) {

@@ -1,0 +1,18 @@
+# Testing error output.
+
+# The hugo mod get command handles flags a little special, but the -h flag should print the help.
+strawberry mod get -h
+stdout 'Resolves dependencies in your current Hugo Project'
+
+# Invalid flag. Should print an error message to stderr and the help to stdout.
+! strawberry --asdf
+stderr 'unknown flag: --asdf'
+stdout 'strawberry is the main command'
+
+# This should fail the build, print an error message to stderr, but no help output.
+! strawberry
+! stdout 'strawberry is the main command'
+stderr 'failed to load config'
+
+-- hugo.toml --
+invalid: toml

@@ -26,6 +26,7 @@ import (
 	"time"
 
 	"github.com/bep/logg"
+	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/cache/dynacache"
 	"github.com/strawberry-tools/strawberry/common/loggers"
 	"github.com/strawberry-tools/strawberry/common/paths"
@@ -37,7 +38,6 @@ import (
 	"github.com/strawberry-tools/strawberry/identity"
 	"github.com/strawberry-tools/strawberry/output"
 	"github.com/strawberry-tools/strawberry/resources"
-	"github.com/spf13/cast"
 
 	"github.com/strawberry-tools/strawberry/common/maps"
 

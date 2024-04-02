@@ -389,9 +389,9 @@ func Deprecate(item, alternative string, version string) {
 func DeprecateLevel(item, alternative, version string, level logg.Level) {
 	var msg string
 	if level == logg.LevelError {
-		msg = fmt.Sprintf("%s was deprecated in Hugo %s and will be removed in Hugo %s. %s", item, version, CurrentVersion.Next().ReleaseVersion(), alternative)
+		msg = fmt.Sprintf("%s was deprecated in Strawberry %s and will be removed in Strawberry %s. %s", item, version, CurrentVersion.Next().ReleaseVersion(), alternative)
 	} else {
-		msg = fmt.Sprintf("%s was deprecated in Hugo %s and will be removed in a future release. %s", item, version, alternative)
+		msg = fmt.Sprintf("%s was deprecated in Strawberry %s and will be removed in a future release. %s", item, version, alternative)
 	}
 
 	loggers.Log().Logger().WithLevel(level).WithField(loggers.FieldNameCmd, "deprecated").Logf(msg)

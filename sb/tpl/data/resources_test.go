@@ -31,10 +31,10 @@ import (
 	"github.com/strawberry-tools/strawberry/helpers"
 
 	qt "github.com/frankban/quicktest"
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/strawberry-tools/strawberry/hugofs"
-	"github.com/spf13/afero"
 )
 
 func TestScpGetLocal(t *testing.T) {

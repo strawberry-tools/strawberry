@@ -18,12 +18,12 @@ import (
 	"fmt"
 	"sync"
 
+	"github.com/mitchellh/mapstructure"
+	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/common/para"
 	"github.com/strawberry-tools/strawberry/common/types"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/related"
-	"github.com/mitchellh/mapstructure"
-	"github.com/spf13/cast"
 )
 
 var (

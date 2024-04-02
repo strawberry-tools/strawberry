@@ -30,6 +30,7 @@ import (
 	"github.com/bep/logg"
 	"github.com/bep/simplecobra"
 	"github.com/fsnotify/fsnotify"
+	"github.com/spf13/fsync"
 	"github.com/strawberry-tools/strawberry/common/herrors"
 	"github.com/strawberry-tools/strawberry/common/htime"
 	"github.com/strawberry-tools/strawberry/common/hugo"
@@ -46,7 +47,6 @@ import (
 	"github.com/strawberry-tools/strawberry/livereload"
 	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/strawberry-tools/strawberry/watcher"
-	"github.com/spf13/fsync"
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/sync/semaphore"
 )

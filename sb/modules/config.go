@@ -22,8 +22,8 @@ import (
 	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/strawberry-tools/strawberry/hugofs/files"
 
-	"github.com/strawberry-tools/strawberry/config"
 	"github.com/mitchellh/mapstructure"
+	"github.com/strawberry-tools/strawberry/config"
 )
 
 const WorkspaceDisabled = "off"

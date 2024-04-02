@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2024 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +25,8 @@ import (
 func newEnvCommand() simplecobra.Commander {
 	return &simpleCommand{
 		name:  "env",
-		short: "Print Hugo version and environment info",
-		long:  "Print Hugo version and environment info. This is useful in Hugo bug reports",
+		short: "Print Strawberry version and environment info",
+		long:  "Print Strawbery version and environment info. This is useful in Strawberry bug reports",
 		run: func(ctx context.Context, cd *simplecobra.Commandeer, r *rootCommand, args []string) error {
 			r.Printf("%s\n", hugo.BuildVersionString())
 			r.Printf("GOOS=%q\n", runtime.GOOS)
@@ -57,7 +58,7 @@ func newVersionCmd() simplecobra.Commander {
 			r.Println(hugo.BuildVersionString())
 			return nil
 		},
-		short: "Print Hugo version and environment info",
-		long:  "Print Hugo version and environment info. This is useful in Hugo bug reports.",
+		short: "Print Strawberry version and environment info",
+		long:  "Print Strawberry version and environment info. This is useful in Strawberry bug reports.",
 	}
 }

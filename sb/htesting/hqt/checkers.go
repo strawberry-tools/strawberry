@@ -20,9 +20,9 @@ import (
 	"strings"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/strawberry-tools/strawberry/htesting"
 	"github.com/google/go-cmp/cmp"
 	"github.com/spf13/cast"
+	"github.com/strawberry-tools/strawberry/htesting"
 )
 
 // IsSameString asserts that two strings are equal. The two strings

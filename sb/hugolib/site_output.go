@@ -17,9 +17,9 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/output"
 	"github.com/strawberry-tools/strawberry/resources/kinds"
-	"github.com/spf13/cast"
 )
 
 func createDefaultOutputFormats(allFormats output.Formats) map[string]output.Formats {

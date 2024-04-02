@@ -19,8 +19,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/strawberry-tools/strawberry/resources/resource"
 	"github.com/google/go-cmp/cmp"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 
 	qt "github.com/frankban/quicktest"
 )

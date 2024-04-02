@@ -25,8 +25,8 @@ import (
 
 	"github.com/strawberry-tools/strawberry/helpers"
 
-	"github.com/strawberry-tools/strawberry/config"
 	"github.com/spf13/cast"
+	"github.com/strawberry-tools/strawberry/config"
 )
 
 type Dates struct {

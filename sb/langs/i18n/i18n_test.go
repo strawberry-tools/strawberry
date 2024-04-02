@@ -25,8 +25,8 @@ import (
 
 	"github.com/strawberry-tools/strawberry/tpl/tplimpl"
 
-	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/resources/page"
 
 	"github.com/strawberry-tools/strawberry/deps"
 

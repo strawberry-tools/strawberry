@@ -16,9 +16,9 @@ package navigation
 import (
 	"fmt"
 
+	"github.com/mitchellh/mapstructure"
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/common/types"
-	"github.com/mitchellh/mapstructure"
 
 	"github.com/spf13/cast"
 )

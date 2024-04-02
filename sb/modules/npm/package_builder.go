@@ -25,8 +25,8 @@ import (
 
 	"github.com/strawberry-tools/strawberry/hugofs/files"
 
-	"github.com/strawberry-tools/strawberry/hugofs"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/hugofs"
 
 	"github.com/strawberry-tools/strawberry/common/maps"
 

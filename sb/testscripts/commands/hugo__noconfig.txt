@@ -1,0 +1,8 @@
+
+mkdir mysite
+cd mysite
+! strawberry
+
+stderr 'Unable to locate config file or config directory'
+ls .
+stdout 'Empty dir'

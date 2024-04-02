@@ -22,10 +22,10 @@ import (
 	"golang.org/x/text/collate"
 	"golang.org/x/text/language"
 
-	"github.com/strawberry-tools/strawberry/common/htime"
-	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/gohugoio/locales"
 	translators "github.com/gohugoio/localescompressed"
+	"github.com/strawberry-tools/strawberry/common/htime"
+	"github.com/strawberry-tools/strawberry/common/maps"
 )
 
 type Language struct {

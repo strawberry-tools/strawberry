@@ -20,8 +20,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/strawberry-tools/strawberry/hugofs/glob"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/hugofs/glob"
 )
 
 var _ FilesystemUnwrapper = (*filenameFilterFs)(nil)

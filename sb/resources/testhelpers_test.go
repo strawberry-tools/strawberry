@@ -15,10 +15,10 @@ import (
 	"github.com/strawberry-tools/strawberry/resources"
 
 	qt "github.com/frankban/quicktest"
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/hugofs"
 	"github.com/strawberry-tools/strawberry/resources/images"
 	"github.com/strawberry-tools/strawberry/resources/resource"
-	"github.com/spf13/afero"
 )
 
 type specDescriptor struct {

@@ -25,6 +25,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/common/collections"
 	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/strawberry-tools/strawberry/common/maps"
@@ -32,7 +33,6 @@ import (
 	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/strawberry-tools/strawberry/langs"
 	"github.com/strawberry-tools/strawberry/tpl/compare"
-	"github.com/spf13/cast"
 )
 
 // New returns a new instance of the collections-namespaced template functions.

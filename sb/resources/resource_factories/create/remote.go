@@ -27,6 +27,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/mitchellh/mapstructure"
 	"github.com/strawberry-tools/strawberry/common/hugio"
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/common/types"
@@ -34,7 +35,6 @@ import (
 	"github.com/strawberry-tools/strawberry/media"
 	"github.com/strawberry-tools/strawberry/resources"
 	"github.com/strawberry-tools/strawberry/resources/resource"
-	"github.com/mitchellh/mapstructure"
 )
 
 type HTTPError struct {

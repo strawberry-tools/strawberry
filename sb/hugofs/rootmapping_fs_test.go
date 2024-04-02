@@ -25,8 +25,8 @@ import (
 	"github.com/strawberry-tools/strawberry/hugofs/glob"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/strawberry-tools/strawberry/htesting"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/htesting"
 )
 
 func TestLanguageRootMapping(t *testing.T) {
