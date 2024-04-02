@@ -1,0 +1,56 @@
+project_name: strawberry
+
+builds:
+  - id: strawberry-linux
+    dir: src
+    goos:
+      - linux
+    goarch:
+      - amd64
+    ldflags:
+      - -s -w -X github.com/strawberry-tools/strawberry/common/hugo.buildDate={{.Date}} -X github.com/strawberry-tools/strawberry/common/hugo.commitHash={{ .ShortCommit }} -X github.com/strawberry-tools/strawberry/common/hugo.vendorInfo=gohugoio
+    flags:
+      - -buildmode
+      - exe
+  - id: strawberry-windows
+    dir: src
+    env:
+      - CGO_ENABLED=1
+      - CC=x86_64-w64-mingw32-gcc
+      - CXX=x86_64-w64-mingw32-g++
+    flags:
+      - -buildmode
+      - exe
+    goos:
+      - windows
+    goarch:
+      - amd64
+    ldflags:
+      - -s -w -X github.com/strawberry-tools/strawberry/common/hugo.buildDate={{.Date}} -X github.com/strawberry-tools/strawberry/common/hugo.commitHash={{ .ShortCommit }} -X github.com/strawberry-tools/strawberry/common/hugo.vendorInfo=gohugoio
+
+archives:
+  - format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+    name_template: "{{ .ProjectName }}-v{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+    files:
+      - README.md
+      - LICENSE
+
+checksum:
+  name_template: "{{ .ProjectName }}-v{{ .Version }}-linux-windows-amd64-checksum.txt"
+
+nfpms:
+  -
+    builds:
+      - linux
+    formats:
+        - deb
+    vendor: "Strawberry Tools"
+    maintainer: "Ricardo N Feliciano <Ricardo@Feliciano.Tech>"
+    description: "An awesome static site generator."
+    license: "Apache 2.0"
+    file_name_template: "{{.ProjectName}}_{{.Version}}_{{.Os}}-{{.Arch}}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+changelog:
+  skip: true

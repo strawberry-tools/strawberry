@@ -47,8 +47,8 @@ func runWith(env map[string]string, cmd string, inArgs ...any) error {
 	return sh.RunWith(env, cmd, s...)
 }
 
-// Build hugo binary
-func Hugo() error {
+// Build a proper Strawberry binary
+func Build() error {
 	return runWith(flagEnv(), goexe, "build", "-ldflags", ldflags, buildFlags(), "-tags", buildTags(), packageName)
 }
 
