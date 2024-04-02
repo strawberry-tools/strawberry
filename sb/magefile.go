@@ -120,7 +120,7 @@ func GenDocsHelper() error {
 // Build hugo without git info
 func HugoNoGitInfo() error {
 	ldflags = noGitLdflags
-	return Hugo()
+	return Build()
 }
 
 var docker = sh.RunCmd("docker")
