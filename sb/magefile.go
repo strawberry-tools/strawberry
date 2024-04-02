@@ -52,17 +52,17 @@ func Build() error {
 	return runWith(flagEnv(), goexe, "build", "-ldflags", ldflags, buildFlags(), "-tags", buildTags(), packageName)
 }
 
-// Build hugo binary with race detector enabled
-func HugoRace() error {
+// Build binary with race detector enabled
+func BuildRace() error {
 	return runWith(flagEnv(), goexe, "build", "-race", "-ldflags", ldflags, buildFlags(), "-tags", buildTags(), packageName)
 }
 
-// Install hugo binary
+// Install Strawberry binary to the set Go bin directory
 func Install() error {
 	return runWith(flagEnv(), goexe, "install", "-ldflags", ldflags, buildFlags(), "-tags", buildTags(), packageName)
 }
 
-// Uninstall hugo binary
+// Uninstall binary
 func Uninstall() error {
 	return sh.Run(goexe, "clean", "-i", packageName)
 }
@@ -117,15 +117,15 @@ func GenDocsHelper() error {
 	return runCmd(flagEnv(), goexe, "run", "-tags", buildTags(), "main.go", "gen", "docshelper")
 }
 
-// Build hugo without git info
-func HugoNoGitInfo() error {
+// Build binary without git info
+func BuildNoGitInfo() error {
 	ldflags = noGitLdflags
 	return Build()
 }
 
 var docker = sh.RunCmd("docker")
 
-// Build hugo Docker container
+// Build Strawberry Docker container
 func Docker() error {
 	if err := docker("build", "-t", "hugo", "."); err != nil {
 		return err
@@ -135,7 +135,7 @@ func Docker() error {
 	if err := docker("run", "--name", "hugo-build", "hugo ls /go/bin"); err != nil {
 		return err
 	}
-	if err := docker("cp", "hugo-build:/go/bin/hugo", "."); err != nil {
+	if err := docker("cp", "hugo-build:/go/bin/strawberry", "."); err != nil {
 		return err
 	}
 	return docker("rm", "hugo-build")
