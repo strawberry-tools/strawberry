@@ -21,10 +21,10 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/markup/asciidocext"
-	"github.com/gohugoio/hugo/markup/pandoc"
-	"github.com/gohugoio/hugo/markup/rst"
-	"github.com/gohugoio/hugo/resources/resource_transformers/tocss/dartsass"
+	"github.com/strawberry-tools/strawberry/markup/asciidocext"
+	"github.com/strawberry-tools/strawberry/markup/pandoc"
+	"github.com/strawberry-tools/strawberry/markup/rst"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/tocss/dartsass"
 )
 
 func TestSecurityPolicies(t *testing.T) {

@@ -15,11 +15,11 @@
 package js
 
 import (
-	"github.com/gohugoio/hugo/deps"
-	"github.com/gohugoio/hugo/resources"
-	"github.com/gohugoio/hugo/resources/resource"
-	"github.com/gohugoio/hugo/resources/resource_transformers/js"
-	"github.com/gohugoio/hugo/tpl/internal/resourcehelpers"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/resources"
+	"github.com/strawberry-tools/strawberry/resources/resource"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/js"
+	"github.com/strawberry-tools/strawberry/tpl/internal/resourcehelpers"
 )
 
 // New returns a new instance of the js-namespaced template functions.

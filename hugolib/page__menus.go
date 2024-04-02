@@ -17,7 +17,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/gohugoio/hugo/navigation"
+	"github.com/strawberry-tools/strawberry/navigation"
 )
 
 type pageMenus struct {

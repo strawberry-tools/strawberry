@@ -22,7 +22,7 @@ import (
 	"strings"
 
 	"github.com/bep/simplecobra"
-	"github.com/gohugoio/hugo/config"
+	"github.com/strawberry-tools/strawberry/config"
 	"github.com/spf13/pflag"
 )
 

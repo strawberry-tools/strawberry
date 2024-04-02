@@ -18,9 +18,9 @@ import (
 	"strings"
 
 	"github.com/bep/gitmap"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/resources/page"
-	"github.com/gohugoio/hugo/source"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/resources/page"
+	"github.com/strawberry-tools/strawberry/source"
 )
 
 type gitInfo struct {

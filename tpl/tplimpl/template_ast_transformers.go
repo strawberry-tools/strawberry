@@ -17,13 +17,13 @@ import (
 	"errors"
 	"fmt"
 
-	htmltemplate "github.com/gohugoio/hugo/tpl/internal/go_templates/htmltemplate"
-	texttemplate "github.com/gohugoio/hugo/tpl/internal/go_templates/texttemplate"
+	htmltemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/htmltemplate"
+	texttemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate"
 
-	"github.com/gohugoio/hugo/tpl/internal/go_templates/texttemplate/parse"
+	"github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate/parse"
 
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/tpl"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/tpl"
 	"github.com/mitchellh/mapstructure"
 )
 

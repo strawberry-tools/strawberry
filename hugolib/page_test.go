@@ -23,21 +23,21 @@ import (
 	"time"
 
 	"github.com/bep/clocks"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/markup/asciidocext"
-	"github.com/gohugoio/hugo/markup/rst"
-	"github.com/gohugoio/hugo/tpl"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/markup/asciidocext"
+	"github.com/strawberry-tools/strawberry/markup/rst"
+	"github.com/strawberry-tools/strawberry/tpl"
 
-	"github.com/gohugoio/hugo/config"
+	"github.com/strawberry-tools/strawberry/config"
 
-	"github.com/gohugoio/hugo/common/htime"
-	"github.com/gohugoio/hugo/common/loggers"
+	"github.com/strawberry-tools/strawberry/common/htime"
+	"github.com/strawberry-tools/strawberry/common/loggers"
 
-	"github.com/gohugoio/hugo/resources/page"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/resources/page"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/deps"
+	"github.com/strawberry-tools/strawberry/deps"
 )
 
 const (

@@ -24,7 +24,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/gohugoio/hugo/tpl/internal/go_templates/cfg"
+	"github.com/strawberry-tools/strawberry/tpl/internal/go_templates/cfg"
 )
 
 // Save the original environment during init for use in checks. A test

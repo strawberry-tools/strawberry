@@ -19,10 +19,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/hugo"
-	"github.com/gohugoio/hugo/hugofs/files"
+	"github.com/strawberry-tools/strawberry/common/hugo"
+	"github.com/strawberry-tools/strawberry/hugofs/files"
 
-	"github.com/gohugoio/hugo/config"
+	"github.com/strawberry-tools/strawberry/config"
 	"github.com/mitchellh/mapstructure"
 )
 

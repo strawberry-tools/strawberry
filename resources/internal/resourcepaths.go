@@ -18,7 +18,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/paths"
+	"github.com/strawberry-tools/strawberry/common/paths"
 )
 
 // ResourcePaths holds path information for a resource.

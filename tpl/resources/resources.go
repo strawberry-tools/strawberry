@@ -20,26 +20,26 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/common/paths"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/common/paths"
 
-	"github.com/gohugoio/hugo/tpl/internal/resourcehelpers"
+	"github.com/strawberry-tools/strawberry/tpl/internal/resourcehelpers"
 
-	"github.com/gohugoio/hugo/resources/postpub"
+	"github.com/strawberry-tools/strawberry/resources/postpub"
 
-	"github.com/gohugoio/hugo/deps"
-	"github.com/gohugoio/hugo/resources"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/resources"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 
-	"github.com/gohugoio/hugo/resources/resource_factories/bundler"
-	"github.com/gohugoio/hugo/resources/resource_factories/create"
-	"github.com/gohugoio/hugo/resources/resource_transformers/babel"
-	"github.com/gohugoio/hugo/resources/resource_transformers/integrity"
-	"github.com/gohugoio/hugo/resources/resource_transformers/minifier"
-	"github.com/gohugoio/hugo/resources/resource_transformers/postcss"
-	"github.com/gohugoio/hugo/resources/resource_transformers/templates"
-	"github.com/gohugoio/hugo/resources/resource_transformers/tocss/dartsass"
-	"github.com/gohugoio/hugo/resources/resource_transformers/tocss/scss"
+	"github.com/strawberry-tools/strawberry/resources/resource_factories/bundler"
+	"github.com/strawberry-tools/strawberry/resources/resource_factories/create"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/babel"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/integrity"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/minifier"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/postcss"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/templates"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/tocss/dartsass"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/tocss/scss"
 
 	"github.com/spf13/cast"
 )

@@ -16,12 +16,12 @@ package resource
 import (
 	"context"
 
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/common/types"
-	"github.com/gohugoio/hugo/langs"
-	"github.com/gohugoio/hugo/media"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/langs"
+	"github.com/strawberry-tools/strawberry/media"
 
-	"github.com/gohugoio/hugo/common/hugio"
+	"github.com/strawberry-tools/strawberry/common/hugio"
 )
 
 var (

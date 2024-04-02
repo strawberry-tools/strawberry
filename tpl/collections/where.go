@@ -20,9 +20,9 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/hreflect"
-	"github.com/gohugoio/hugo/common/hstrings"
-	"github.com/gohugoio/hugo/common/maps"
+	"github.com/strawberry-tools/strawberry/common/hreflect"
+	"github.com/strawberry-tools/strawberry/common/hstrings"
+	"github.com/strawberry-tools/strawberry/common/maps"
 )
 
 // Where returns a filtered subset of collection c.

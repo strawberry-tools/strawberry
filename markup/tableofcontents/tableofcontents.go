@@ -18,7 +18,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/collections"
+	"github.com/strawberry-tools/strawberry/common/collections"
 )
 
 // Empty is an empty ToC.

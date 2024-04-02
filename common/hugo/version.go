@@ -21,7 +21,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gohugoio/hugo/compare"
+	"github.com/strawberry-tools/strawberry/compare"
 	"github.com/spf13/cast"
 )
 

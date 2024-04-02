@@ -18,8 +18,8 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/identity/identitytesting"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/identity/identitytesting"
 )
 
 func BenchmarkIdentityManager(b *testing.B) {

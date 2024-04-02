@@ -18,18 +18,18 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/gohugoio/hugo/markup/highlight"
+	"github.com/strawberry-tools/strawberry/markup/highlight"
 
-	"github.com/gohugoio/hugo/markup/markup_config"
+	"github.com/strawberry-tools/strawberry/markup/markup_config"
 
-	"github.com/gohugoio/hugo/markup/goldmark"
+	"github.com/strawberry-tools/strawberry/markup/goldmark"
 
-	"github.com/gohugoio/hugo/markup/org"
+	"github.com/strawberry-tools/strawberry/markup/org"
 
-	"github.com/gohugoio/hugo/markup/asciidocext"
-	"github.com/gohugoio/hugo/markup/converter"
-	"github.com/gohugoio/hugo/markup/pandoc"
-	"github.com/gohugoio/hugo/markup/rst"
+	"github.com/strawberry-tools/strawberry/markup/asciidocext"
+	"github.com/strawberry-tools/strawberry/markup/converter"
+	"github.com/strawberry-tools/strawberry/markup/pandoc"
+	"github.com/strawberry-tools/strawberry/markup/rst"
 )
 
 func NewConverterProvider(cfg converter.ProviderConfig) (ConverterProvider, error) {

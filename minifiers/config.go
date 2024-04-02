@@ -14,7 +14,7 @@
 package minifiers
 
 import (
-	"github.com/gohugoio/hugo/common/maps"
+	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/spf13/cast"
 
 	"github.com/mitchellh/mapstructure"

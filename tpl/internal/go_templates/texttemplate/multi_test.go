@@ -11,7 +11,7 @@ package template
 
 import (
 	"fmt"
-	"github.com/gohugoio/hugo/tpl/internal/go_templates/texttemplate/parse"
+	"github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate/parse"
 	"os"
 	"strings"
 	"testing"

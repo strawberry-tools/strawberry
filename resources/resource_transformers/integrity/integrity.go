@@ -23,11 +23,11 @@ import (
 	"hash"
 	"io"
 
-	"github.com/gohugoio/hugo/common/constants"
-	"github.com/gohugoio/hugo/resources/internal"
+	"github.com/strawberry-tools/strawberry/common/constants"
+	"github.com/strawberry-tools/strawberry/resources/internal"
 
-	"github.com/gohugoio/hugo/resources"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/resources"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 )
 
 const defaultHashAlgo = "sha256"

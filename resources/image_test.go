@@ -30,22 +30,22 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gohugoio/hugo/htesting"
-	"github.com/gohugoio/hugo/resources/images/webp"
+	"github.com/strawberry-tools/strawberry/htesting"
+	"github.com/strawberry-tools/strawberry/resources/images/webp"
 
-	"github.com/gohugoio/hugo/common/paths"
+	"github.com/strawberry-tools/strawberry/common/paths"
 
 	"github.com/spf13/afero"
 
 	"github.com/disintegration/gift"
 
-	"github.com/gohugoio/hugo/helpers"
+	"github.com/strawberry-tools/strawberry/helpers"
 
-	"github.com/gohugoio/hugo/media"
-	"github.com/gohugoio/hugo/resources/images"
+	"github.com/strawberry-tools/strawberry/media"
+	"github.com/strawberry-tools/strawberry/resources/images"
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/gohugoio/hugo/htesting/hqt"
+	"github.com/strawberry-tools/strawberry/htesting/hqt"
 
 	qt "github.com/frankban/quicktest"
 )

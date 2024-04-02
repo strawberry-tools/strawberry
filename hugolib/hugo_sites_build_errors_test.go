@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/common/herrors"
+	"github.com/strawberry-tools/strawberry/common/herrors"
 )
 
 type testSiteBuildErrorAsserter struct {

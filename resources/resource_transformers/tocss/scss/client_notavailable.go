@@ -17,8 +17,8 @@
 package scss
 
 import (
-	"github.com/gohugoio/hugo/resources"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/resources"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 )
 
 func (c *Client) ToCSS(res resources.ResourceTransformer, opts Options) (resource.Resource, error) {

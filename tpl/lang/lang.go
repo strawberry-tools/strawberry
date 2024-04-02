@@ -25,9 +25,9 @@ import (
 	"github.com/gohugoio/locales"
 	translators "github.com/gohugoio/localescompressed"
 
-	"github.com/gohugoio/hugo/common/hreflect"
-	"github.com/gohugoio/hugo/common/hugo"
-	"github.com/gohugoio/hugo/deps"
+	"github.com/strawberry-tools/strawberry/common/hreflect"
+	"github.com/strawberry-tools/strawberry/common/hugo"
+	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/spf13/cast"
 )
 

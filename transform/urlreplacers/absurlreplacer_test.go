@@ -17,10 +17,10 @@ import (
 	"path/filepath"
 	"testing"
 
-	bp "github.com/gohugoio/hugo/bufferpool"
+	bp "github.com/strawberry-tools/strawberry/bufferpool"
 
-	"github.com/gohugoio/hugo/helpers"
-	"github.com/gohugoio/hugo/transform"
+	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/strawberry-tools/strawberry/transform"
 )
 
 const (

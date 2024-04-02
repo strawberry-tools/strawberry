@@ -9,10 +9,10 @@ import (
 
 	"github.com/fortytw2/leaktest"
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/common/types"
-	"github.com/gohugoio/hugo/htesting"
-	"github.com/gohugoio/hugo/resources/resource_transformers/tocss/dartsass"
-	"github.com/gohugoio/hugo/resources/resource_transformers/tocss/scss"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/htesting"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/tocss/dartsass"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/tocss/scss"
 )
 
 const rebuildFilesSimple = `

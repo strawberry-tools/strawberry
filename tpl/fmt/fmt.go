@@ -19,8 +19,8 @@ import (
 	"sort"
 
 	"github.com/bep/logg"
-	"github.com/gohugoio/hugo/common/loggers"
-	"github.com/gohugoio/hugo/deps"
+	"github.com/strawberry-tools/strawberry/common/loggers"
+	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/spf13/cast"
 )
 

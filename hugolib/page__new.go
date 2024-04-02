@@ -19,17 +19,17 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/gohugoio/hugo/hugofs/files"
-	"github.com/gohugoio/hugo/resources"
+	"github.com/strawberry-tools/strawberry/hugofs/files"
+	"github.com/strawberry-tools/strawberry/resources"
 
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/common/paths"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/common/paths"
 
-	"github.com/gohugoio/hugo/lazy"
+	"github.com/strawberry-tools/strawberry/lazy"
 
-	"github.com/gohugoio/hugo/resources/kinds"
-	"github.com/gohugoio/hugo/resources/page"
-	"github.com/gohugoio/hugo/resources/page/pagemeta"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
+	"github.com/strawberry-tools/strawberry/resources/page"
+	"github.com/strawberry-tools/strawberry/resources/page/pagemeta"
 )
 
 var pageIDCounter atomic.Uint64

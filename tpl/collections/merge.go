@@ -19,8 +19,8 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/hreflect"
-	"github.com/gohugoio/hugo/common/maps"
+	"github.com/strawberry-tools/strawberry/common/hreflect"
+	"github.com/strawberry-tools/strawberry/common/maps"
 )
 
 // Merge creates a copy of the final parameter in params and merges the preceding

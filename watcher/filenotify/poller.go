@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/fsnotify/fsnotify"
-	"github.com/gohugoio/hugo/common/herrors"
+	"github.com/strawberry-tools/strawberry/common/herrors"
 )
 
 var (

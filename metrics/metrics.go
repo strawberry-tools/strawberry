@@ -25,9 +25,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gohugoio/hugo/common/types"
-	"github.com/gohugoio/hugo/compare"
-	"github.com/gohugoio/hugo/identity"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/compare"
+	"github.com/strawberry-tools/strawberry/identity"
 )
 
 // The Provider interface defines an interface for measuring metrics.

@@ -18,13 +18,13 @@ import (
 	"bytes"
 	"runtime"
 
-	"github.com/gohugoio/hugo/common/hexec"
-	"github.com/gohugoio/hugo/htesting"
+	"github.com/strawberry-tools/strawberry/common/hexec"
+	"github.com/strawberry-tools/strawberry/htesting"
 
-	"github.com/gohugoio/hugo/identity"
+	"github.com/strawberry-tools/strawberry/identity"
 
-	"github.com/gohugoio/hugo/markup/converter"
-	"github.com/gohugoio/hugo/markup/internal"
+	"github.com/strawberry-tools/strawberry/markup/converter"
+	"github.com/strawberry-tools/strawberry/markup/internal"
 )
 
 // Provider is the package entry point.

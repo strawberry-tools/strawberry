@@ -22,8 +22,8 @@ import (
 	"github.com/alecthomas/chroma/v2/formatters/html"
 	"github.com/spf13/cast"
 
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/markup/converter/hooks"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/markup/converter/hooks"
 
 	"github.com/mitchellh/mapstructure"
 )

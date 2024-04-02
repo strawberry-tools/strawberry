@@ -6,7 +6,7 @@ package fmtsort_test
 
 import (
 	"fmt"
-	"github.com/gohugoio/hugo/tpl/internal/go_templates/fmtsort"
+	"github.com/strawberry-tools/strawberry/tpl/internal/go_templates/fmtsort"
 	"math"
 	"reflect"
 	"runtime"

@@ -16,7 +16,7 @@ package tplimpl
 import (
 	"strings"
 
-	"github.com/gohugoio/hugo/tpl"
+	"github.com/strawberry-tools/strawberry/tpl"
 )
 
 // Currently lang, outFormat, suffix

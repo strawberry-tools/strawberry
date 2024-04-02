@@ -18,10 +18,10 @@ import (
 	"html/template"
 	"sort"
 
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/common/types"
-	"github.com/gohugoio/hugo/compare"
-	"github.com/gohugoio/hugo/config"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/compare"
+	"github.com/strawberry-tools/strawberry/config"
 	"github.com/mitchellh/mapstructure"
 
 	"github.com/spf13/cast"

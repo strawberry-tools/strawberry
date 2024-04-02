@@ -22,8 +22,8 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/common/para"
-	"github.com/gohugoio/hugo/hugolib/doctree"
+	"github.com/strawberry-tools/strawberry/common/para"
+	"github.com/strawberry-tools/strawberry/hugolib/doctree"
 	"github.com/google/go-cmp/cmp"
 )
 

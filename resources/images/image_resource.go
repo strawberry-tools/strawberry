@@ -16,8 +16,8 @@ package images
 import (
 	"image"
 
-	"github.com/gohugoio/hugo/resources/images/exif"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/resources/images/exif"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 )
 
 // ImageResource represents an image resource.

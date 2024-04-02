@@ -18,11 +18,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gohugoio/hugo/common/loggers"
-	"github.com/gohugoio/hugo/htesting/hqt"
-	"github.com/gohugoio/hugo/identity"
+	"github.com/strawberry-tools/strawberry/common/loggers"
+	"github.com/strawberry-tools/strawberry/htesting/hqt"
+	"github.com/strawberry-tools/strawberry/identity"
 
-	"github.com/gohugoio/hugo/helpers"
+	"github.com/strawberry-tools/strawberry/helpers"
 
 	"github.com/spf13/afero"
 

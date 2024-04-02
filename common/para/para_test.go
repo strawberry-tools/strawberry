@@ -22,7 +22,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gohugoio/hugo/htesting"
+	"github.com/strawberry-tools/strawberry/htesting"
 
 	qt "github.com/frankban/quicktest"
 )

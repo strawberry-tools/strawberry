@@ -24,10 +24,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gohugoio/hugo/common/hstrings"
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/helpers"
-	"github.com/gohugoio/hugo/resources/kinds"
+	"github.com/strawberry-tools/strawberry/common/hstrings"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
 )
 
 // PermalinkExpander holds permalink mappings per section.

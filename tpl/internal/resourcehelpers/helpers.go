@@ -19,8 +19,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/resources"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/resources"
 )
 
 // We allow string or a map as the first argument in some cases.

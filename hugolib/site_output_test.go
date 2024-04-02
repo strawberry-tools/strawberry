@@ -20,13 +20,13 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/common/hstrings"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/resources/kinds"
+	"github.com/strawberry-tools/strawberry/common/hstrings"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
 
 	"github.com/spf13/afero"
 
-	"github.com/gohugoio/hugo/output"
+	"github.com/strawberry-tools/strawberry/output"
 )
 
 func TestSiteWithPageOutputs(t *testing.T) {

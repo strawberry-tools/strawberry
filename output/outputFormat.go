@@ -20,7 +20,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/gohugoio/hugo/media"
+	"github.com/strawberry-tools/strawberry/media"
 )
 
 // Format represents an output representation, usually to a file on disk.

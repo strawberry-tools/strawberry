@@ -24,8 +24,8 @@ import (
 
 	"github.com/bep/godartsass/v2"
 	"github.com/bep/golibsass/libsass/libsasserrors"
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/common/text"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/common/text"
 	"github.com/pelletier/go-toml/v2"
 	"github.com/spf13/afero"
 	"github.com/tdewolff/parse/v2"

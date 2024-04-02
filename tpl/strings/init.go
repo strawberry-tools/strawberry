@@ -16,8 +16,8 @@ package strings
 import (
 	"context"
 
-	"github.com/gohugoio/hugo/deps"
-	"github.com/gohugoio/hugo/tpl/internal"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/tpl/internal"
 )
 
 const name = "strings"

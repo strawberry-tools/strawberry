@@ -17,16 +17,16 @@ import (
 	"html/template"
 	"time"
 
-	"github.com/gohugoio/hugo/common/maps"
-	"github.com/gohugoio/hugo/config/privacy"
-	"github.com/gohugoio/hugo/config/services"
-	"github.com/gohugoio/hugo/identity"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/config/privacy"
+	"github.com/strawberry-tools/strawberry/config/services"
+	"github.com/strawberry-tools/strawberry/identity"
 
-	"github.com/gohugoio/hugo/config"
+	"github.com/strawberry-tools/strawberry/config"
 
-	"github.com/gohugoio/hugo/common/hugo"
-	"github.com/gohugoio/hugo/langs"
-	"github.com/gohugoio/hugo/navigation"
+	"github.com/strawberry-tools/strawberry/common/hugo"
+	"github.com/strawberry-tools/strawberry/langs"
+	"github.com/strawberry-tools/strawberry/navigation"
 )
 
 // Site represents a site. There can be multiple sites in a multilingual setup.

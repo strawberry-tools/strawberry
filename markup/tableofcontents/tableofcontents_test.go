@@ -17,7 +17,7 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/common/collections"
+	"github.com/strawberry-tools/strawberry/common/collections"
 )
 
 var newTestTocBuilder = func() Builder {

@@ -16,10 +16,10 @@ package hugofs
 import (
 	"testing"
 
-	"github.com/gohugoio/hugo/config"
+	"github.com/strawberry-tools/strawberry/config"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/htesting/hqt"
+	"github.com/strawberry-tools/strawberry/htesting/hqt"
 	"github.com/spf13/afero"
 )
 

@@ -20,9 +20,9 @@ import (
 	"runtime"
 	"sort"
 
-	"github.com/gohugoio/hugo/common/herrors"
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/hugofs/files"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/hugofs/files"
 	"github.com/spf13/afero"
 	"golang.org/x/text/unicode/norm"
 )

@@ -18,9 +18,9 @@ import (
 	"bytes"
 	"log"
 
-	"github.com/gohugoio/hugo/identity"
+	"github.com/strawberry-tools/strawberry/identity"
 
-	"github.com/gohugoio/hugo/markup/converter"
+	"github.com/strawberry-tools/strawberry/markup/converter"
 	"github.com/niklasfasching/go-org/org"
 	"github.com/spf13/afero"
 )

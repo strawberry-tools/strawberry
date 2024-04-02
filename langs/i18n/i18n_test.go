@@ -20,18 +20,18 @@ import (
 	"testing"
 
 	"github.com/bep/logg"
-	"github.com/gohugoio/hugo/common/types"
-	"github.com/gohugoio/hugo/config/testconfig"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/config/testconfig"
 
-	"github.com/gohugoio/hugo/tpl/tplimpl"
+	"github.com/strawberry-tools/strawberry/tpl/tplimpl"
 
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/spf13/afero"
 
-	"github.com/gohugoio/hugo/deps"
+	"github.com/strawberry-tools/strawberry/deps"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/config"
+	"github.com/strawberry-tools/strawberry/config"
 )
 
 type i18nTest struct {

@@ -10,7 +10,7 @@ import (
 
 	qt "github.com/frankban/quicktest"
 	"github.com/fsnotify/fsnotify"
-	"github.com/gohugoio/hugo/htesting"
+	"github.com/strawberry-tools/strawberry/htesting"
 )
 
 const (

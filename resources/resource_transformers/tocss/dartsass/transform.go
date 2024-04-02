@@ -20,20 +20,20 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/hugo"
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/htesting"
-	"github.com/gohugoio/hugo/identity"
-	"github.com/gohugoio/hugo/media"
+	"github.com/strawberry-tools/strawberry/common/hugo"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/htesting"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/media"
 
-	"github.com/gohugoio/hugo/resources"
+	"github.com/strawberry-tools/strawberry/resources"
 
-	"github.com/gohugoio/hugo/resources/internal"
-	"github.com/gohugoio/hugo/resources/resource_transformers/tocss/internal/sass"
+	"github.com/strawberry-tools/strawberry/resources/internal"
+	"github.com/strawberry-tools/strawberry/resources/resource_transformers/tocss/internal/sass"
 
 	"github.com/spf13/afero"
 
-	"github.com/gohugoio/hugo/hugofs"
+	"github.com/strawberry-tools/strawberry/hugofs"
 
 	godartsassv1 "github.com/bep/godartsass"
 	"github.com/bep/godartsass/v2"

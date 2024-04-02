@@ -20,7 +20,7 @@ import (
 	"sync"
 
 	"github.com/bep/overlayfs"
-	"github.com/gohugoio/hugo/resources/images"
+	"github.com/strawberry-tools/strawberry/resources/images"
 
 	// Importing image codecs for image.DecodeConfig
 	_ "image/gif"
@@ -30,7 +30,7 @@ import (
 	// Import webp codec
 	_ "golang.org/x/image/webp"
 
-	"github.com/gohugoio/hugo/deps"
+	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/spf13/afero"
 	"github.com/spf13/cast"
 )

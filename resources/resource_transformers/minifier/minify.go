@@ -14,10 +14,10 @@
 package minifier
 
 import (
-	"github.com/gohugoio/hugo/minifiers"
-	"github.com/gohugoio/hugo/resources"
-	"github.com/gohugoio/hugo/resources/internal"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/minifiers"
+	"github.com/strawberry-tools/strawberry/resources"
+	"github.com/strawberry-tools/strawberry/resources/internal"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 )
 
 // Client for minification of Resource objects. Supported minifiers are:

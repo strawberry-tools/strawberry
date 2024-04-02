@@ -20,11 +20,11 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/config/testconfig"
-	"github.com/gohugoio/hugo/media"
-	"github.com/gohugoio/hugo/minifiers"
-	"github.com/gohugoio/hugo/output"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/config/testconfig"
+	"github.com/strawberry-tools/strawberry/media"
+	"github.com/strawberry-tools/strawberry/minifiers"
+	"github.com/strawberry-tools/strawberry/output"
 	"github.com/spf13/afero"
 	"github.com/tdewolff/minify/v2/html"
 )

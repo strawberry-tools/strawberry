@@ -14,8 +14,8 @@
 package hugolib
 
 import (
-	"github.com/gohugoio/hugo/common/collections"
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/common/collections"
+	"github.com/strawberry-tools/strawberry/resources/page"
 )
 
 var (

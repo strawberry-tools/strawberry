@@ -17,8 +17,8 @@ import (
 	"io"
 	"path"
 
-	"github.com/gohugoio/hugo/common/herrors"
-	"github.com/gohugoio/hugo/resources/page"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/hairyhenderson/go-codeowners"
 	"github.com/spf13/afero"
 )

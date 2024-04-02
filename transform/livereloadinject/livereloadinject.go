@@ -20,9 +20,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/gohugoio/hugo/common/loggers"
+	"github.com/strawberry-tools/strawberry/common/loggers"
 
-	"github.com/gohugoio/hugo/transform"
+	"github.com/strawberry-tools/strawberry/transform"
 )
 
 var (

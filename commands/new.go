@@ -20,10 +20,10 @@ import (
 	"strings"
 
 	"github.com/bep/simplecobra"
-	"github.com/gohugoio/hugo/common/paths"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/create"
-	"github.com/gohugoio/hugo/create/skeletons"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/create"
+	"github.com/strawberry-tools/strawberry/create/skeletons"
 	"github.com/spf13/cobra"
 )
 

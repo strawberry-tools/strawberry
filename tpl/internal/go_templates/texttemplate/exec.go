@@ -12,8 +12,8 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/gohugoio/hugo/tpl/internal/go_templates/fmtsort"
-	"github.com/gohugoio/hugo/tpl/internal/go_templates/texttemplate/parse"
+	"github.com/strawberry-tools/strawberry/tpl/internal/go_templates/fmtsort"
+	"github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate/parse"
 )
 
 // maxExecDepth specifies the maximum stack depth of templates within

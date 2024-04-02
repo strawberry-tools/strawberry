@@ -17,7 +17,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gohugoio/hugo/markup/goldmark/goldmark_config"
+	"github.com/strawberry-tools/strawberry/markup/goldmark/goldmark_config"
 
 	qt "github.com/frankban/quicktest"
 )

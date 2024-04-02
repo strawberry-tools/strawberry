@@ -19,15 +19,15 @@ import (
 	"io"
 	"strings"
 
-	"github.com/gohugoio/hugo/resources"
-	"github.com/gohugoio/hugo/resources/resource"
+	"github.com/strawberry-tools/strawberry/resources"
+	"github.com/strawberry-tools/strawberry/resources/resource"
 
-	"github.com/gohugoio/hugo/common/types"
+	"github.com/strawberry-tools/strawberry/common/types"
 
 	"github.com/mitchellh/mapstructure"
 
-	"github.com/gohugoio/hugo/helpers"
-	"github.com/gohugoio/hugo/parser/metadecoders"
+	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/strawberry-tools/strawberry/parser/metadecoders"
 
 	"github.com/spf13/cast"
 )

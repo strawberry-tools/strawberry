@@ -16,7 +16,7 @@ package images_test
 import (
 	"testing"
 
-	"github.com/gohugoio/hugo/hugolib"
+	"github.com/strawberry-tools/strawberry/hugolib"
 )
 
 func TestImageConfigFromModule(t *testing.T) {

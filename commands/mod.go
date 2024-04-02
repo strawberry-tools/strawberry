@@ -20,8 +20,8 @@ import (
 	"path/filepath"
 
 	"github.com/bep/simplecobra"
-	"github.com/gohugoio/hugo/config"
-	"github.com/gohugoio/hugo/modules/npm"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/modules/npm"
 	"github.com/spf13/cobra"
 )
 

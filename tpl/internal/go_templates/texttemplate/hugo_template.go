@@ -18,9 +18,9 @@ import (
 	"io"
 	"reflect"
 
-	"github.com/gohugoio/hugo/common/hreflect"
+	"github.com/strawberry-tools/strawberry/common/hreflect"
 
-	"github.com/gohugoio/hugo/tpl/internal/go_templates/texttemplate/parse"
+	"github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate/parse"
 )
 
 /*
