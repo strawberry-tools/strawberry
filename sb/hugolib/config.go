@@ -17,9 +17,9 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/config/allconfig"
-	"github.com/spf13/afero"
 )
 
 // DefaultConfig returns the default configuration.

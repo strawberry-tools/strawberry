@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2019 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,24 +31,19 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/strawberry-tools/strawberry/common/types"
-	"github.com/strawberry-tools/strawberry/output/layouts"
-
-	"github.com/strawberry-tools/strawberry/helpers"
-
-	"github.com/strawberry-tools/strawberry/output"
-
-	"github.com/strawberry-tools/strawberry/deps"
-	"github.com/spf13/afero"
-
 	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/common/types"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/hugofs"
-
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/output"
+	"github.com/strawberry-tools/strawberry/output/layouts"
+	"github.com/strawberry-tools/strawberry/tpl"
 	htmltemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/htmltemplate"
 	texttemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate"
 
-	"github.com/strawberry-tools/strawberry/identity"
-	"github.com/strawberry-tools/strawberry/tpl"
+	"github.com/spf13/afero"
 )
 
 const (

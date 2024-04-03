@@ -1,10 +1,13 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
+
 package lang
 
 import (
 	"testing"
 
-	qt "github.com/frankban/quicktest"
 	"github.com/strawberry-tools/strawberry/deps"
+
+	qt "github.com/frankban/quicktest"
 	translators "github.com/gohugoio/localescompressed"
 )
 

@@ -38,10 +38,10 @@ import (
 
 	"github.com/strawberry-tools/strawberry/modules"
 
+	"github.com/spf13/afero"
 	hpaths "github.com/strawberry-tools/strawberry/common/paths"
 	"github.com/strawberry-tools/strawberry/hugofs"
 	"github.com/strawberry-tools/strawberry/hugolib/paths"
-	"github.com/spf13/afero"
 )
 
 const (

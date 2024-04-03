@@ -180,7 +180,7 @@ func Test() error {
 // Run tests with race detector
 func TestRace() error {
 	env := map[string]string{"GOFLAGS": testGoFlags()}
-	return runCmd(env, goexe, "test", "-race", "./...", "-tags", buildTags())
+	return runCmd(env, goexe, "test", "-p", "4", "-race", "./...", "-tags", buildTags())
 }
 
 // Run gofmt linter
@@ -188,7 +188,7 @@ func Fmt() error {
 	if !isGoLatest() && !isUnix() {
 		return nil
 	}
-	s, err := sh.Output("./check_gofmt.sh")
+	s, err := sh.Output("../scripts/check_gofmt.sh")
 	if err != nil {
 		fmt.Println(s)
 		return fmt.Errorf("gofmt needs to be run: %s", err)

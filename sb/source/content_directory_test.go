@@ -18,11 +18,11 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/config/testconfig"
 	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/source"
-	"github.com/spf13/afero"
 
 	qt "github.com/frankban/quicktest"
 	"github.com/strawberry-tools/strawberry/hugofs"

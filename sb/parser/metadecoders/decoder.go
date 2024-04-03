@@ -23,9 +23,9 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/niklasfasching/go-org/org"
 	"github.com/strawberry-tools/strawberry/common/herrors"
 	"github.com/strawberry-tools/strawberry/common/maps"
-	"github.com/niklasfasching/go-org/org"
 
 	xml "github.com/clbanning/mxj/v2"
 	toml "github.com/pelletier/go-toml/v2"

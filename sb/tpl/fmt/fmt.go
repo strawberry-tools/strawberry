@@ -19,9 +19,9 @@ import (
 	"sort"
 
 	"github.com/bep/logg"
+	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/common/loggers"
 	"github.com/strawberry-tools/strawberry/deps"
-	"github.com/spf13/cast"
 )
 
 // New returns a new instance of the fmt-namespaced template functions.

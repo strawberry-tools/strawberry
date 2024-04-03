@@ -23,6 +23,7 @@ import (
 	godartsassv1 "github.com/bep/godartsass"
 	"github.com/bep/godartsass/v2"
 	"github.com/bep/logg"
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/herrors"
 	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/strawberry-tools/strawberry/common/paths"
@@ -31,7 +32,6 @@ import (
 	"github.com/strawberry-tools/strawberry/hugolib/filesystems"
 	"github.com/strawberry-tools/strawberry/resources"
 	"github.com/strawberry-tools/strawberry/resources/resource"
-	"github.com/spf13/afero"
 
 	"github.com/mitchellh/mapstructure"
 )

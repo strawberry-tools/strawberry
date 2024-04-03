@@ -26,6 +26,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/cache/filecache"
 	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/strawberry-tools/strawberry/common/loggers"
@@ -52,7 +53,6 @@ import (
 	"github.com/strawberry-tools/strawberry/resources/kinds"
 	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/strawberry-tools/strawberry/resources/page/pagemeta"
-	"github.com/spf13/afero"
 
 	xmaps "golang.org/x/exp/maps"
 )

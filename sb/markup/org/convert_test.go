@@ -16,9 +16,9 @@ package org_test
 import (
 	"testing"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/loggers"
 	"github.com/strawberry-tools/strawberry/config/testconfig"
-	"github.com/spf13/afero"
 
 	"github.com/strawberry-tools/strawberry/markup/converter"
 	"github.com/strawberry-tools/strawberry/markup/org"

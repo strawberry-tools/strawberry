@@ -18,8 +18,8 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/strawberry-tools/strawberry/common/types"
 	"github.com/mitchellh/hashstructure"
+	"github.com/strawberry-tools/strawberry/common/types"
 )
 
 var (

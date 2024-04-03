@@ -21,8 +21,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/strawberry-tools/strawberry/compare"
 	"github.com/spf13/cast"
+	"github.com/strawberry-tools/strawberry/compare"
 )
 
 // Version represents the Hugo build version.
@@ -138,7 +138,7 @@ func (v Version) NextPatchLevel(level int) Version {
 // running "hugo version".
 func BuildVersionString() string {
 	// program := "Hugo Static Site Generator"
-	program := "hugo"
+	program := "Strawberry"
 
 	version := "v" + CurrentVersion.String()
 

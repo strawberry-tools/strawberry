@@ -45,8 +45,8 @@ import (
 
 	_ "embed"
 
-	"github.com/strawberry-tools/strawberry/media"
 	"github.com/gorilla/websocket"
+	"github.com/strawberry-tools/strawberry/media"
 )
 
 // Prefix to signal to LiveReload that we need to navigate to another path.

@@ -19,11 +19,11 @@ import (
 	"image/color"
 	"strings"
 
+	"github.com/makeworld-the-better-one/dither/v2"
+	"github.com/mitchellh/mapstructure"
 	"github.com/strawberry-tools/strawberry/common/hugio"
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/resources/resource"
-	"github.com/makeworld-the-better-one/dither/v2"
-	"github.com/mitchellh/mapstructure"
 
 	"github.com/disintegration/gift"
 	"github.com/spf13/cast"

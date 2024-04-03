@@ -32,15 +32,15 @@ import (
 	"github.com/strawberry-tools/strawberry/minifiers"
 	"github.com/strawberry-tools/strawberry/modules"
 
+	"github.com/mitchellh/mapstructure"
+	"github.com/spf13/afero"
+	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/navigation"
 	"github.com/strawberry-tools/strawberry/output"
 	"github.com/strawberry-tools/strawberry/related"
 	"github.com/strawberry-tools/strawberry/resources/images"
 	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/strawberry-tools/strawberry/resources/page/pagemeta"
-	"github.com/mitchellh/mapstructure"
-	"github.com/spf13/afero"
-	"github.com/spf13/cast"
 )
 
 type decodeConfig struct {

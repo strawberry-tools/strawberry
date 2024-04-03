@@ -25,8 +25,8 @@ import (
 	"github.com/strawberry-tools/strawberry/config/allconfig"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/common/maps"
 )
 
 func TestLoadConfigLanguageParamsOverrideIssue10620(t *testing.T) {

@@ -1,0 +1,7 @@
+# Test the Strawberry version command.
+
+strawberry -h
+stdout 'strawberry is the main command, used to build your Strawberry site'
+
+strawberry version
+stdout 'Strawberry v.* BuildDate=unknown'

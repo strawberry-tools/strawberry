@@ -20,9 +20,9 @@ import (
 	"path/filepath"
 
 	"github.com/bep/simplecobra"
+	"github.com/spf13/cobra"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/modules/npm"
-	"github.com/spf13/cobra"
 )
 
 const commonUsageMod = `

@@ -27,9 +27,9 @@ import (
 	"github.com/strawberry-tools/strawberry/common/paths"
 	"github.com/strawberry-tools/strawberry/identity"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/resources/images"
 	"github.com/strawberry-tools/strawberry/resources/images/exif"
-	"github.com/spf13/afero"
 
 	bp "github.com/strawberry-tools/strawberry/bufferpool"
 

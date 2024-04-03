@@ -24,11 +24,11 @@ import (
 	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/strawberry-tools/strawberry/resources/postpub"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/metrics"
 	"github.com/strawberry-tools/strawberry/resources"
 	"github.com/strawberry-tools/strawberry/source"
 	"github.com/strawberry-tools/strawberry/tpl"
-	"github.com/spf13/afero"
 )
 
 // Deps holds dependencies used by many.

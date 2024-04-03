@@ -39,8 +39,8 @@ import (
 
 	"golang.org/x/mod/module"
 
-	"github.com/strawberry-tools/strawberry/config"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/config"
 )
 
 var ErrNotExist = errors.New("module does not exist")

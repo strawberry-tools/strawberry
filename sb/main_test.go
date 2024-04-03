@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2024 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,8 +31,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/bep/helpers/envhelpers"
 	"github.com/strawberry-tools/strawberry/commands"
+
+	"github.com/bep/helpers/envhelpers"
 	"github.com/rogpeppe/go-internal/testscript"
 )
 
@@ -59,7 +61,7 @@ func TestMain(m *testing.M) {
 	os.Exit(
 		testscript.RunMain(m, map[string]func() int{
 			// The main program.
-			"hugo": func() int {
+			"strawberry": func() int {
 				err := commands.Execute(os.Args[1:])
 				if err != nil {
 					fmt.Fprintln(os.Stderr, err)

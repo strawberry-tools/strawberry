@@ -23,8 +23,8 @@ import (
 	"github.com/strawberry-tools/strawberry/htesting/hqt"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/spf13/cast"
+	"github.com/strawberry-tools/strawberry/common/hugo"
 )
 
 type T struct {

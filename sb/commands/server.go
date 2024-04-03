@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2024 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,6 +45,9 @@ import (
 	"github.com/bep/debounce"
 	"github.com/bep/simplecobra"
 	"github.com/fsnotify/fsnotify"
+	"github.com/spf13/afero"
+	"github.com/spf13/cobra"
+	"github.com/spf13/fsync"
 	"github.com/strawberry-tools/strawberry/common/herrors"
 	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/strawberry-tools/strawberry/common/types"
@@ -58,9 +62,6 @@ import (
 	"github.com/strawberry-tools/strawberry/tpl"
 	"github.com/strawberry-tools/strawberry/transform"
 	"github.com/strawberry-tools/strawberry/transform/livereloadinject"
-	"github.com/spf13/afero"
-	"github.com/spf13/cobra"
-	"github.com/spf13/fsync"
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/sync/semaphore"
 )
@@ -257,7 +258,7 @@ func (f *fileServer) createEndpoint(i int) (*http.ServeMux, net.Listener, string
 
 	fs := filesOnlyFs{httpFs.Dir(path.Join("/", root))}
 	if i == 0 && f.c.fastRenderMode {
-		r.Println("Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender")
+		r.Println("Running in Fast Render Mode. For full rebuilds on change: strawberry server --disableFastRender")
 	}
 
 	decorate := func(h http.Handler) http.Handler {
@@ -509,16 +510,16 @@ func (c *serverCommand) Run(ctx context.Context, cd *simplecobra.Commandeer, arg
 func (c *serverCommand) Init(cd *simplecobra.Commandeer) error {
 	cmd := cd.CobraCommand
 	cmd.Short = "A high performance webserver"
-	cmd.Long = `Hugo provides its own webserver which builds and serves the site.
-While hugo server is high performance, it is a webserver with limited options.
+	cmd.Long = `Strawberry provides its own webserver which builds and serves the site.
+While 'strawberry server' is high performance, it is a webserver with limited options.
 
-The ` + "`" + `hugo server` + "`" + ` command will by default write and serve files from disk, but
+The ` + "`" + `strawberry server` + "`" + ` command will by default write and serve files from disk, but
 you can render to memory by using the ` + "`" + `--renderToMemory` + "`" + ` flag. This can be
 faster in some cases, but it will consume more memory.
 
-By default hugo will also watch your files for any changes you make and
+By default Strawberry will also watch your files for any changes you make and
 automatically rebuild the site. It will then live reload any open browser pages
-and push the latest content to them. As most Hugo sites are built in a fraction
+and push the latest content to them. As most Strawberry sites are built in a fraction
 of a second, you will be able to save and see your changes nearly instantly.`
 	cmd.Aliases = []string{"serve"}
 

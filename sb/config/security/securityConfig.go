@@ -21,12 +21,12 @@ import (
 	"reflect"
 	"strings"
 
+	"github.com/mitchellh/mapstructure"
 	"github.com/strawberry-tools/strawberry/common/herrors"
 	"github.com/strawberry-tools/strawberry/common/types"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/parser"
 	"github.com/strawberry-tools/strawberry/parser/metadecoders"
-	"github.com/mitchellh/mapstructure"
 )
 
 const securityConfigKey = "security"

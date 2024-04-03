@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2024 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,11 +21,11 @@ import (
 	"strings"
 
 	"github.com/bep/simplecobra"
+	"github.com/spf13/cobra"
 	"github.com/strawberry-tools/strawberry/common/paths"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/create"
 	"github.com/strawberry-tools/strawberry/create/skeletons"
-	"github.com/spf13/cobra"
 )
 
 func newNewCommand() *newCommand {
@@ -97,7 +98,7 @@ Use ` + "`hugo new [contentPath]`" + ` to create new content.`,
 						return err
 					}
 
-					r.Printf("Congratulations! Your new Hugo site was created in %s.\n\n", createpath)
+					r.Printf("Congratulations! Your new Strawberry site was created in %s.\n\n", createpath)
 					r.Println(c.newSiteNextStepsText(createpath, format))
 
 					return nil

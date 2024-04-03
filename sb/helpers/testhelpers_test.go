@@ -1,12 +1,12 @@
 package helpers_test
 
 import (
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/loggers"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/config/testconfig"
 	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/hugofs"
-	"github.com/spf13/afero"
 )
 
 func newTestPathSpecFromCfgAndLang(cfg config.Provider, lang string) *helpers.PathSpec {

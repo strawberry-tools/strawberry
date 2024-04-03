@@ -1,0 +1,42 @@
+project_name: strawberry
+
+builds:
+  - dir: sb
+    goos:
+      - darwin
+    goarch:
+      - amd64
+    ldflags:
+      #  -extldflags "-static" is purposely left out on macOS due to compiling libSASS
+      - -s -w -X github.com/strawberry-tools/strawberry/common/hugo.buildDate={{.Date}} -X github.com/strawberry-tools/strawberry/common/hugo.commitHash={{ .ShortCommit }}
+
+archives:
+  - format: tar.gz
+    name_template: "{{.ProjectName}}-v{{.Version}}-{{.Os}}-{{.Arch}}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+    replacements:
+      darwin: macos
+    files:
+      - README.md
+      - LICENSE
+
+checksum:
+  name_template: "{{ .ProjectName }}-v{{ .Version }}-macos-amd64-checksum.txt"
+
+changelog:
+  skip: true
+
+brews:
+  - tap:
+      owner: strawberry-tools
+      name: homebrew-tap
+    commit_author:
+      name: "GoReleaser"
+      email: Ricardo@Feliciano.Tech
+    folder: Formula
+    description: "An awesome static site generator based on Hugo."
+    dependencies:
+      - name: go
+    test: |
+      site = testpath/"hops-yeast-malt-water"
+      system "#{bin}/strawberry", "new", "site", site
+      assert_predicate testpath/"#{site}/config.toml", :exist?

@@ -1,0 +1,6 @@
+
+strawberry
+! stderr .
+
+-- config/_default/hugo.toml --
+baseURL = "https://example.com/"

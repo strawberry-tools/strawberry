@@ -16,8 +16,8 @@ package hugofs
 import (
 	"os"
 
-	"github.com/strawberry-tools/strawberry/common/hugio"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/common/hugio"
 )
 
 var (

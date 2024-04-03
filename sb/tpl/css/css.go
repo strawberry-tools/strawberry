@@ -3,10 +3,10 @@ package css
 import (
 	"context"
 
+	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/common/types/css"
 	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/strawberry-tools/strawberry/tpl/internal"
-	"github.com/spf13/cast"
 )
 
 const name = "css"

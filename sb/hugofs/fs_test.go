@@ -19,8 +19,8 @@ import (
 	"github.com/strawberry-tools/strawberry/config"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/strawberry-tools/strawberry/htesting/hqt"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/htesting/hqt"
 )
 
 func TestIsOsFs(t *testing.T) {

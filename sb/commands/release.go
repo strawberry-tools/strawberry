@@ -17,8 +17,8 @@ import (
 	"context"
 
 	"github.com/bep/simplecobra"
-	"github.com/strawberry-tools/strawberry/releaser"
 	"github.com/spf13/cobra"
+	"github.com/strawberry-tools/strawberry/releaser"
 )
 
 // Note: This is a command only meant for internal use and must be run

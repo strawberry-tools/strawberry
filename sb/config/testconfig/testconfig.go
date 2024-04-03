@@ -17,13 +17,13 @@ package testconfig
 import (
 	_ "unsafe"
 
+	toml "github.com/pelletier/go-toml/v2"
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/config/allconfig"
 	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/strawberry-tools/strawberry/hugofs"
-	toml "github.com/pelletier/go-toml/v2"
-	"github.com/spf13/afero"
 )
 
 func GetTestConfigs(fs afero.Fs, cfg config.Provider) *allconfig.Configs {

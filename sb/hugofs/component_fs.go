@@ -20,10 +20,10 @@ import (
 	"runtime"
 	"sort"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/herrors"
 	"github.com/strawberry-tools/strawberry/common/paths"
 	"github.com/strawberry-tools/strawberry/hugofs/files"
-	"github.com/spf13/afero"
 	"golang.org/x/text/unicode/norm"
 )
 

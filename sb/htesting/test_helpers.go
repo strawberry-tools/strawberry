@@ -107,7 +107,7 @@ func DiffStrings(s1, s2 string) []string {
 
 // IsCI reports whether we're running in a CI server.
 func IsCI() bool {
-	return (os.Getenv("CI") != "" || os.Getenv("CI_LOCAL") != "") && os.Getenv("CIRCLE_BRANCH") == ""
+	return os.Getenv("CI") != ""
 }
 
 // IsGitHubAction reports whether we're running in a GitHub Action.

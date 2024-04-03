@@ -20,9 +20,9 @@ import (
 	"strings"
 
 	"github.com/bep/overlayfs"
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/common/paths"
 	"github.com/strawberry-tools/strawberry/config"
-	"github.com/spf13/afero"
 )
 
 // Os points to the (real) Os filesystem.

@@ -21,10 +21,10 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/parser"
 	"github.com/strawberry-tools/strawberry/parser/metadecoders"
-	"github.com/spf13/afero"
 )
 
 //go:embed all:site/*

@@ -2,7 +2,7 @@ project_name: strawberry
 
 builds:
   - id: strawberry-linux
-    dir: src
+    dir: sb
     goos:
       - linux
     goarch:
@@ -13,7 +13,7 @@ builds:
       - -buildmode
       - exe
   - id: strawberry-windows
-    dir: src
+    dir: sb
     env:
       - CGO_ENABLED=1
       - CC=x86_64-w64-mingw32-gcc

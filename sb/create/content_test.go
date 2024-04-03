@@ -31,9 +31,9 @@ import (
 	"github.com/strawberry-tools/strawberry/hugofs"
 
 	qt "github.com/frankban/quicktest"
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/create"
 	"github.com/strawberry-tools/strawberry/helpers"
-	"github.com/spf13/afero"
 )
 
 // TODO(bep) clean this up. Export the test site builder in Hugolib or something.

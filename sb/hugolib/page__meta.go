@@ -39,12 +39,12 @@ import (
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/helpers"
 
+	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/output"
 	"github.com/strawberry-tools/strawberry/resources/kinds"
 	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/strawberry-tools/strawberry/resources/page/pagemeta"
 	"github.com/strawberry-tools/strawberry/resources/resource"
-	"github.com/spf13/cast"
 )
 
 var cjkRe = regexp.MustCompile(`\p{Han}|\p{Hangul}|\p{Hiragana}|\p{Katakana}`)

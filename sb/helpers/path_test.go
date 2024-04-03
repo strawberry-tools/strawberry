@@ -25,8 +25,8 @@ import (
 	"time"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/spf13/afero"
+	"github.com/strawberry-tools/strawberry/helpers"
 )
 
 func TestMakePath(t *testing.T) {

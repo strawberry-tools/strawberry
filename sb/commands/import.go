@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2024 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +30,8 @@ import (
 	"unicode"
 
 	"github.com/bep/simplecobra"
+	"github.com/spf13/afero"
+	"github.com/spf13/cobra"
 	"github.com/strawberry-tools/strawberry/common/htime"
 	"github.com/strawberry-tools/strawberry/common/hugio"
 	"github.com/strawberry-tools/strawberry/common/maps"
@@ -37,8 +40,6 @@ import (
 	"github.com/strawberry-tools/strawberry/parser"
 	"github.com/strawberry-tools/strawberry/parser/metadecoders"
 	"github.com/strawberry-tools/strawberry/parser/pageparser"
-	"github.com/spf13/afero"
-	"github.com/spf13/cobra"
 )
 
 func newImportCommand() *importCommand {
@@ -47,13 +48,13 @@ func newImportCommand() *importCommand {
 		commands: []simplecobra.Commander{
 			&simpleCommand{
 				name:  "jekyll",
-				short: "hugo import from Jekyll",
-				long: `hugo import from Jekyll.
+				short: "strawberry import from Jekyll",
+				long: `strawberry import from Jekyll.
 		
-Import from Jekyll requires two paths, e.g. ` + "`hugo import jekyll jekyll_root_path target_path`.",
+Import from Jekyll requires two paths, e.g. ` + "`strawberry import jekyll jekyll_root_path target_path`.",
 				run: func(ctx context.Context, cd *simplecobra.Commandeer, r *rootCommand, args []string) error {
 					if len(args) < 2 {
-						return newUserError(`import from jekyll requires two paths, e.g. ` + "`hugo import jekyll jekyll_root_path target_path`.")
+						return newUserError(`import from jekyll requires two paths, e.g. ` + "`strawberry import jekyll jekyll_root_path target_path`.")
 					}
 					return c.importFromJekyll(args)
 				},
@@ -92,7 +93,7 @@ func (c *importCommand) Init(cd *simplecobra.Commandeer) error {
 	cmd.Short = "Import your site from others."
 	cmd.Long = `Import your site from other web site generators like Jekyll.
 
-Import requires a subcommand, e.g. ` + "`hugo import jekyll jekyll_root_path target_path`."
+Import requires a subcommand, e.g. ` + "`strawberry import jekyll jekyll_root_path target_path`."
 
 	cmd.RunE = nil
 	return nil
@@ -104,7 +105,7 @@ func (c *importCommand) PreRun(cd, runner *simplecobra.Commandeer) error {
 }
 
 func (i *importCommand) createConfigFromJekyll(fs afero.Fs, inpath string, kind metadecoders.Format, jekyllConfig map[string]any) (err error) {
-	title := "My New Hugo Site"
+	title := "My New Strawberry Site"
 	baseURL := "http://example.org/"
 
 	for key, value := range jekyllConfig {
@@ -462,12 +463,12 @@ func (c *importCommand) importFromJekyll(args []string) error {
 	}
 
 	c.r.Println("Congratulations!", fileCount, "post(s) imported!")
-	c.r.Println("Now, start Hugo by yourself:\n")
+	c.r.Println("Now, start Strawberry by yourself:\n")
 	c.r.Println("cd " + args[1])
 	c.r.Println("git init")
 	c.r.Println("git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke themes/ananke")
 	c.r.Println("echo \"theme = 'ananke'\" > hugo.toml")
-	c.r.Println("hugo server")
+	c.r.Println("strawberry server")
 
 	return nil
 }

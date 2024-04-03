@@ -41,9 +41,9 @@ import (
 
 	"github.com/strawberry-tools/strawberry/helpers"
 
+	"github.com/google/go-cmp/cmp"
 	"github.com/strawberry-tools/strawberry/media"
 	"github.com/strawberry-tools/strawberry/resources/images"
-	"github.com/google/go-cmp/cmp"
 
 	"github.com/strawberry-tools/strawberry/htesting/hqt"
 

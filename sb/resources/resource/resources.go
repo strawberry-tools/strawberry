@@ -18,9 +18,9 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/common/paths"
 	"github.com/strawberry-tools/strawberry/hugofs/glob"
-	"github.com/spf13/cast"
 )
 
 var _ ResourceFinder = (*Resources)(nil)

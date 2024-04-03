@@ -25,8 +25,8 @@ import (
 	yaml "gopkg.in/yaml.v2"
 
 	"github.com/gohugoio/go-i18n/v2/i18n"
-	"github.com/strawberry-tools/strawberry/helpers"
 	toml "github.com/pelletier/go-toml/v2"
+	"github.com/strawberry-tools/strawberry/helpers"
 
 	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/strawberry-tools/strawberry/hugofs"

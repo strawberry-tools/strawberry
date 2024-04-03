@@ -18,8 +18,8 @@ import (
 	"testing"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/mitchellh/mapstructure"
+	"github.com/strawberry-tools/strawberry/common/maps"
 )
 
 func TestNamespace(t *testing.T) {

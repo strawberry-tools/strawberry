@@ -1,0 +1,7 @@
+strawberry new site myblog
+cd myblog
+strawberry new content --kind post post/first-post.md
+! exists resources
+grep 'draft = true' content/post/first-post.md
+
+

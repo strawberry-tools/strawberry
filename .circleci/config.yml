@@ -1,13 +1,13 @@
 version: 2.1
 
 workflows:
-  main:
+  main-wf:
     jobs:
       - generic-tests
       - unit-tests
       - release
       - release-on-macos
-  release:
+  release-wf:
     jobs:
       - generic-tests:
           filters:
@@ -41,19 +41,19 @@ workflows:
           context: main-context
 
 orbs:
-  go: circleci/go@1.7
+  go: circleci/go@1.11
   win: circleci/windows@2.4
 
 executors:
   go:
     docker:
-      - image: cimg/go:1.18-node
+      - image: cimg/go:1.22-node
     resource_class: large
 
 jobs:
   generic-tests:
     docker:
-      - image: cimg/base:2022.01
+      - image: cimg/base:2024.01
     steps:
       - checkout
       - run:
@@ -61,7 +61,7 @@ jobs:
           command: ./scripts/fork-tests.sh
   unit-tests:
     executor: go
-    working_directory: "~/strawberry-v0/src"
+    working_directory: "~/strawberry/sb"
     environment:
       GOTESTSUM_JUNITFILE: "junit/unit-tests-linux.xml"
     steps:
@@ -73,9 +73,8 @@ jobs:
             curl -sSL "https://github.com/magefile/mage/releases/download/v1.12.1/mage_1.12.1_Linux-64bit.tar.gz" | sudo tar -xz --no-same-owner -C /usr/local/bin mage
             mage --version
             mkdir -p ~/bin
-            curl -sSL "https://github.com/sass/dart-sass-embedded/releases/download/1.0.0-beta.6/sass_embedded-1.0.0-beta.6-linux-x64.tar.gz" | tar -xz
-            mv sass_embedded/* ~/bin/
-            rm -r sass_embedded
+            curl -sSL "https://github.com/sass/dart-sass/releases/download/1.72.0/dart-sass-1.72.0-linux-x64.tar.gz" | tar -xz --strip-components=1 -C ~/bin
+            sass --version
       - run:
           name: "Generate Go Test Cache Timestamp"
           command: ../scripts/timestamp-generator.sh
@@ -92,15 +91,12 @@ jobs:
           name: "Run Tests & Coverage"
           command: |
             mkdir junit
-            mage -v test
+            mage -v check
             bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: junit
       - store_artifacts:
           path: junit/unit-tests-linux.xml
-      - run:
-          name: "Mage Check"
-          command: mage -v check
       - go/save-cache
       - save_cache:
           key: go-test-cache-v1-{{ arch }}-{{ checksum "./GO_CACHE_TIMESTAMP" }}
@@ -109,8 +105,8 @@ jobs:
       - run:
           name: "Build Binary"
           command: |
-            mage -v hugo
-            ./strawberry-v0 version
+            mage -v build
+            ./strawberry version
   release:
     executor: go
     working_directory: "~/strawberry"
@@ -124,12 +120,12 @@ jobs:
           command: |
             curl -sSL "https://github.com/goreleaser/goreleaser/releases/download/v1.5.0/goreleaser_Linux_x86_64.tar.gz" | sudo tar -xz -C /usr/local/bin goreleaser
             goreleaser --version
-            cd src && go mod tidy
+            cd sb && go mod tidy
       - run:
           name: "Build Snapshot or Release"
           command: |
-            if [[ $CIRCLE_TAG == "" ]]; then
-              goreleaser build --config=.goreleaser.yml --skip-validate --rm-dist
+            if [ -z "${CIRCLE_TAG}" ]; then
+              goreleaser build --config=.goreleaser.yml --skip-validate --rm-dist --snapshot
             else
               goreleaser release --config=.goreleaser.yml
             fi
@@ -138,19 +134,20 @@ jobs:
             echo "======================================================="
             ls -lah dist/*/strawberry
             echo ""
-            dist/*/strawberry version --type=detailed
+            #dist/*/strawberry version --type=detailed
+            dist/*/strawberry version
       - persist_to_workspace:
           root: "."
           paths:
             - "dist"
   release-on-macos:
     macos:
-      xcode: 13.2.1
+      xcode: 15.3.0
     working_directory: "~/strawberry"
     steps:
       - checkout
       - go/install:
-          version: "1.18.6"
+          version: "1.22.1"
       - run:
           name: "Install GoReleaser"
           command: |
@@ -160,7 +157,7 @@ jobs:
           name: "Build Snapshot or Release"
           command: |
             if [[ $CIRCLE_TAG == "" ]]; then
-              goreleaser build --config=.goreleaser.macos.yml --skip-validate --rm-dist
+              goreleaser build --config=.goreleaser.macos.yml --skip-validate --rm-dist --snapshot
             else
               goreleaser release --config=.goreleaser.macos.yml
             fi
@@ -169,7 +166,8 @@ jobs:
             echo "======================================================="
             ls -lah dist/*/strawberry
             echo ""
-            dist/*/strawberry version --type=detailed
+            #dist/*/strawberry version --type=detailed
+            dist/*/strawberry version
   release-on-snap:
     docker:
       - image: cibuilds/snapcraft:core20

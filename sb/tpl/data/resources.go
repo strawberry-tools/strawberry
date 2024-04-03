@@ -22,9 +22,9 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/cache/filecache"
 	"github.com/strawberry-tools/strawberry/helpers"
-	"github.com/spf13/afero"
 )
 
 var (

@@ -1,0 +1,21 @@
+# Test the config command.
+
+strawberry config -h
+stdout 'Print the site configuration'
+
+
+strawberry config
+stdout 'baseurl = .https://example.com/'
+strawberry config --format json
+stdout '\"baseurl\": \"https://example.com/\",'
+
+strawberry config mounts -h
+stdout 'Print the configured file mounts'
+
+strawberry config mounts
+stdout '\"source\": \"content\",'
+
+# Test files
+-- hugo.toml --
+baseURL="https://example.com/"
+title="My New Hugo Site"

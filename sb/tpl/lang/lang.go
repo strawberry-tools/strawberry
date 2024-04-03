@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2017 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,12 +23,12 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gohugoio/locales"
-	translators "github.com/gohugoio/localescompressed"
-
 	"github.com/strawberry-tools/strawberry/common/hreflect"
 	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/strawberry-tools/strawberry/deps"
+
+	"github.com/gohugoio/locales"
+	translators "github.com/gohugoio/localescompressed"
 	"github.com/spf13/cast"
 )
 

@@ -20,8 +20,8 @@ import (
 	"strings"
 
 	"github.com/bep/goat"
-	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/spf13/cast"
+	"github.com/strawberry-tools/strawberry/deps"
 )
 
 type goatDiagram struct {
