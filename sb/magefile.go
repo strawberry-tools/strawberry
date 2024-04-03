@@ -168,7 +168,7 @@ func Test() error {
 // Run tests with race detector
 func TestRace() error {
 	env := map[string]string{"GOFLAGS": testGoFlags()}
-	return runCmd(env, "gotestsum", "--", "-p", "4", "-race", "-tags", buildTags(), "-coverprofile=coverage.txt", "-covermode=atomic", "./...")
+	return runCmd(env, "gotestsum", "--", "-p", "1", "-race", "-tags", buildTags(), "-coverprofile=coverage.txt", "-covermode=atomic", "./...")
 }
 
 // Run gofmt linter
