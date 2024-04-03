@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2024 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,16 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//go:build extended
-// +build extended
-
 package resources_test
 
 import (
 	"testing"
 
-	qt "github.com/frankban/quicktest"
 	"github.com/strawberry-tools/strawberry/media"
+
+	qt "github.com/frankban/quicktest"
 )
 
 func TestImageResizeWebP(t *testing.T) {
