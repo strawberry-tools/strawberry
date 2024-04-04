@@ -22,6 +22,7 @@ import (
 
 	"github.com/bep/simplecobra"
 	"github.com/spf13/cobra"
+
 	"github.com/strawberry-tools/strawberry/common/paths"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/create"
@@ -73,7 +74,7 @@ Ensure you run this within the root directory of your site.`,
 				short: "Create a new site (skeleton)",
 				long: `Create a new site in the provided directory.
 The new site will have the correct structure, but no content or theme yet.
-Use ` + "`hugo new [contentPath]`" + ` to create new content.`,
+Use ` + "`strawberry new [contentPath]`" + ` to create new content.`,
 				run: func(ctx context.Context, cd *simplecobra.Commandeer, r *rootCommand, args []string) error {
 					if len(args) < 1 {
 						return newUserError("path needs to be provided")
@@ -105,7 +106,7 @@ Use ` + "`hugo new [contentPath]`" + ` to create new content.`,
 				},
 				withc: func(cmd *cobra.Command, r *rootCommand) {
 					cmd.Flags().BoolVarP(&force, "force", "f", false, "init inside non-empty directory")
-					cmd.Flags().StringVar(&format, "format", "toml", "preferred file format (toml, yaml or json)")
+					cmd.Flags().StringVar(&format, "format", "yml", "preferred file format (yml, toml, or json)")
 				},
 			},
 			&simpleCommand{
