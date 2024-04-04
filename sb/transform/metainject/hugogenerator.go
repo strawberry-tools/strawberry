@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2018 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +26,7 @@ import (
 
 var (
 	metaTagsCheck    = regexp.MustCompile(`(?i)<meta\s+name=['|"]?generator['|"]?`)
-	hugoGeneratorTag = fmt.Sprintf(`<meta name="generator" content="Hugo %s">`, hugo.CurrentVersion)
+	hugoGeneratorTag = fmt.Sprintf(`<meta name="generator" content="Strawberry %s">`, hugo.CurrentVersion)
 )
 
 // HugoGenerator injects a meta generator tag for Hugo if none present.
@@ -33,7 +34,7 @@ func HugoGenerator(ft transform.FromTo) error {
 	b := ft.From().Bytes()
 	if metaTagsCheck.Match(b) {
 		if _, err := ft.To().Write(b); err != nil {
-			loggers.Log().Warnf("Failed to inject Hugo generator tag: %s", err)
+			loggers.Log().Warnf("Failed to inject Strawberry generator tag: %s", err)
 		}
 		return nil
 	}

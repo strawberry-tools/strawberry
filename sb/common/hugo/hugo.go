@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2018 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +17,7 @@ package hugo
 import (
 	"fmt"
 	"html/template"
+	iofs "io/fs"
 	"os"
 	"path/filepath"
 	"runtime/debug"
@@ -24,21 +26,17 @@ import (
 	"sync"
 	"time"
 
-	godartsassv1 "github.com/bep/godartsass"
-	"github.com/bep/logg"
-	"github.com/mitchellh/mapstructure"
-
-	"github.com/bep/godartsass/v2"
 	"github.com/strawberry-tools/strawberry/common/hexec"
 	"github.com/strawberry-tools/strawberry/common/loggers"
-	"github.com/strawberry-tools/strawberry/hugofs/files"
-
-	"github.com/spf13/afero"
-
-	iofs "io/fs"
-
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/hugofs"
+	"github.com/strawberry-tools/strawberry/hugofs/files"
+
+	godartsassv1 "github.com/bep/godartsass"
+	"github.com/bep/godartsass/v2"
+	"github.com/bep/logg"
+	"github.com/mitchellh/mapstructure"
+	"github.com/spf13/afero"
 )
 
 const (
@@ -76,9 +74,9 @@ func (i HugoInfo) Version() VersionString {
 	return CurrentVersion.Version()
 }
 
-// Generator a Hugo meta generator HTML tag.
+// Generator a Strawberry meta generator HTML tag.
 func (i HugoInfo) Generator() template.HTML {
-	return template.HTML(fmt.Sprintf(`<meta name="generator" content="Hugo %s">`, CurrentVersion.String()))
+	return template.HTML(fmt.Sprintf(`<meta name="generator" content="Strawberry v%s">`, CurrentVersion.String()))
 }
 
 // IsDevelopment reports whether the current running environment is "development".
