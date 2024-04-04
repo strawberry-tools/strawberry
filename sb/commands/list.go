@@ -174,7 +174,7 @@ func (c *listCommand) Init(cd *simplecobra.Commandeer) error {
 	cmd.Short = "Listing out various types of content"
 	cmd.Long = `Listing out various types of content.
 
-List requires a subcommand, e.g. hugo list drafts`
+List requires a subcommand, e.g. strawberry list drafts`
 
 	cmd.RunE = nil
 	return nil

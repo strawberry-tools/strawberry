@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2019 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,21 +24,18 @@ import (
 	"time"
 
 	"github.com/bep/clocks"
-	"github.com/strawberry-tools/strawberry/identity"
-	"github.com/strawberry-tools/strawberry/markup/asciidocext"
-	"github.com/strawberry-tools/strawberry/markup/rst"
-	"github.com/strawberry-tools/strawberry/tpl"
-
-	"github.com/strawberry-tools/strawberry/config"
+	qt "github.com/frankban/quicktest"
 
 	"github.com/strawberry-tools/strawberry/common/htime"
 	"github.com/strawberry-tools/strawberry/common/loggers"
-
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/markup/asciidocext"
+	"github.com/strawberry-tools/strawberry/markup/rst"
 	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/strawberry-tools/strawberry/resources/resource"
-
-	qt "github.com/frankban/quicktest"
-	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/tpl"
 )
 
 const (
@@ -924,7 +922,7 @@ func TestContentProviderWithCustomOutputFormat(t *testing.T) {
 	b := newTestSitesBuilder(t)
 	b.WithLogger(loggers.NewDefault())
 	b.WithConfigFile("toml", `baseURL = 'http://example.org/'
-title = 'My New Hugo Site'
+title = 'My New Strawberry Site'
 
 timeout = 600000 # ten minutes in case we want to pause and debug
 
