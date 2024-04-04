@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-//go:build go1.13 && !windows
-// +build go1.13,!windows
+//go:build !windows
+// +build !windows
 
 package template
 
@@ -11,10 +11,11 @@ package template
 
 import (
 	"fmt"
-	"github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate/parse"
 	"os"
 	"strings"
 	"testing"
+
+	"github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate/parse"
 )
 
 const (
