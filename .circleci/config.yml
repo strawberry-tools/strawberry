@@ -168,24 +168,3 @@ jobs:
             echo ""
             #dist/*/strawberry version --type=detailed
             dist/*/strawberry version
-  release-on-snap:
-    docker:
-      - image: cibuilds/snapcraft:core20
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          name: "Build Snap"
-          command: snapcraft
-      - run:
-          name: "Publish to Snap Store in the Stable Channel"
-          command: |
-            # Snapcraft Tokens are valid for 1 year. This one expires February 4th, 2022
-            echo $SNAPCRAFT_TOKEN | base64 --decode --ignore-garbage | snapcraft login --with -
-
-            if [[ $CIRCLE_TAG != "" ]]; then
-              snapcraft upload *.snap --release=stable
-            elif [[ $CIRCLE_BRANCH == "trunk" ]]; then
-              snapcraft upload *.snap --release=edge
-            fi
