@@ -21,7 +21,6 @@ import (
 	"strings"
 
 	"github.com/strawberry-tools/strawberry/common/loggers"
-
 	"github.com/strawberry-tools/strawberry/transform"
 )
 

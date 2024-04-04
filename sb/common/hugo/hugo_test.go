@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2018 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +39,7 @@ func TestHugoInfo(t *testing.T) {
 		c.Assert(hugoInfo.GoVersion, qt.Equals, bi.GoVersion)
 	}
 	c.Assert(hugoInfo.Environment, qt.Equals, "production")
-	c.Assert(string(hugoInfo.Generator()), qt.Contains, fmt.Sprintf("Hugo %s", hugoInfo.Version()))
+	c.Assert(string(hugoInfo.Generator()), qt.Contains, fmt.Sprintf("Strawberry v%s", hugoInfo.Version()))
 	c.Assert(hugoInfo.IsDevelopment(), qt.Equals, false)
 	c.Assert(hugoInfo.IsProduction(), qt.Equals, true)
 	c.Assert(hugoInfo.IsExtended(), qt.Equals, IsExtended)

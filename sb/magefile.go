@@ -24,7 +24,7 @@ import (
 
 const (
 	packageName  = "github.com/strawberry-tools/strawberry"
-	noGitLdflags = "-X github.com/gohugoio/hugo/common/hugo.vendorInfo=mage"
+	noGitLdflags = "-X github.com/strawberry-tools/strawberry/common/hugo.vendorInfo=mage"
 )
 
 var ldflags = noGitLdflags
