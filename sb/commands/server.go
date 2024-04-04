@@ -29,10 +29,12 @@ import (
 	_ "net/http/pprof"
 	"net/url"
 	"os"
+	"os/exec"
 	"os/signal"
 	"path"
 	"path/filepath"
 	"regexp"
+	"runtime"
 	"strconv"
 	"strings"
 	"sync"
@@ -40,14 +42,17 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/bep/mclib"
+	"golang.org/x/sync/errgroup"
+	"golang.org/x/sync/semaphore"
 
 	"github.com/bep/debounce"
+	"github.com/bep/mclib"
 	"github.com/bep/simplecobra"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/afero"
 	"github.com/spf13/cobra"
 	"github.com/spf13/fsync"
+
 	"github.com/strawberry-tools/strawberry/common/herrors"
 	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/strawberry-tools/strawberry/common/types"
@@ -62,8 +67,6 @@ import (
 	"github.com/strawberry-tools/strawberry/tpl"
 	"github.com/strawberry-tools/strawberry/transform"
 	"github.com/strawberry-tools/strawberry/transform/livereloadinject"
-	"golang.org/x/sync/errgroup"
-	"golang.org/x/sync/semaphore"
 )
 
 var (
@@ -459,6 +462,7 @@ type serverCommand struct {
 	liveReloadPort      int
 	serverWatch         bool
 	noHTTPCache         bool
+	openBrowser         bool
 	disableLiveReload   bool
 	disableFastRender   bool
 	disableBrowserError bool
@@ -532,6 +536,7 @@ of a second, you will be able to save and see your changes nearly instantly.`
 	cmd.Flags().BoolVar(&c.pprof, "pprof", false, "enable the pprof server (port 8080)")
 	cmd.Flags().BoolVarP(&c.serverWatch, "watch", "w", true, "watch filesystem for changes and recreate as needed")
 	cmd.Flags().BoolVar(&c.noHTTPCache, "noHTTPCache", false, "prevent HTTP caching")
+	cmd.Flags().BoolVar(&c.openBrowser, "open", false, "open server URL in default browser")
 	cmd.Flags().BoolVarP(&c.serverAppend, "appendPort", "", true, "append port to baseURL")
 	cmd.Flags().BoolVar(&c.disableLiveReload, "disableLiveReload", false, "watch without enabling live browser reload on rebuild")
 	cmd.Flags().BoolVar(&c.navigateToChanged, "navigateToChanged", false, "navigate to changed content file on live browser reload")
@@ -927,6 +932,7 @@ func (c *serverCommand) serve() error {
 	wg1, ctx := errgroup.WithContext(context.Background())
 
 	for i := range baseURLs {
+
 		mu, listener, serverURL, endpoint, err := srv.createEndpoint(i)
 		var srv *http.Server
 		if c.tlsCertFile != "" && c.tlsKeyFile != "" {
@@ -963,6 +969,26 @@ func (c *serverCommand) serve() error {
 			}
 			return nil
 		})
+
+		if c.openBrowser {
+
+			switch runtime.GOOS {
+			case "linux":
+				err = exec.Command("xdg-open", serverURL).Start()
+			case "darwin":
+				err = exec.Command("open", serverURL).Start()
+			case "windows":
+				err = exec.Command("rundll32", "url.dll,FileProtocolHandler", serverURL).Start()
+			default:
+				err = fmt.Errorf("Unsupported platform for --open.")
+			}
+
+			if err != nil {
+				c.r.Println("Opening in browser didn't work.")
+			} else {
+				c.r.Println("Opening in browser.")
+			}
+		}
 	}
 
 	if c.r.IsTestRun() {
