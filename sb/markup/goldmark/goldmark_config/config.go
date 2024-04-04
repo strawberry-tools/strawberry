@@ -58,7 +58,7 @@ var Default = Config{
 		},
 	},
 	Renderer: Renderer{
-		Unsafe: false,
+		Unsafe: true,
 	},
 	Parser: Parser{
 		AutoHeadingID:                      true,
