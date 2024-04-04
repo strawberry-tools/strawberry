@@ -8,7 +8,7 @@ strawberry new site mysite -f
 stdout 'Congratulations! Your new Strawberry site was created in'
 cd mysite
 checkfile archetypes/default.md
-checkfile hugo.toml
+checkfile hugo.yml
 exists assets
 exists content
 exists data
