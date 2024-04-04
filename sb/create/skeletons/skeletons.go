@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2024 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,6 +23,7 @@ import (
 	"strings"
 
 	"github.com/spf13/afero"
+
 	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/parser"
 	"github.com/strawberry-tools/strawberry/parser/metadecoders"
@@ -97,7 +99,7 @@ func copyFiles(createpath string, sourceFs afero.Fs, skeleton embed.FS) error {
 func newSiteCreateConfig(fs afero.Fs, createpath string, format string) (err error) {
 	in := map[string]string{
 		"baseURL":      "https://example.org/",
-		"title":        "My New Hugo Site",
+		"title":        "My New Strawberry Site",
 		"languageCode": "en-us",
 	}
 

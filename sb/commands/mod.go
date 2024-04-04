@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2024 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,12 +22,13 @@ import (
 
 	"github.com/bep/simplecobra"
 	"github.com/spf13/cobra"
+
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/modules/npm"
 )
 
 const commonUsageMod = `
-Note that Hugo will always start out by resolving the components defined in the site
+Note that Strawberry will always start out by resolving the components defined in the site
 configuration, provided by a _vendor directory (if no --ignoreVendorPaths flag provided),
 Go Modules, or a folder inside the themes directory, in that order.
 
@@ -58,8 +60,8 @@ with the base dependency set.
 This set will be merged with all "package.hugo.json" files found in the dependency tree, picking the version closest to the project.
 
 This command is marked as 'Experimental'. We think it's a great idea, so it's not likely to be
-removed from Hugo, but we need to test this out in "real life" to get a feel of it,
-so this may/will change in future versions of Hugo.
+removed from Strawberry, but we need to test this out in "real life" to get a feel of it,
+so this may/will change in future versions of Strawberry.
 `,
 				withc: func(cmd *cobra.Command, r *rootCommand) {
 					applyLocalFlagsBuildConfig(cmd, r)
@@ -79,13 +81,13 @@ so this may/will change in future versions of Hugo.
 		commands: []simplecobra.Commander{
 			&simpleCommand{
 				name:  "init",
-				short: "Initialize this project as a Hugo Module.",
-				long: `Initialize this project as a Hugo Module.
+				short: "Initialize this project as a Strawberry Module.",
+				long: `Initialize this project as a Strawberry Module.
 	It will try to guess the module path, but you may help by passing it as an argument, e.g:
 	
-		hugo mod init github.com/gohugoio/testshortcodes
+		strawberry mod init github.com/gohugoio/testshortcodes
 	
-	Note that Hugo Modules supports multi-module projects, so you can initialize a Hugo Module
+	Note that Strawberry Modules supports multi-module projects, so you can initialize a Strawberry Module
 	inside a subfolder on GitHub, as one example.
 	`,
 				withc: func(cmd *cobra.Command, r *rootCommand) {
@@ -141,8 +143,8 @@ Note that for vendored modules, that is the version listed and not the one from 
 			},
 			&simpleCommand{
 				name:  "clean",
-				short: "Delete the Hugo Module cache for the current project.",
-				long:  `Delete the Hugo Module cache for the current project.`,
+				short: "Delete the Strawberry Module cache for the current project.",
+				long:  `Delete the Strawberry Module cache for the current project.`,
 				withc: func(cmd *cobra.Command, r *rootCommand) {
 					applyLocalFlagsBuildConfig(cmd, r)
 					cmd.Flags().StringVarP(&pattern, "pattern", "", "", `pattern matching module paths to clean (all if not set), e.g. "**hugo*"`)
@@ -181,7 +183,7 @@ Note that for vendored modules, that is the version listed and not the one from 
 				name:  "vendor",
 				short: "Vendor all module dependencies into the _vendor directory.",
 				long: `Vendor all module dependencies into the _vendor directory.
-	If a module is vendored, that is where Hugo will look for it's dependencies.
+	If a module is vendored, that is where Strawberry will look for it's dependencies.
 	`,
 				withc: func(cmd *cobra.Command, r *rootCommand) {
 					applyLocalFlagsBuildConfig(cmd, r)
@@ -197,29 +199,29 @@ Note that for vendored modules, that is the version listed and not the one from 
 
 			&simpleCommand{
 				name:  "get",
-				short: "Resolves dependencies in your current Hugo Project.",
+				short: "Resolves dependencies in your current Strawberry Project.",
 				long: `
-Resolves dependencies in your current Hugo Project.
+Resolves dependencies in your current Strawberry Project.
 
 Some examples:
 
 Install the latest version possible for a given module:
 
-    hugo mod get github.com/gohugoio/testshortcodes
+    strawberry mod get github.com/gohugoio/testshortcodes
     
 Install a specific version:
 
-    hugo mod get github.com/gohugoio/testshortcodes@v0.3.0
+    strawberry mod get github.com/gohugoio/testshortcodes@v0.3.0
 
 Install the latest versions of all direct module dependencies:
 
-    hugo mod get
-    hugo mod get ./... (recursive)
+    strawberry mod get
+    strawberry mod get ./... (recursive)
 
 Install the latest versions of all module dependencies (direct and indirect):
 
-    hugo mod get -u
-    hugo mod get -u ./... (recursive)
+    strawberry mod get -u
+    strawberry mod get -u ./... (recursive)
 
 Run "go help get" for more information. All flags available for "go get" is also relevant here.
 ` + commonUsageMod,
@@ -314,10 +316,10 @@ func (c *modCommands) Run(ctx context.Context, cd *simplecobra.Commandeer, args 
 
 func (c *modCommands) Init(cd *simplecobra.Commandeer) error {
 	cmd := cd.CobraCommand
-	cmd.Short = "Various Hugo Modules helpers."
+	cmd.Short = "Various Strawberry Modules helpers."
 	cmd.Long = `Various helpers to help manage the modules in your project's dependency graph.
 Most operations here requires a Go version installed on your system (>= Go 1.12) and the relevant VCS client (typically Git).
-This is not needed if you only operate on modules inside /themes or if you have vendored them via "hugo mod vendor".
+This is not needed if you only operate on modules inside /themes or if you have vendored them via "strawberry mod vendor".
 
 ` + commonUsageMod
 	cmd.RunE = nil

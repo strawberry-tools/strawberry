@@ -18,4 +18,4 @@ stdout '\"source\": \"content\",'
 # Test files
 -- hugo.toml --
 baseURL="https://example.com/"
-title="My New Hugo Site"
+title="My New Strawberry Site"

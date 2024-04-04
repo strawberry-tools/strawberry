@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2019 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,10 +23,10 @@ import (
 	"time"
 
 	qt "github.com/frankban/quicktest"
-	"github.com/strawberry-tools/strawberry/resources/kinds"
-	"github.com/strawberry-tools/strawberry/resources/page"
 
 	"github.com/strawberry-tools/strawberry/deps"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
+	"github.com/strawberry-tools/strawberry/resources/page"
 )
 
 const pageCollectionsPageTemplate = `---
@@ -578,7 +579,7 @@ func TestGetPageMultilingual(t *testing.T) {
 baseURL: "http://example.org/"
 languageCode: "en-us"
 defaultContentLanguage: ru
-title: "My New Hugo Site"
+title: "My New Strawberry Site"
 uglyurls: true
 
 languages:
@@ -613,7 +614,7 @@ func TestRegularPagesRecursive(t *testing.T) {
 
 	b.WithConfigFile("yaml", `
 baseURL: "http://example.org/"
-title: "My New Hugo Site"
+title: "My New Strawberry Site"
 
 `)
 
