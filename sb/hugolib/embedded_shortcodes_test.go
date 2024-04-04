@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2019 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -73,6 +74,10 @@ package main
 
 Foo: {{< param foo >}}
 
+## Mastodon
+
+{{< mastodon url="https://mastodon.social/@popey/101544533764122938" >}}
+
 -- layouts/index.html --
 Content: {{ .Content }}|
 `
@@ -85,6 +90,7 @@ https://gist.github.com/spf13/7896402.js
 https://t.co/X94FmYDEZJ
 https://www.youtube.com/embed/PArFPgHrNZM
 Foo: bar
+https://mastodon.social/@popey/101544533764122938
 
 
 
