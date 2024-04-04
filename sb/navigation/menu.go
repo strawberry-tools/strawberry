@@ -1,3 +1,4 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
 // Copyright 2024 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,12 +20,12 @@ import (
 	"sort"
 
 	"github.com/mitchellh/mapstructure"
+	"github.com/spf13/cast"
+
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/common/types"
 	"github.com/strawberry-tools/strawberry/compare"
 	"github.com/strawberry-tools/strawberry/config"
-
-	"github.com/spf13/cast"
 )
 
 var smc = newMenuCache()
@@ -156,6 +157,7 @@ type MenuConfig struct {
 	PageRef    string
 	Weight     int
 	Title      string
+	NewTab     bool
 	// User defined params.
 	Params maps.Params
 }
