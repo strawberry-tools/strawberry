@@ -1,3 +1,6 @@
+// Copyright 2024 The Strawberry Tools team. All rights reserved.
+// SPDX-License-Identifier: Apache-2.0
+
 package hugolib
 
 import (
@@ -872,6 +875,20 @@ func (th testHelper) assertFileContent(filename string, matches ...string) {
 	for _, match := range matches {
 		match = th.replaceDefaultContentLanguageValue(match)
 		th.Assert(strings.Contains(content, match), qt.Equals, true, qt.Commentf(match+" not in: \n"+content))
+	}
+}
+
+// assertFileContentInvert is like assertFileContent but checks that there is NOT a match
+func (th testHelper) assertFileContentInvert(filename string, matches ...string) {
+
+	th.Helper()
+	filename = th.replaceDefaultContentLanguageValue(filename)
+	content := readWorkingDir(th, th.Fs, filename)
+
+	for _, match := range matches {
+
+		match = th.replaceDefaultContentLanguageValue(match)
+		th.Assert(strings.Contains(content, match), qt.Not(qt.Equals), true, qt.Commentf(match+" is in: \n"+content))
 	}
 }
 
