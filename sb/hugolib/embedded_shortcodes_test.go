@@ -16,14 +16,9 @@ package hugolib
 
 import (
 	"testing"
-
-	"github.com/strawberry-tools/strawberry/htesting"
 )
 
 func TestEmbeddedShortcodes(t *testing.T) {
-	if !htesting.IsCI() {
-		t.Skip("skip on non-CI for now")
-	}
 
 	t.Run("with theme", func(t *testing.T) {
 		t.Parallel()
@@ -78,6 +73,10 @@ Foo: {{< param foo >}}
 
 {{< mastodon url="https://mastodon.social/@popey/101544533764122938" >}}
 
+## QR code
+
+{{< qrcode url="https://google.com" >}}
+
 -- layouts/index.html --
 Content: {{ .Content }}|
 `
@@ -91,6 +90,7 @@ https://t.co/X94FmYDEZJ
 https://www.youtube.com/embed/PArFPgHrNZM
 Foo: bar
 https://mastodon.social/@popey/101544533764122938
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEAAQMAAABmvDolAAAABlBMVEX///8AAABVwtN+AAABZ0lEQVR42uyYwc3sIAyEHXHgSAkphdZSGqVQAkcOiHkaQ1bJ+1dbAGYOK23ynax4xrZsbW1t/RJUzVXxQJGQz/HkWgvo/HHNVV99EQKZT6I54GCZmrBOYKlOlipZBVzV70XEOCC+igQAeVFg9IXwgyihsA5fG2d14OOT9IdQfhjp2sCUApit8U2rA/1Ad0DzUIfQvIgp4loLONC1MTwq/4asjRGTGAP43mHE4vAH5Pc0aAQAumsOVXwNQOH7iGQPYHAOn9T/J/KZ4tNIlwDYGU0cE6CGEgrTID1j0Qhw9IM+SXdgLN6FehiIDaDLwb7gvMg5ifPiu1BGAP1gxpbEzgnAnzFpDWBOQToWMxblTDFFa8DzSDKPA/8ZqQ3gPpIwF4sEaKEk2gPurXmcSEbjpPd2sA7wWYIYB+/boDFgjMV6JnnHohFgHknmlsQdiT4p1oDbJ4E6xqR5JbnWAra2tizqXwAAAP//EnuWL6vnRrMAAAAASUVORK5CYII=
 
 
 
