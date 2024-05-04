@@ -57,6 +57,7 @@ import (
 	_ "github.com/strawberry-tools/strawberry/tpl/reflect"
 	_ "github.com/strawberry-tools/strawberry/tpl/resources"
 	_ "github.com/strawberry-tools/strawberry/tpl/safe"
+	_ "github.com/strawberry-tools/strawberry/tpl/sb"
 	_ "github.com/strawberry-tools/strawberry/tpl/site"
 	_ "github.com/strawberry-tools/strawberry/tpl/strings"
 	_ "github.com/strawberry-tools/strawberry/tpl/templates"
