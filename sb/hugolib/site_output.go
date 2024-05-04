@@ -17,20 +17,28 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/spf13/cast"
 	"github.com/strawberry-tools/strawberry/output"
 	"github.com/strawberry-tools/strawberry/resources/kinds"
+
+	"github.com/spf13/cast"
 )
 
 func createDefaultOutputFormats(allFormats output.Formats) map[string]output.Formats {
+
 	rssOut, rssFound := allFormats.GetByName(output.RSSFormat.Name)
+	jsonFeedOut, jsonFeedFound := allFormats.GetByName(output.JSONFeedFormat.Name)
 	htmlOut, _ := allFormats.GetByName(output.HTMLFormat.Name)
 	robotsOut, _ := allFormats.GetByName(output.RobotsTxtFormat.Name)
 	sitemapOut, _ := allFormats.GetByName(output.SitemapFormat.Name)
 
 	defaultListTypes := output.Formats{htmlOut}
+
 	if rssFound {
 		defaultListTypes = append(defaultListTypes, rssOut)
+	}
+
+	if jsonFeedFound {
+		defaultListTypes = append(defaultListTypes, jsonFeedOut)
 	}
 
 	m := map[string]output.Formats{
@@ -48,6 +56,11 @@ func createDefaultOutputFormats(allFormats output.Formats) map[string]output.For
 	// May be disabled
 	if rssFound {
 		m[kinds.KindRSS] = output.Formats{rssOut}
+	}
+
+	// May be disabled
+	if jsonFeedFound {
+		m[kinds.KindJSONFeed] = output.Formats{jsonFeedOut}
 	}
 
 	return m

@@ -15,6 +15,7 @@ type BuiltinTypes struct {
 	JSONType           Type
 	WebAppManifestType Type
 	RSSType            Type
+	JSONFeedType       Type
 	XMLType            Type
 	SVGType            Type
 	TextType           Type
@@ -66,6 +67,7 @@ var Builtin = BuiltinTypes{
 	JSONType:           Type{Type: "application/json"},
 	WebAppManifestType: Type{Type: "application/manifest+json"},
 	RSSType:            Type{Type: "application/rss+xml"},
+	JSONFeedType:       Type{Type: "application/feed+json"},
 	XMLType:            Type{Type: "application/xml"},
 	SVGType:            Type{Type: "image/svg+xml"},
 	TextType:           Type{Type: "text/plain"},
@@ -117,6 +119,7 @@ var defaultMediaTypesConfig = map[string]any{
 	"application/json":          map[string]any{"suffixes": []string{"json"}},
 	"application/manifest+json": map[string]any{"suffixes": []string{"webmanifest"}},
 	"application/rss+xml":       map[string]any{"suffixes": []string{"xml", "rss"}},
+	"application/feed+json":     map[string]any{"suffixes": []string{"feed.json"}},
 	"application/xml":           map[string]any{"suffixes": []string{"xml"}},
 	"image/svg+xml":             map[string]any{"suffixes": []string{"svg"}},
 	"text/plain":                map[string]any{"suffixes": []string{"txt"}},

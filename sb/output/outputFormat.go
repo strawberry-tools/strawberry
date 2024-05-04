@@ -175,6 +175,14 @@ var (
 		Rel:       "alternate",
 	}
 
+	JSONFeedFormat = Format{
+		Name:      "jsonFeed",
+		MediaType: media.Builtin.JSONFeedType,
+		BaseName:  "index",
+		NoUgly:    true,
+		Rel:       "alternate",
+	}
+
 	SitemapFormat = Format{
 		Name:      "sitemap",
 		MediaType: media.Builtin.XMLType,
@@ -214,6 +222,7 @@ var DefaultFormats = Formats{
 	WebAppManifestFormat,
 	RobotsTxtFormat,
 	RSSFormat,
+	JSONFeedFormat,
 	SitemapFormat,
 }
 

@@ -181,7 +181,7 @@ func (m Type) IsText() bool {
 		return true
 	}
 	switch m.SubType {
-	case "javascript", "json", "rss", "xml", "svg", "toml", "yml", "yaml":
+	case "javascript", "json", "rss", "feed", "xml", "svg", "toml", "yml", "yaml":
 		return true
 	}
 	return false

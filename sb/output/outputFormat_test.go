@@ -68,7 +68,7 @@ func TestDefaultTypes(t *testing.T) {
 	c.Assert(RSSFormat.NoUgly, qt.Equals, true)
 	c.Assert(CalendarFormat.IsHTML, qt.Equals, false)
 
-	c.Assert(len(DefaultFormats), qt.Equals, 11)
+	c.Assert(len(DefaultFormats), qt.Equals, 12)
 }
 
 func TestGetFormatByName(t *testing.T) {
@@ -138,6 +138,7 @@ func TestGetFormatByFilename(t *testing.T) {
 }
 
 func TestSort(t *testing.T) {
+
 	c := qt.New(t)
 	c.Assert(DefaultFormats[0].Name, qt.Equals, "html")
 	c.Assert(DefaultFormats[1].Name, qt.Equals, "amp")

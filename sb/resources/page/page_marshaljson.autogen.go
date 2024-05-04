@@ -17,9 +17,9 @@ package page
 
 import (
 	"encoding/json"
-	"time"
-
+	"github.com/strawberry-tools/strawberry/common/paths"
 	"github.com/strawberry-tools/strawberry/config"
+	"time"
 )
 
 func MarshalPageToJSON(p Page) ([]byte, error) {
@@ -39,7 +39,7 @@ func MarshalPageToJSON(p Page) ([]byte, error) {
 	isNode := p.IsNode()
 	isPage := p.IsPage()
 	path := p.Path()
-	pathc := p.Path()
+	pathInfo := p.PathInfo()
 	slug := p.Slug()
 	lang := p.Lang()
 	isSection := p.IsSection()
@@ -65,7 +65,7 @@ func MarshalPageToJSON(p Page) ([]byte, error) {
 		IsNode      bool
 		IsPage      bool
 		Path        string
-		Pathc       string
+		PathInfo    *paths.Path
 		Slug        string
 		Lang        string
 		IsSection   bool
@@ -90,7 +90,7 @@ func MarshalPageToJSON(p Page) ([]byte, error) {
 		IsNode:      isNode,
 		IsPage:      isPage,
 		Path:        path,
-		Pathc:       pathc,
+		PathInfo:    pathInfo,
 		Slug:        slug,
 		Lang:        lang,
 		IsSection:   isSection,

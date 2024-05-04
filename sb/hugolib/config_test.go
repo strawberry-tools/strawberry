@@ -1391,11 +1391,12 @@ home = ["html"]
 		outputs := b.H.Configs.Base.Outputs
 		b.Assert(outputs, qt.DeepEquals, map[string][]string{
 			"home":     {"html"},
+			"jsonFeed": {"jsonFeed"},
 			"page":     {"html"},
 			"rss":      {"rss"},
 			"section":  nil,
-			"taxonomy": {"html", "rss"},
-			"term":     {"html", "rss"},
+			"taxonomy": {"html", "rss", "jsonFeed"},
+			"term":     {"html", "rss", "jsonFeed"},
 		})
 	})
 

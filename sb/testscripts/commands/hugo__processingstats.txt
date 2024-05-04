@@ -10,7 +10,7 @@ cp $SOURCE/resources/testdata/pix.gif static/images/p4.gif
 
 strawberry
 
-stdout 'Pages.*3.*2'
+stdout 'Pages.*4.*3'
 stdout 'Processed images.*2.*1'
 stdout 'Static files.*4 |'
 

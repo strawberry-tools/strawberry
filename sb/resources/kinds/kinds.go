@@ -35,6 +35,7 @@ const (
 	// The following are (currently) temporary nodes,
 	// i.e. nodes we create just to render in isolation.
 	KindRSS          = "rss"
+	KindJSONFeed     = "jsonfeed"
 	KindSitemap      = "sitemap"
 	KindSitemapIndex = "sitemapindex"
 	KindRobotsTXT    = "robotstxt"
@@ -76,6 +77,7 @@ var kindMapMain = map[string]string{
 
 var kindMapTemporary = map[string]string{
 	KindRSS:       KindRSS,
+	KindJSONFeed:  KindJSONFeed,
 	KindSitemap:   KindSitemap,
 	KindRobotsTXT: KindRobotsTXT,
 	KindStatus404: KindStatus404,

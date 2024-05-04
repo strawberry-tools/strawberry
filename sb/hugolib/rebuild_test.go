@@ -350,7 +350,7 @@ Single JSON: {{ .Title }}|{{ .Content }}|
 My short.
 `
 	b := Test(t, files, TestOptRunning())
-	b.AssertRenderCountPage(3)
+	b.AssertRenderCountPage(4)
 	b.AssertRenderCountContent(1)
 	b.AssertFileContent("public/p1/index.html", "Single HTML: P1|<p>P1 Content.</p>\n")
 	b.AssertFileContent("public/p1/index.json", "Single JSON: P1|<p>P1 Content.</p>\n")
@@ -362,7 +362,7 @@ My short.
 	b.EditFileReplaceAll("layouts/shortcodes/myshort.html", "My short", "My short edited").Build()
 	b.AssertFileContent("public/p1/index.html", "My short edited")
 	b.AssertFileContent("public/p1/index.json", "My short edited")
-	b.AssertRenderCountPage(3) // rss (uses .Content) + 2 single pages.
+	b.AssertRenderCountPage(4) // rss (uses .Content) + 2 single pages.
 }
 
 func TestRebuildBaseof(t *testing.T) {
@@ -930,7 +930,7 @@ func TestRebuildVariationsJSBundled(t *testing.T) {
 	files := `
 -- hugo.toml --
 baseURL = "https://example.com"
-disableKinds = ["term", "taxonomy", "sitemap", "robotsTXT", "404", "rss"]
+disableKinds = ["term", "taxonomy", "sitemap", "robotsTXT", "404", "rss", "jsonfeed"]
 disableLiveReload = true
 -- content/_index.md --
 ---
