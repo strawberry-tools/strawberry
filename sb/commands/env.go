@@ -19,6 +19,7 @@ import (
 	"runtime"
 
 	"github.com/bep/simplecobra"
+
 	"github.com/strawberry-tools/strawberry/common/hugo"
 )
 
@@ -26,7 +27,7 @@ func newEnvCommand() simplecobra.Commander {
 	return &simpleCommand{
 		name:  "env",
 		short: "Print Strawberry version and environment info",
-		long:  "Print Strawbery version and environment info. This is useful in Strawberry bug reports",
+		long:  "Print Strawberry version and environment info. This is useful in Strawberry bug reports",
 		run: func(ctx context.Context, cd *simplecobra.Commandeer, r *rootCommand, args []string) error {
 			r.Printf("%s\n", hugo.BuildVersionString())
 			r.Printf("GOOS=%q\n", runtime.GOOS)
@@ -48,17 +49,5 @@ func newEnvCommand() simplecobra.Commander {
 			}
 			return nil
 		},
-	}
-}
-
-func newVersionCmd() simplecobra.Commander {
-	return &simpleCommand{
-		name: "version",
-		run: func(ctx context.Context, cd *simplecobra.Commandeer, r *rootCommand, args []string) error {
-			r.Println(hugo.BuildVersionString())
-			return nil
-		},
-		short: "Print Strawberry version and environment info",
-		long:  "Print Strawberry version and environment info. This is useful in Strawberry bug reports.",
 	}
 }

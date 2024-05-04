@@ -76,7 +76,7 @@ func (i HugoInfo) Version() VersionString {
 
 // Generator a Strawberry meta generator HTML tag.
 func (i HugoInfo) Generator() template.HTML {
-	return template.HTML(fmt.Sprintf(`<meta name="generator" content="Strawberry v%s">`, CurrentVersion.String()))
+	return template.HTML(fmt.Sprintf(`<meta name="generator" content="Strawberry v%s">`, StrawberryVersion.String()))
 }
 
 // IsDevelopment reports whether the current running environment is "development".

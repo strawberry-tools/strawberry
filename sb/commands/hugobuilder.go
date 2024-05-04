@@ -495,7 +495,7 @@ func (c *hugoBuilder) fullBuild(noBuildLock bool) error {
 	)
 
 	c.r.logger.Println("Start building sites … ")
-	c.r.logger.Println(hugo.BuildVersionString())
+	c.r.logger.Println(hugo.PrintStrawberryVersion(hugo.VersionDetailed))
 	c.r.logger.Println()
 	if terminal.IsTerminal(os.Stdout) {
 		defer func() {
