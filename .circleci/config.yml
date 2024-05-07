@@ -79,15 +79,12 @@ jobs:
       - run:
           name: "Generate Go Test Cache Timestamp"
           command: ../scripts/timestamp-generator.sh
+      # Load Go module cache
       - go/load-cache
+      # Load Go test cache
       - restore_cache:
-          key: go-test-cache-v1-{{ arch }}-{{ checksum "./GO_CACHE_TIMESTAMP" }}
-      - run:
-          name: "Pull & Verify Dependencies"
-          command: |
-            go mod tidy
-            go mod download
-            go mod verify
+          key: go-test-cache-v1-{{ .Branch }}
+      - go/mod-download
       - run:
           name: "Run Tests & Coverage"
           command: |
@@ -98,9 +95,11 @@ jobs:
           path: junit
       - store_artifacts:
           path: junit/unit-tests-linux.xml
+      # Save Go module cache
       - go/save-cache
+      # Save Go test cache
       - save_cache:
-          key: go-test-cache-v1-{{ arch }}-{{ checksum "./GO_CACHE_TIMESTAMP" }}
+          key: go-test-cache-v1-{{ .Branch }}
           paths:
             - "/home/circleci/.cache/go-build"
       - run:

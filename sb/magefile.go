@@ -148,7 +148,7 @@ func Check() {
 
 	// don't run two tests in parallel, they saturate the CPUs anyway, and running two
 	// causes memory issues in CI.
-	mg.Deps(TestRace)
+	mg.Deps(Test)
 }
 
 func testGoFlags() string {
@@ -162,7 +162,7 @@ func testGoFlags() string {
 // Run tests
 func Test() error {
 	env := map[string]string{"GOFLAGS": testGoFlags()}
-	return runCmd(env, "gotestsum", "--", "-tags", buildTags(), "-coverprofile=coverage.txt", "-covermode=atomic", "./...")
+	return runCmd(env, "gotestsum", "--", "-p", "4", "-tags", buildTags(), "-coverprofile=coverage.txt", "-covermode=atomic", "./...")
 }
 
 // Run tests with race detector
