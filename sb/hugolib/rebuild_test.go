@@ -1132,7 +1132,7 @@ func TestRebuildVariationsAssetsPostCSSImport(t *testing.T) {
 	files := `
 -- hugo.toml --
 baseURL = "https://example.com"
-disableKinds = ["term", "taxonomy", "sitemap", "rss"]
+disableKinds = ["term", "taxonomy", "sitemap", "rss", "jsonFeed"]
 disableLiveReload = true
 -- assets/css/lib/foo.css --
 body {
