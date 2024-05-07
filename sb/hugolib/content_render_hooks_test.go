@@ -22,7 +22,7 @@ func TestRenderHooksRSS(t *testing.T) {
 	files := `
 -- hugo.toml --
 baseURL = "https://example.org"
-disableKinds = ["taxonomy", "term"]
+disableKinds = ["taxonomy", "term", "jsonfeed"]
 -- layouts/index.html --
 {{ $p := site.GetPage "p1.md" }}
 {{ $p2 := site.GetPage "p2.md" }}

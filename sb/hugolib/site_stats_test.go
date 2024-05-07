@@ -94,7 +94,7 @@ aliases: [/Ali%d]
 
 	helpers.ProcessingStatsTable(&buff, stats...)
 
-	c.Assert(buff.String(), qt.Contains, "Pages            | 21 |  7")
+	c.Assert(buff.String(), qt.Contains, "Pages            | 29 | 10")
 }
 
 func TestSiteLastmod(t *testing.T) {

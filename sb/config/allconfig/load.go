@@ -198,6 +198,8 @@ func (l configLoader) applyDefaultConfig() error {
 		"paginatePath":                         "page",
 		"summaryLength":                        70,
 		"rssLimit":                             -1,
+		"jsonFeedLimit":                        -1,
+		"jsonFeedTrue":                         true,
 		"sectionPagesMenu":                     "",
 		"disablePathToLower":                   false,
 		"hasCJKLanguage":                       false,

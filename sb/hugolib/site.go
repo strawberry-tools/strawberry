@@ -27,38 +27,30 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bep/logg"
-	"github.com/strawberry-tools/strawberry/common/htime"
-	"github.com/strawberry-tools/strawberry/common/hugio"
-	"github.com/strawberry-tools/strawberry/common/types"
-	"github.com/strawberry-tools/strawberry/hugolib/doctree"
 	"golang.org/x/text/unicode/norm"
 
-	"github.com/strawberry-tools/strawberry/common/paths"
-
-	"github.com/strawberry-tools/strawberry/identity"
-
-	"github.com/strawberry-tools/strawberry/markup/converter/hooks"
-
-	"github.com/strawberry-tools/strawberry/markup/converter"
-
-	"github.com/strawberry-tools/strawberry/common/text"
-
-	"github.com/strawberry-tools/strawberry/publisher"
-
-	"github.com/strawberry-tools/strawberry/langs"
-
-	"github.com/strawberry-tools/strawberry/resources/kinds"
-	"github.com/strawberry-tools/strawberry/resources/page"
-
-	"github.com/strawberry-tools/strawberry/lazy"
-
-	"github.com/fsnotify/fsnotify"
 	bp "github.com/strawberry-tools/strawberry/bufferpool"
+	"github.com/strawberry-tools/strawberry/common/htime"
+	"github.com/strawberry-tools/strawberry/common/hugio"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/common/text"
+	"github.com/strawberry-tools/strawberry/common/types"
 	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/strawberry-tools/strawberry/hugolib/doctree"
+	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/langs"
+	"github.com/strawberry-tools/strawberry/lazy"
+	"github.com/strawberry-tools/strawberry/markup/converter"
+	"github.com/strawberry-tools/strawberry/markup/converter/hooks"
 	"github.com/strawberry-tools/strawberry/navigation"
 	"github.com/strawberry-tools/strawberry/output"
+	"github.com/strawberry-tools/strawberry/publisher"
+	"github.com/strawberry-tools/strawberry/resources/kinds"
+	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/strawberry-tools/strawberry/tpl"
+
+	"github.com/bep/logg"
+	"github.com/fsnotify/fsnotify"
 )
 
 func (s *Site) Taxonomies() page.TaxonomyList {

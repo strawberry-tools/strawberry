@@ -247,6 +247,8 @@ func (c *Config) CompileConfig(logger loggers.Logger) error {
 	if err != nil {
 		return fmt.Errorf("failed to parse timeout: %s", err)
 	}
+
+	// disabledKinds uses lowercase versions of kind names
 	disabledKinds := make(map[string]bool)
 	for _, kind := range c.DisableKinds {
 		kind = strings.ToLower(kind)
@@ -263,6 +265,7 @@ func (c *Config) CompileConfig(logger loggers.Logger) error {
 	}
 	kindOutputFormats := make(map[string]output.Formats)
 	isRssDisabled := disabledKinds["rss"]
+	isJSONFeedDisabled := disabledKinds["jsonfeed"]
 	outputFormats := c.OutputFormats.Config
 	for kind, formats := range c.Outputs {
 		if newKind := kinds.IsDeprecatedAndReplacedWith(kind); newKind != "" {
@@ -277,10 +280,17 @@ func (c *Config) CompileConfig(logger loggers.Logger) error {
 			continue
 		}
 		for _, format := range formats {
+
 			if isRssDisabled && format == "rss" {
 				// Legacy config.
 				continue
 			}
+
+			if isJSONFeedDisabled && format == "jsonFeed" {
+				// Legacy config.
+				continue
+			}
+
 			f, found := outputFormats.GetByName(format)
 			if !found {
 				transientErr = fmt.Errorf("unknown output format %q for kind %q", format, kind)
@@ -1002,11 +1012,15 @@ func createDefaultOutputFormats(allFormats output.Formats) map[string][]string {
 		panic("no output formats")
 	}
 	rssOut, rssFound := allFormats.GetByName(output.RSSFormat.Name)
+	jsonFeedOut, jsonFeedFound := allFormats.GetByName(output.JSONFeedFormat.Name)
 	htmlOut, _ := allFormats.GetByName(output.HTMLFormat.Name)
 
 	defaultListTypes := []string{htmlOut.Name}
 	if rssFound {
 		defaultListTypes = append(defaultListTypes, rssOut.Name)
+	}
+	if jsonFeedFound {
+		defaultListTypes = append(defaultListTypes, jsonFeedOut.Name)
 	}
 
 	m := map[string][]string{
@@ -1020,6 +1034,9 @@ func createDefaultOutputFormats(allFormats output.Formats) map[string][]string {
 	// May be disabled
 	if rssFound {
 		m["rss"] = []string{rssOut.Name}
+	}
+	if jsonFeedFound {
+		m["jsonFeed"] = []string{jsonFeedOut.Name}
 	}
 
 	return m

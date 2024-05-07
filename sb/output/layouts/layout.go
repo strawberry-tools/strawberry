@@ -201,6 +201,11 @@ func resolvePageTemplate(d LayoutDescriptor) []string {
 		b.addLayoutVariations("")
 	}
 
+	isJSONFeed := d.OutputFormatName == "jsonFeed"
+	if !d.RenderingHook && !d.Baseof && isJSONFeed {
+		b.addLayoutVariations("")
+	}
+
 	if d.Baseof || d.Kind != "404" {
 		// Most have _default in their lookup path
 		b.addTypeVariations("_default")
@@ -219,6 +224,10 @@ func resolvePageTemplate(d LayoutDescriptor) []string {
 
 	if !d.RenderingHook && !d.Baseof && isRSS {
 		layouts = append(layouts, "_internal/_default/rss.xml")
+	}
+
+	if !d.RenderingHook && !d.Baseof && isJSONFeed {
+		layouts = append(layouts, "_internal/_default/feed.json")
 	}
 
 	switch d.Kind {

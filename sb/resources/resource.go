@@ -157,6 +157,10 @@ func (fd *ResourceSourceDescriptor) init(r *Spec) error {
 			mediaType, found = r.MediaTypes().GetByType("application/xml")
 		}
 
+		if suffixInfo.Suffix == "json" && mediaType.SubType == "feed" {
+			mediaType, found = r.MediaTypes().GetByType("application/feed+json")
+		}
+
 		if !found {
 			// A fallback. Note that mime.TypeByExtension is slow by Hugo standards,
 			// so we should configure media types to avoid this lookup for most

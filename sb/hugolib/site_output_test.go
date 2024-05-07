@@ -372,8 +372,8 @@ func TestCreateSiteOutputFormats(t *testing.T) {
 		c.Assert(outputs[kinds.KindHome], deepEqualsOutputFormats, output.Formats{output.HTMLFormat, output.JSONFormat})
 
 		// Defaults
-		c.Assert(outputs[kinds.KindTerm], deepEqualsOutputFormats, output.Formats{output.HTMLFormat, output.RSSFormat})
-		c.Assert(outputs[kinds.KindTaxonomy], deepEqualsOutputFormats, output.Formats{output.HTMLFormat, output.RSSFormat})
+		c.Assert(outputs[kinds.KindTerm], deepEqualsOutputFormats, output.Formats{output.HTMLFormat, output.RSSFormat, output.JSONFeedFormat})
+		c.Assert(outputs[kinds.KindTaxonomy], deepEqualsOutputFormats, output.Formats{output.HTMLFormat, output.RSSFormat, output.JSONFeedFormat})
 		c.Assert(outputs[kinds.KindPage], deepEqualsOutputFormats, output.Formats{output.HTMLFormat})
 
 		// These aren't (currently) in use when rendering in Hugo,
@@ -429,7 +429,7 @@ func TestCreateSiteOutputFormatsEmptyConfig(t *testing.T) {
 
 	outputs, err := createSiteOutputFormats(output.DefaultFormats, cfg.GetStringMap("outputs"), false)
 	c.Assert(err, qt.IsNil)
-	c.Assert(outputs[kinds.KindHome], deepEqualsOutputFormats, output.Formats{output.HTMLFormat, output.RSSFormat})
+	c.Assert(outputs[kinds.KindHome], deepEqualsOutputFormats, output.Formats{output.HTMLFormat, output.RSSFormat, output.JSONFeedFormat})
 }
 
 func TestCreateSiteOutputFormatsCustomFormats(t *testing.T) {
