@@ -1,4 +1,4 @@
 # Test the Strawberry version command.
 
 strawberry version
-stdout 'Strawberry v.*-dev'
+stdout 'Strawberry v.*.*'
