@@ -12,9 +12,6 @@ builds:
 archives:
   - format: tar.gz
     name_template: "{{.ProjectName}}-v{{.Version}}-macos-{{.Arch}}{{ if .Arm }}v{{ .Arm }}{{ end }}"
-    files:
-      - ../README.md
-      - ../LICENSE
 
 checksum:
   name_template: "{{ .ProjectName }}-v{{ .Version }}-macos-amd64-checksum.txt"
