@@ -20,7 +20,7 @@ workflows:
               ignore: /.*/
             tags:
               only: /^v\d+\.\d+\.\d+$/
-          context: main-context
+          context: goreleaser-ctx
       - release-on-macos:
           requires:
             - release
@@ -29,7 +29,7 @@ workflows:
               ignore: /.*/
             tags:
               only: /^v\d+\.\d+\.\d+$/
-          context: main-context
+          context: goreleaser-ctx
 
 executors:
   go:
