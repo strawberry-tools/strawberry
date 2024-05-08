@@ -158,4 +158,5 @@ jobs:
             ls -lah dist/*/strawberry
             echo ""
             #dist/*/strawberry version --type=detailed
-            dist/*/strawberry version
+            # we need to use amd64 version until we switch to Apple Silicon machine
+            dist/strawberry_darwin_amd64_v1/strawberry version
