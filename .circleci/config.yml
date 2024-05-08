@@ -148,7 +148,7 @@ jobs:
           command: |
             cd sb
             if [[ $CIRCLE_TAG == "" ]]; then
-              goreleaser build --config=.goreleaser.macos.yml --skip-validate --rm-dist --snapshot
+              goreleaser build --config=.goreleaser.macos.yml --skip=validate --clean --snapshot
             else
               goreleaser release --config=.goreleaser.macos.yml
             fi
