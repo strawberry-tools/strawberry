@@ -39,7 +39,7 @@ checksum:
 nfpms:
   -
     builds:
-      - linux
+      - strawberry-linux
     formats:
         - deb
     vendor: "Strawberry Tools"
