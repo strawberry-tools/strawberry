@@ -83,7 +83,9 @@ jobs:
       - go/load-cache
       # Load Go test cache
       - restore_cache:
-          key: go-test-cache-v1-{{ .Branch }}
+          keys:
+          - go-test-cache-v1-{{ .Branch }}
+          - go-test-cache-v1-
       - go/mod-download
       - run:
           name: "Run Tests & Coverage"
