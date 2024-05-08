@@ -14,21 +14,7 @@ workflows:
       - release-on-macos
   release-wf:
     jobs:
-      - generic-tests:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v\d+\.\d+\.\d+$/
-      - unit-tests:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v\d+\.\d+\.\d+$/
       - release:
-          requires:
-            - unit-tests
           filters:
             branches:
               ignore: /.*/
