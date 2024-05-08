@@ -112,6 +112,7 @@ jobs:
       - run:
           name: "Build Snapshot or Release"
           command: |
+            cd sb
             if [ -z "${CIRCLE_TAG}" ]; then
               goreleaser build --config=.goreleaser.yml --skip-validate --rm-dist --snapshot
             else
@@ -125,7 +126,7 @@ jobs:
             #dist/*/strawberry version --type=detailed
             dist/*/strawberry version
       - persist_to_workspace:
-          root: "."
+          root: "./sb"
           paths:
             - "dist"
   release-on-macos:
@@ -141,9 +142,11 @@ jobs:
           command: |
             curl -sSL "https://github.com/goreleaser/goreleaser/releases/download/v1.25.1/goreleaser_Darwin_all.tar.gz" | sudo tar -xz -C /usr/local/bin goreleaser
             goreleaser --version
+            cd sb && go mod tidy
       - run:
           name: "Build Snapshot or Release"
           command: |
+            cd sb
             if [[ $CIRCLE_TAG == "" ]]; then
               goreleaser build --config=.goreleaser.macos.yml --skip-validate --rm-dist --snapshot
             else

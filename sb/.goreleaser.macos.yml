@@ -1,8 +1,7 @@
 project_name: strawberry
 
 builds:
-  - dir: sb
-    goos:
+  - goos:
       - darwin
     goarch:
       - amd64
