@@ -23,13 +23,13 @@ changelog:
   skip: true
 
 brews:
-  - tap:
+  - repository:
       owner: strawberry-tools
       name: homebrew-tap
     commit_author:
       name: "GoReleaser"
       email: Ricardo@Feliciano.Tech
-    folder: Formula
+    directory: Formula
     description: "An awesome static site generator based on Hugo."
     dependencies:
       - name: go
