@@ -2,6 +2,7 @@
 *.test
 imports.*
 coverage.txt
+/sb/dist
 
 # Binaries
 /strawberry
