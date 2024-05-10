@@ -6,11 +6,15 @@ builds:
       - linux
     goarch:
       - amd64
+      - arm64
     ldflags:
       - -s -w -X github.com/strawberry-tools/strawberry/common/hugo.buildDate={{.Date}} -X github.com/strawberry-tools/strawberry/common/hugo.commitHash={{ .ShortCommit }} -X github.com/strawberry-tools/strawberry/common/hugo.vendorInfo=gohugoio
-    flags:
-      - -buildmode
-      - exe
+    env:
+      - CGO_ENABLED=1
+      - >-
+        {{- if eq .Arch "arm64" }}CC=aarch64-linux-gnu-gcc{{- end }}
+      - >-
+        {{- if eq .Arch "arm64" }}CXX=aarch64-linux-gnu-g++{{- end }}
   - id: strawberry-windows
     env:
       - CGO_ENABLED=1

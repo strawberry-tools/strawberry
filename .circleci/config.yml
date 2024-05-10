@@ -102,7 +102,7 @@ jobs:
       - checkout
       - run:
           name: "Install Deps"
-          command: sudo apt-get update && sudo apt-get install mingw-w64
+          command: sudo apt-get update && sudo apt-get install -y mingw-w64 gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
       - run:
           name: "Install GoReleaser"
           command: |
@@ -114,7 +114,7 @@ jobs:
           command: |
             cd sb
             if [ -z "${CIRCLE_TAG}" ]; then
-              goreleaser build --config=.goreleaser.yml --skip-validate --rm-dist --snapshot
+              goreleaser build --config=.goreleaser.yml --skip=validate --clean --snapshot
             else
               goreleaser release --config=.goreleaser.yml
             fi
@@ -124,7 +124,8 @@ jobs:
             ls -lah dist/*/strawberry
             echo ""
             #dist/*/strawberry version --type=detailed
-            dist/*/strawberry version
+            # we need to use amd64 version specifically since that's the machine we're on
+            dist/strawberry-linux_linux_amd64_v1/strawberry version
       - persist_to_workspace:
           root: "./sb"
           paths:
