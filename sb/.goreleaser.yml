@@ -53,3 +53,11 @@ nfpms:
     file_name_template: "{{ .ConventionalFileName }}"
 changelog:
   disable: true
+
+announce:
+  skip: "{{ gt .Patch 0 }}"
+  mastodon:
+    enabled: true
+    server: "https://nanobyte.cafe"
+  mattermost:
+    enabled: true
