@@ -18,6 +18,7 @@ package tplimpl
 import (
 	"errors"
 	"fmt"
+	"strings"
 
 	"github.com/strawberry-tools/strawberry/common/maps"
 	"github.com/strawberry-tools/strawberry/helpers"
@@ -249,7 +250,12 @@ func (c *templateContext) handleDefer(withNode *parse.WithNode) {
 	n := l.Nodes[0].(*parse.ActionNode)
 
 	inner := withNode.List.CopyList()
-	innerHash := helpers.MD5String(inner.String())
+	s := inner.String()
+	if strings.Contains(s, "resources.PostProcess") {
+		c.err = errors.New("resources.PostProcess cannot be used in a deferred template")
+		return
+	}
+	innerHash := helpers.XxHashString(s)
 	deferredID := tpl.HugoDeferredTemplatePrefix + innerHash
 
 	c.deferNodes[deferredID] = inner
