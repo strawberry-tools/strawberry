@@ -62,6 +62,7 @@ jobs:
             mkdir -p ~/bin
             curl -sSL "https://github.com/sass/dart-sass/releases/download/1.72.0/dart-sass-1.72.0-linux-x64.tar.gz" | tar -xz --strip-components=1 -C ~/bin
             sass --version
+            sudo apt-get update && sudo apt-get install -y asciidoctor pandoc
       - run:
           name: "Generate Go Test Cache Timestamp"
           command: ../scripts/timestamp-generator.sh
