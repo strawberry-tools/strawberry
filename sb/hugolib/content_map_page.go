@@ -974,7 +974,7 @@ type contentTreeReverseIndexMap struct {
 
 type sitePagesAssembler struct {
 	*Site
-	assembleChanges *whatChanged
+	assembleChanges *WhatChanged
 	ctx             context.Context
 }
 

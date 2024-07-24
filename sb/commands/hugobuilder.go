@@ -27,10 +27,6 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/bep/logg"
-	"github.com/bep/simplecobra"
-	"github.com/fsnotify/fsnotify"
-	"github.com/spf13/fsync"
 	"github.com/strawberry-tools/strawberry/common/herrors"
 	"github.com/strawberry-tools/strawberry/common/htime"
 	"github.com/strawberry-tools/strawberry/common/hugo"
@@ -44,9 +40,15 @@ import (
 	"github.com/strawberry-tools/strawberry/hugofs"
 	"github.com/strawberry-tools/strawberry/hugolib"
 	"github.com/strawberry-tools/strawberry/hugolib/filesystems"
+	"github.com/strawberry-tools/strawberry/identity"
 	"github.com/strawberry-tools/strawberry/livereload"
 	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/strawberry-tools/strawberry/watcher"
+
+	"github.com/bep/logg"
+	"github.com/bep/simplecobra"
+	"github.com/fsnotify/fsnotify"
+	"github.com/spf13/fsync"
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/sync/semaphore"
 )
@@ -343,6 +345,27 @@ func (c *hugoBuilder) newWatcher(pollIntervalStr string, dirList ...string) (*wa
 	go func() {
 		for {
 			select {
+			case changes := <-c.r.changesFromBuild:
+				c.errState.setBuildErr(nil)
+				unlock, err := h.LockBuild()
+				if err != nil {
+					c.r.logger.Errorln("Failed to acquire a build lock: %s", err)
+					return
+				}
+				c.changeDetector.PrepareNew()
+				err = c.rebuildSitesForChanges(changes)
+				if err != nil {
+					c.r.logger.Errorln("Error while watching:", err)
+				}
+				if c.s != nil && c.s.doLiveReload {
+					doReload := c.changeDetector == nil || len(c.changeDetector.changed()) > 0
+					doReload = doReload || c.showErrorInBrowser && c.errCount() > 0
+					if doReload {
+						livereload.ForceRefresh()
+					}
+				}
+				unlock()
+
 			case evs := <-watcher.Events:
 				unlock, err := h.LockBuild()
 				if err != nil {
@@ -1017,6 +1040,19 @@ func (c *hugoBuilder) rebuildSites(events []fsnotify.Event) error {
 	}
 
 	return h.Build(hugolib.BuildCfg{NoBuildLock: true, RecentlyVisited: c.visitedURLs, ErrRecovery: c.errState.wasErr()}, events...)
+}
+
+func (c *hugoBuilder) rebuildSitesForChanges(ids []identity.Identity) error {
+	c.errState.setBuildErr(nil)
+	h, err := c.hugo()
+	if err != nil {
+		return err
+	}
+	whatChanged := &hugolib.WhatChanged{}
+	whatChanged.Add(ids...)
+	err = h.Build(hugolib.BuildCfg{NoBuildLock: true, WhatChanged: whatChanged, RecentlyVisited: c.visitedURLs, ErrRecovery: c.errState.wasErr()})
+	c.errState.setBuildErr(err)
+	return err
 }
 
 func (c *hugoBuilder) reloadConfig() error {

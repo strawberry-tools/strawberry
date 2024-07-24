@@ -23,35 +23,96 @@ import (
 	"strings"
 	"time"
 
-	"github.com/strawberry-tools/strawberry/helpers"
-	"github.com/strawberry-tools/strawberry/hugofs/glob"
-	"github.com/strawberry-tools/strawberry/identity"
-
-	"github.com/strawberry-tools/strawberry/hugofs"
-
 	"github.com/strawberry-tools/strawberry/cache/dynacache"
 	"github.com/strawberry-tools/strawberry/cache/filecache"
+	hhttpcache "github.com/strawberry-tools/strawberry/cache/httpcache"
+	"github.com/strawberry-tools/strawberry/common/hcontext"
 	"github.com/strawberry-tools/strawberry/common/hugio"
+	"github.com/strawberry-tools/strawberry/common/tasks"
+	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/strawberry-tools/strawberry/hugofs"
+	"github.com/strawberry-tools/strawberry/hugofs/glob"
+	"github.com/strawberry-tools/strawberry/identity"
 	"github.com/strawberry-tools/strawberry/resources"
 	"github.com/strawberry-tools/strawberry/resources/resource"
+
+	"github.com/bep/logg"
+	"github.com/gohugoio/httpcache"
 )
 
 // Client contains methods to create Resource objects.
 // tasks to Resource objects.
 type Client struct {
-	rs               *resources.Spec
-	httpClient       *http.Client
-	cacheGetResource *filecache.Cache
+	rs                   *resources.Spec
+	httpClient           *http.Client
+	httpCacheConfig      hhttpcache.ConfigCompiled
+	cacheGetResource     *filecache.Cache
+	resourceIDDispatcher hcontext.ContextDispatcher[string]
+
+	// Set when watching.
+	remoteResourceChecker *tasks.RunEvery
+	remoteResourceLogger  logg.LevelLogger
 }
+
+type contextKey string
 
 // New creates a new Client with the given specification.
 func New(rs *resources.Spec) *Client {
+	fileCache := rs.FileCaches.GetResourceCache()
+	resourceIDDispatcher := hcontext.NewContextDispatcher[string](contextKey("resourceID"))
+	httpCacheConfig := rs.Cfg.GetConfigSection("httpCacheCompiled").(hhttpcache.ConfigCompiled)
+	var remoteResourceChecker *tasks.RunEvery
+	if rs.Cfg.Watching() && !httpCacheConfig.IsPollingDisabled() {
+		remoteResourceChecker = &tasks.RunEvery{
+			HandleError: func(name string, err error) {
+				rs.Logger.Warnf("Failed to check remote resource: %s", err)
+			},
+			RunImmediately: false,
+		}
+
+		if err := remoteResourceChecker.Start(); err != nil {
+			panic(err)
+		}
+
+		rs.BuildClosers.Add(remoteResourceChecker)
+	}
+
+	httpTimeout := 2 * time.Minute // Need to cover retries.
+	if httpTimeout < (rs.Cfg.Timeout() + 30*time.Second) {
+		httpTimeout = rs.Cfg.Timeout() + 30*time.Second
+	}
+
 	return &Client{
-		rs: rs,
+		rs:                    rs,
+		httpCacheConfig:       httpCacheConfig,
+		resourceIDDispatcher:  resourceIDDispatcher,
+		remoteResourceChecker: remoteResourceChecker,
+		remoteResourceLogger:  rs.Logger.InfoCommand("remote"),
 		httpClient: &http.Client{
-			Timeout: time.Minute,
+			Timeout: httpTimeout,
+			Transport: &httpcache.Transport{
+				Cache: fileCache.AsHTTPCache(),
+				CacheKey: func(req *http.Request) string {
+					return resourceIDDispatcher.Get(req.Context())
+				},
+				Around: func(req *http.Request, key string) func() {
+					return fileCache.NamedLock(key)
+				},
+				AlwaysUseCachedResponse: func(req *http.Request, key string) bool {
+					return !httpCacheConfig.For(req.URL.String())
+				},
+				ShouldCache: func(req *http.Request, resp *http.Response, key string) bool {
+					return shouldCache(resp.StatusCode)
+				},
+				MarkCachedResponses: true,
+				EnableETagPair:      true,
+				Transport: &transport{
+					Cfg:    rs.Cfg,
+					Logger: rs.Logger,
+				},
+			},
 		},
-		cacheGetResource: rs.FileCaches.GetResourceCache(),
+		cacheGetResource: fileCache,
 	}
 }
 

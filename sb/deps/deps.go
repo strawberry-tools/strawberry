@@ -10,25 +10,27 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/bep/logg"
 	"github.com/strawberry-tools/strawberry/cache/dynacache"
 	"github.com/strawberry-tools/strawberry/cache/filecache"
 	"github.com/strawberry-tools/strawberry/common/hexec"
 	"github.com/strawberry-tools/strawberry/common/loggers"
+	"github.com/strawberry-tools/strawberry/common/types"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/config/allconfig"
 	"github.com/strawberry-tools/strawberry/config/security"
 	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/hugofs"
+	"github.com/strawberry-tools/strawberry/identity"
 	"github.com/strawberry-tools/strawberry/media"
-	"github.com/strawberry-tools/strawberry/resources/page"
-	"github.com/strawberry-tools/strawberry/resources/postpub"
-
-	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/metrics"
 	"github.com/strawberry-tools/strawberry/resources"
+	"github.com/strawberry-tools/strawberry/resources/page"
+	"github.com/strawberry-tools/strawberry/resources/postpub"
 	"github.com/strawberry-tools/strawberry/source"
 	"github.com/strawberry-tools/strawberry/tpl"
+
+	"github.com/bep/logg"
+	"github.com/spf13/afero"
 )
 
 // Deps holds dependencies used by many.
@@ -85,7 +87,7 @@ type Deps struct {
 	BuildEndListeners *Listeners
 
 	// Resources that gets closed when the build is done or the server shuts down.
-	BuildClosers *Closers
+	BuildClosers *types.Closers
 
 	// This is common/global for all sites.
 	BuildState *BuildState
@@ -143,7 +145,7 @@ func (d *Deps) Init() error {
 	}
 
 	if d.BuildClosers == nil {
-		d.BuildClosers = &Closers{}
+		d.BuildClosers = &types.Closers{}
 	}
 
 	if d.Metrics == nil && d.Conf.TemplateMetrics() {
@@ -208,7 +210,7 @@ func (d *Deps) Init() error {
 		return fmt.Errorf("failed to create file caches from configuration: %w", err)
 	}
 
-	resourceSpec, err := resources.NewSpec(d.PathSpec, common, fileCaches, d.MemCache, d.BuildState, d.Log, d, d.ExecHelper)
+	resourceSpec, err := resources.NewSpec(d.PathSpec, common, fileCaches, d.MemCache, d.BuildState, d.Log, d, d.ExecHelper, d.BuildClosers, d.BuildState)
 	if err != nil {
 		return fmt.Errorf("failed to create resource spec: %w", err)
 	}
@@ -353,6 +355,9 @@ type DepsCfg struct {
 
 	// i18n handling.
 	TranslationProvider ResourceProvider
+
+	// ChangesFromBuild for changes passed back to the server/watch process.
+	ChangesFromBuild chan []identity.Identity
 }
 
 // BuildState are state used during a build.
@@ -361,9 +366,17 @@ type BuildState struct {
 
 	mu sync.Mutex // protects state below.
 
+	OnSignalRebuild func(ids ...identity.Identity)
+
 	// A set of filenames in /public that
 	// contains a post-processing prefix.
 	filenamesWithPostPrefix map[string]bool
+}
+
+var _ identity.SignalRebuilder = (*BuildState)(nil)
+
+func (b *BuildState) SignalRebuild(ids ...identity.Identity) {
+	b.OnSignalRebuild(ids...)
 }
 
 func (b *BuildState) AddFilenameWithPostPrefix(filename string) {
@@ -388,31 +401,4 @@ func (b *BuildState) GetFilenamesWithPostPrefix() []string {
 
 func (b *BuildState) Incr() int {
 	return int(atomic.AddUint64(&b.counter, uint64(1)))
-}
-
-type Closer interface {
-	Close() error
-}
-
-type Closers struct {
-	mu sync.Mutex
-	cs []Closer
-}
-
-func (cs *Closers) Add(c Closer) {
-	cs.mu.Lock()
-	defer cs.mu.Unlock()
-	cs.cs = append(cs.cs, c)
-}
-
-func (cs *Closers) Close() error {
-	cs.mu.Lock()
-	defer cs.mu.Unlock()
-	for _, c := range cs.cs {
-		c.Close()
-	}
-
-	cs.cs = cs.cs[:0]
-
-	return nil
 }
