@@ -54,6 +54,7 @@ import (
 )
 
 func (s *Site) Taxonomies() page.TaxonomyList {
+	s.checkReady()
 	s.init.taxonomies.Do(context.Background())
 	return s.taxonomies
 }
@@ -196,6 +197,7 @@ type siteRenderingContext struct {
 }
 
 func (s *Site) Menus() navigation.Menus {
+	s.checkReady()
 	s.init.menus.Do(context.Background())
 	return s.menus
 }
@@ -364,17 +366,31 @@ func (s *Site) watching() bool {
 type whatChanged struct {
 	mu sync.Mutex
 
-	contentChanged bool
-	identitySet    identity.Identities
+	needsPagesAssembly bool
+	identitySet        identity.Identities
 }
 
 func (w *whatChanged) Add(ids ...identity.Identity) {
 	w.mu.Lock()
 	defer w.mu.Unlock()
 
+	if w.identitySet == nil {
+		w.identitySet = make(identity.Identities)
+	}
+
 	for _, id := range ids {
 		w.identitySet[id] = true
 	}
+}
+
+func (w *whatChanged) Clear() {
+	w.mu.Lock()
+	defer w.mu.Unlock()
+	w.clear()
+}
+
+func (w *whatChanged) clear() {
+	w.identitySet = identity.Identities{}
 }
 
 func (w *whatChanged) Changes() []identity.Identity {
@@ -382,6 +398,14 @@ func (w *whatChanged) Changes() []identity.Identity {
 		return nil
 	}
 	return w.identitySet.AsSlice()
+}
+
+func (w *whatChanged) Drain() []identity.Identity {
+	w.mu.Lock()
+	defer w.mu.Unlock()
+	ids := w.identitySet.AsSlice()
+	w.clear()
+	return ids
 }
 
 // RegisterMediaTypes will register the Site's media types in the mime
@@ -778,6 +802,7 @@ func (s *Site) errorCollator(results <-chan error, errs chan<- error) {
 // as possible for existing sites. Most sites will use {{ .Site.GetPage "section" "my/section" }},
 // i.e. 2 arguments, so we test for that.
 func (s *Site) GetPage(ref ...string) (page.Page, error) {
+	s.checkReady()
 	p, err := s.s.getPageForRefs(ref...)
 
 	if p == nil {

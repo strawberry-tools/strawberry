@@ -1,4 +1,4 @@
-// Copyright 2018 The Hugo Authors. All rights reserved.
+// Copyright 2024 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,13 +11,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package hugo
+package pagesfromdata
 
-// CurrentVersion represents the current build version.
-// This should be the only one.
-var CurrentVersion = Version{
-	Major:      0,
-	Minor:      126,
-	PatchLevel: 3,
-	Suffix:     "",
+import "testing"
+
+func BenchmarkHash(b *testing.B) {
+	m := map[string]any{
+		"foo":         "bar",
+		"bar":         "foo",
+		"stringSlice": []any{"a", "b", "c"},
+		"intSlice":    []any{1, 2, 3},
+		"largeText":   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit.",
+	}
+
+	bs := BuildState{}
+
+	for i := 0; i < b.N; i++ {
+		bs.hash(m)
+	}
 }

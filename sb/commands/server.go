@@ -45,14 +45,6 @@ import (
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/sync/semaphore"
 
-	"github.com/bep/debounce"
-	"github.com/bep/mclib"
-	"github.com/bep/simplecobra"
-	"github.com/fsnotify/fsnotify"
-	"github.com/spf13/afero"
-	"github.com/spf13/cobra"
-	"github.com/spf13/fsync"
-
 	"github.com/strawberry-tools/strawberry/common/herrors"
 	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/strawberry-tools/strawberry/common/types"
@@ -60,13 +52,20 @@ import (
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/hugofs"
-	"github.com/strawberry-tools/strawberry/hugofs/files"
 	"github.com/strawberry-tools/strawberry/hugolib"
 	"github.com/strawberry-tools/strawberry/hugolib/filesystems"
 	"github.com/strawberry-tools/strawberry/livereload"
 	"github.com/strawberry-tools/strawberry/tpl"
 	"github.com/strawberry-tools/strawberry/transform"
 	"github.com/strawberry-tools/strawberry/transform/livereloadinject"
+
+	"github.com/bep/debounce"
+	"github.com/bep/mclib"
+	"github.com/bep/simplecobra"
+	"github.com/fsnotify/fsnotify"
+	"github.com/spf13/afero"
+	"github.com/spf13/cobra"
+	"github.com/spf13/fsync"
 )
 
 var (
@@ -544,7 +543,7 @@ of a second, you will be able to save and see your changes nearly instantly.`
 	cmd.Flags().BoolVar(&c.openBrowser, "open", false, "open server URL in default browser")
 	cmd.Flags().BoolVarP(&c.serverAppend, "appendPort", "", true, "append port to baseURL")
 	cmd.Flags().BoolVar(&c.disableLiveReload, "disableLiveReload", false, "watch without enabling live browser reload on rebuild")
-	cmd.Flags().BoolVar(&c.navigateToChanged, "navigateToChanged", false, "navigate to changed content file on live browser reload")
+	cmd.Flags().BoolVarP(&c.navigateToChanged, "navigateToChanged", "N", false, "navigate to changed content file on live browser reload")
 	cmd.Flags().BoolVar(&c.renderStaticToDisk, "renderStaticToDisk", false, "serve static files from disk and dynamic files from memory")
 	cmd.Flags().BoolVar(&c.disableFastRender, "disableFastRender", false, "enables full re-renders on changes")
 	cmd.Flags().BoolVar(&c.disableBrowserError, "disableBrowserError", false, "do not show build errors in the browser")
@@ -1215,16 +1214,16 @@ func partitionDynamicEvents(sourceFs *filesystems.SourceFilesystems, events []fs
 	return
 }
 
-func pickOneWriteOrCreatePath(events []fsnotify.Event) string {
+func pickOneWriteOrCreatePath(contentTypes config.ContentTypesProvider, events []fsnotify.Event) string {
 	name := ""
 
 	for _, ev := range events {
 		if ev.Op&fsnotify.Write == fsnotify.Write || ev.Op&fsnotify.Create == fsnotify.Create {
-			if files.IsIndexContentFile(ev.Name) {
+			if contentTypes.IsIndexContentFile(ev.Name) {
 				return ev.Name
 			}
 
-			if files.IsContentFile(ev.Name) {
+			if contentTypes.IsContentFile(ev.Name) {
 				name = ev.Name
 			}
 

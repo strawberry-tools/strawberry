@@ -23,19 +23,15 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/strawberry-tools/strawberry/hugofs/glob"
-
 	"github.com/strawberry-tools/strawberry/common/hexec"
 	"github.com/strawberry-tools/strawberry/common/hstrings"
 	"github.com/strawberry-tools/strawberry/common/paths"
-
-	"github.com/strawberry-tools/strawberry/hugofs/files"
-
+	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/hugofs"
+	"github.com/strawberry-tools/strawberry/hugofs/glob"
+	"github.com/strawberry-tools/strawberry/hugolib"
 
 	"github.com/spf13/afero"
-	"github.com/strawberry-tools/strawberry/helpers"
-	"github.com/strawberry-tools/strawberry/hugolib"
 )
 
 const (
@@ -98,7 +94,7 @@ func NewContent(h *hugolib.HugoSites, kind, targetPath string, force bool) error
 			return "", fmt.Errorf("failed to resolve %q to an archetype template", targetPath)
 		}
 
-		if !files.IsContentFile(b.targetPath) {
+		if !h.Conf.ContentTypes().IsContentFile(b.targetPath) {
 			return "", fmt.Errorf("target path %q is not a known content format", b.targetPath)
 		}
 

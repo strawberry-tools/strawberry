@@ -22,23 +22,25 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/mitchellh/mapstructure"
 	bp "github.com/strawberry-tools/strawberry/bufferpool"
 	"github.com/strawberry-tools/strawberry/common/text"
 	"github.com/strawberry-tools/strawberry/common/types/hstring"
 	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/identity"
+	"github.com/strawberry-tools/strawberry/markup"
 	"github.com/strawberry-tools/strawberry/markup/converter"
 	"github.com/strawberry-tools/strawberry/markup/converter/hooks"
 	"github.com/strawberry-tools/strawberry/markup/goldmark/hugocontext"
 	"github.com/strawberry-tools/strawberry/markup/highlight/chromalexers"
 	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
+	"github.com/strawberry-tools/strawberry/media"
 	"github.com/strawberry-tools/strawberry/output"
 	"github.com/strawberry-tools/strawberry/parser/pageparser"
 	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/strawberry-tools/strawberry/resources/resource"
 	"github.com/strawberry-tools/strawberry/tpl"
 
-	"github.com/mitchellh/mapstructure"
 	"github.com/spf13/cast"
 )
 
@@ -259,6 +261,9 @@ func (pco *pageContentOutput) RenderString(ctx context.Context, args ...any) (te
 		if err := mapstructure.WeakDecode(m, &opts); err != nil {
 			return "", fmt.Errorf("failed to decode options: %w", err)
 		}
+		if opts.Markup != "" {
+			opts.Markup = markup.ResolveMarkup(opts.Markup)
+		}
 	}
 
 	contentToRenderv := args[sidx]
@@ -280,7 +285,8 @@ func (pco *pageContentOutput) RenderString(ctx context.Context, args ...any) (te
 	}
 
 	conv := pco.po.p.getContentConverter()
-	if opts.Markup != "" && opts.Markup != pco.po.p.m.pageConfig.Markup {
+
+	if opts.Markup != "" && opts.Markup != pco.po.p.m.pageConfig.ContentMediaType.SubType {
 		var err error
 		conv, err = pco.po.p.m.newContentConverter(pco.po.p, opts.Markup)
 		if err != nil {
@@ -298,7 +304,10 @@ func (pco *pageContentOutput) RenderString(ctx context.Context, args ...any) (te
 	if pageparser.HasShortcode(contentToRender) {
 		contentToRenderb := []byte(contentToRender)
 		// String contains a shortcode.
-		parseInfo.itemsStep1, err = pageparser.ParseBytesMain(contentToRenderb, pageparser.Config{})
+		parseInfo.itemsStep1, err = pageparser.ParseBytes(contentToRenderb, pageparser.Config{
+			NoFrontMatter:    true,
+			NoSummaryDivider: true,
+		})
 		if err != nil {
 			return "", err
 		}
@@ -373,7 +382,7 @@ func (pco *pageContentOutput) RenderString(ctx context.Context, args ...any) (te
 	}
 
 	if opts.Display == "inline" {
-		markup := pco.po.p.m.pageConfig.Markup
+		markup := pco.po.p.m.pageConfig.Content.Markup
 		if opts.Markup != "" {
 			markup = pco.po.p.s.ContentSpec.ResolveMarkup(opts.Markup)
 		}
@@ -654,7 +663,7 @@ func splitUserDefinedSummaryAndContent(markup string, c []byte) (summary []byte,
 
 	startTag := "p"
 	switch markup {
-	case "asciidocext":
+	case media.DefaultContentTypes.AsciiDoc.SubType:
 		startTag = "div"
 	}
 

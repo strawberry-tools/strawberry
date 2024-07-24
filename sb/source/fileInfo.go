@@ -23,6 +23,7 @@ import (
 	"github.com/strawberry-tools/strawberry/common/paths"
 	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/hugofs"
+	"github.com/strawberry-tools/strawberry/media"
 
 	"github.com/bep/gitmap"
 )
@@ -33,6 +34,12 @@ type File struct {
 
 	uniqueID string
 	lazyInit sync.Once
+}
+
+// IsContentAdapter returns whether the file represents a content adapter.
+// This means that there may be more than one Page associated with this file.
+func (fi *File) IsContentAdapter() bool {
+	return fi.fim.Meta().PathInfo.IsContentData()
 }
 
 // Filename returns a file's absolute path and filename on disk.
@@ -134,7 +141,7 @@ func (fi *File) p() *paths.Path {
 func NewFileInfoFrom(path, filename string) *File {
 	meta := &hugofs.FileMeta{
 		Filename: filename,
-		PathInfo: paths.Parse("", filepath.ToSlash(path)),
+		PathInfo: media.DefaultPathParser.Parse("", filepath.ToSlash(path)),
 	}
 
 	return NewFileInfo(hugofs.NewFileMetaInfo(nil, meta))
