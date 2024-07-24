@@ -22,15 +22,12 @@ import (
 
 	"github.com/strawberry-tools/strawberry/common/hreflect"
 	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/strawberry-tools/strawberry/identity"
 	"github.com/strawberry-tools/strawberry/tpl"
-
+	"github.com/strawberry-tools/strawberry/tpl/internal"
 	template "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/htmltemplate"
 	texttemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate"
-
-	"github.com/strawberry-tools/strawberry/deps"
-
-	"github.com/strawberry-tools/strawberry/tpl/internal"
 
 	// Init the namespaces
 	_ "github.com/strawberry-tools/strawberry/tpl/cast"
@@ -43,6 +40,7 @@ import (
 	_ "github.com/strawberry-tools/strawberry/tpl/diagrams"
 	_ "github.com/strawberry-tools/strawberry/tpl/encoding"
 	_ "github.com/strawberry-tools/strawberry/tpl/fmt"
+	_ "github.com/strawberry-tools/strawberry/tpl/hash"
 	_ "github.com/strawberry-tools/strawberry/tpl/hugo"
 	_ "github.com/strawberry-tools/strawberry/tpl/images"
 	_ "github.com/strawberry-tools/strawberry/tpl/inflect"

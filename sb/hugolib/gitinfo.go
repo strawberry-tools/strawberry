@@ -14,13 +14,16 @@
 package hugolib
 
 import (
+	"io"
 	"path/filepath"
 	"strings"
 
-	"github.com/bep/gitmap"
-	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/common/hexec"
+	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/strawberry-tools/strawberry/source"
+
+	"github.com/bep/gitmap"
 )
 
 type gitInfo struct {
@@ -38,10 +41,24 @@ func (g *gitInfo) forPage(p page.Page) source.GitInfo {
 	return source.NewGitInfo(*gi)
 }
 
-func newGitInfo(conf config.AllProvider) (*gitInfo, error) {
-	workingDir := conf.BaseConfig().WorkingDir
+func newGitInfo(d *deps.Deps) (*gitInfo, error) {
+	opts := gitmap.Options{
+		Repository: d.Conf.BaseConfig().WorkingDir,
+		GetGitCommandFunc: func(stdout, stderr io.Writer, args ...string) (gitmap.Runner, error) {
+			var argsv []any
+			for _, arg := range args {
+				argsv = append(argsv, arg)
+			}
+			argsv = append(
+				argsv,
+				hexec.WithStdout(stdout),
+				hexec.WithStderr(stderr),
+			)
+			return d.ExecHelper.New("git", argsv...)
+		},
+	}
 
-	gitRepo, err := gitmap.Map(workingDir, "")
+	gitRepo, err := gitmap.Map(opts)
 	if err != nil {
 		return nil, err
 	}
