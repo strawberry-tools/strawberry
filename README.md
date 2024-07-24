@@ -1,7 +1,7 @@
 # Strawberry - the main ingredient of your JAM stack
 
 Strawberry is a Static Site Generator that is extremely fast, efficient, and modular.
-It is written in [Go][go-site] and is a soft fork of [Hugo][hugo-site].
+It is written in [Go][go-site] and is a hard fork of [Hugo][hugo-site](v0.129.x).
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/strawberry-tools/strawberry)](https://goreportcard.com/report/github.com/strawberry-tools/strawberry)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/strawberry-tools/strawberry)
