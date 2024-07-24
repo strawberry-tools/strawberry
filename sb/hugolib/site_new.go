@@ -22,7 +22,6 @@ import (
 	"sort"
 	"time"
 
-	"github.com/bep/logg"
 	"github.com/strawberry-tools/strawberry/cache/dynacache"
 	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/strawberry-tools/strawberry/common/loggers"
@@ -32,6 +31,7 @@ import (
 	"github.com/strawberry-tools/strawberry/config/allconfig"
 	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/strawberry-tools/strawberry/hugolib/doctree"
+	"github.com/strawberry-tools/strawberry/hugolib/pagesfromdata"
 	"github.com/strawberry-tools/strawberry/identity"
 	"github.com/strawberry-tools/strawberry/langs"
 	"github.com/strawberry-tools/strawberry/langs/i18n"
@@ -47,11 +47,21 @@ import (
 	"github.com/strawberry-tools/strawberry/resources/resource"
 	"github.com/strawberry-tools/strawberry/tpl"
 	"github.com/strawberry-tools/strawberry/tpl/tplimpl"
+
+	"github.com/bep/logg"
 )
 
 var _ page.Site = (*Site)(nil)
 
+type siteState int
+
+const (
+	siteStateInit siteState = iota
+	siteStateReady
+)
+
 type Site struct {
+	state     siteState
 	conf      *allconfig.Config
 	language  *langs.Language
 	languagei int
@@ -166,7 +176,8 @@ func NewHugoSites(cfg deps.DepsCfg) (*HugoSites, error) {
 		treeResources: doctree.New(
 			treeConfig,
 		),
-		treeTaxonomyEntries: doctree.NewTreeShiftTree[*weightedContentNode](doctree.DimensionLanguage.Index(), len(confm.Languages)),
+		treeTaxonomyEntries:           doctree.NewTreeShiftTree[*weightedContentNode](doctree.DimensionLanguage.Index(), len(confm.Languages)),
+		treePagesFromTemplateAdapters: doctree.NewTreeShiftTree[*pagesfromdata.PagesFromTemplate](doctree.DimensionLanguage.Index(), len(confm.Languages)),
 	}
 
 	pageTrees.createMutableTrees()
@@ -415,6 +426,7 @@ func (s *Site) Current() page.Site {
 
 // MainSections returns the list of main sections.
 func (s *Site) MainSections() []string {
+	s.checkReady()
 	return s.conf.C.MainSections
 }
 
@@ -433,6 +445,7 @@ func (s *Site) BaseURL() string {
 
 // Deprecated: Use .Site.Lastmod instead.
 func (s *Site) LastChange() time.Time {
+	s.checkReady()
 	hugo.Deprecate(".Site.LastChange", "Use .Site.Lastmod instead.", "v0.123.0")
 	return s.lastmod
 }
@@ -521,6 +534,7 @@ func (s *Site) ForEeachIdentityByName(name string, f func(identity.Identity) boo
 // Pages returns all pages.
 // This is for the current language only.
 func (s *Site) Pages() page.Pages {
+	s.checkReady()
 	return s.pageMap.getPagesInSection(
 		pageMapQueryPagesInSection{
 			pageMapQueryPagesBelowPath: pageMapQueryPagesBelowPath{
@@ -537,6 +551,7 @@ func (s *Site) Pages() page.Pages {
 // RegularPages returns all the regular pages.
 // This is for the current language only.
 func (s *Site) RegularPages() page.Pages {
+	s.checkReady()
 	return s.pageMap.getPagesInSection(
 		pageMapQueryPagesInSection{
 			pageMapQueryPagesBelowPath: pageMapQueryPagesBelowPath{
@@ -551,10 +566,18 @@ func (s *Site) RegularPages() page.Pages {
 
 // AllPages returns all pages for all sites.
 func (s *Site) AllPages() page.Pages {
+	s.checkReady()
 	return s.h.Pages()
 }
 
 // AllRegularPages returns all regular pages for all sites.
 func (s *Site) AllRegularPages() page.Pages {
+	s.checkReady()
 	return s.h.RegularPages()
+}
+
+func (s *Site) checkReady() {
+	if s.state != siteStateReady {
+		panic("this method cannot be called before the site is fully initialized")
+	}
 }
