@@ -67,7 +67,7 @@ func New(opts Options) *Cache {
 	evictedIdentities := collections.NewStack[identity.Identity]()
 
 	onEvict := func(k, v any) {
-		if !opts.Running {
+		if !opts.Watching {
 			return
 		}
 		identity.WalkIdentitiesShallow(v, func(level int, id identity.Identity) bool {
@@ -97,7 +97,7 @@ type Options struct {
 	CheckInterval time.Duration
 	MaxSize       int
 	MinMaxSize    int
-	Running       bool
+	Watching      bool
 }
 
 // Options for a partition.
@@ -140,16 +140,25 @@ func (c *Cache) DrainEvictedIdentities() []identity.Identity {
 }
 
 // ClearMatching clears all partition for which the predicate returns true.
-func (c *Cache) ClearMatching(predicate func(k, v any) bool) {
+func (c *Cache) ClearMatching(predicatePartition func(k string, p PartitionManager) bool, predicateValue func(k, v any) bool) {
+	if predicatePartition == nil {
+		predicatePartition = func(k string, p PartitionManager) bool { return true }
+	}
+	if predicateValue == nil {
+		panic("nil predicateValue")
+	}
 	g := rungroup.Run[PartitionManager](context.Background(), rungroup.Config[PartitionManager]{
 		NumWorkers: len(c.partitions),
 		Handle: func(ctx context.Context, partition PartitionManager) error {
-			partition.clearMatching(predicate)
+			partition.clearMatching(predicateValue)
 			return nil
 		},
 	})
 
-	for _, p := range c.partitions {
+	for k, p := range c.partitions {
+		if !predicatePartition(k, p) {
+			continue
+		}
 		g.Enqueue(p)
 	}
 
@@ -340,7 +349,7 @@ func GetOrCreatePartition[K comparable, V any](c *Cache, name string, opts Optio
 		return p.(*Partition[K, V])
 	}
 
-	// At this point, we don't know the the number of partitions or their configuration, but
+	// At this point, we don't know the number of partitions or their configuration, but
 	// this will be re-adjusted later.
 	const numberOfPartitionsEstimate = 10
 	maxSize := opts.CalculateMaxSize(c.opts.MaxSize / numberOfPartitionsEstimate)
@@ -356,6 +365,7 @@ func GetOrCreatePartition[K comparable, V any](c *Cache, name string, opts Optio
 		trace:   c.opts.Log.Logger().WithLevel(logg.LevelTrace).WithField("partition", name),
 		opts:    opts,
 	}
+
 	c.partitions[name] = partition
 
 	return partition
@@ -375,13 +385,37 @@ type Partition[K comparable, V any] struct {
 
 // GetOrCreate gets or creates a value for the given key.
 func (p *Partition[K, V]) GetOrCreate(key K, create func(key K) (V, error)) (V, error) {
+	v, err := p.doGetOrCreate(key, create)
+	if err != nil {
+		return p.zero, err
+	}
+	if resource.StaleVersion(v) > 0 {
+		p.c.Delete(key)
+		return p.doGetOrCreate(key, create)
+	}
+	return v, err
+}
+
+func (p *Partition[K, V]) doGetOrCreate(key K, create func(key K) (V, error)) (V, error) {
 	v, _, err := p.c.GetOrCreate(key, create)
+	return v, err
+}
+
+func (p *Partition[K, V]) GetOrCreateWitTimeout(key K, duration time.Duration, create func(key K) (V, error)) (V, error) {
+	v, err := p.doGetOrCreateWitTimeout(key, duration, create)
+	if err != nil {
+		return p.zero, err
+	}
+	if resource.StaleVersion(v) > 0 {
+		p.c.Delete(key)
+		return p.doGetOrCreateWitTimeout(key, duration, create)
+	}
 	return v, err
 }
 
 // GetOrCreateWitTimeout gets or creates a value for the given key and times out if the create function
 // takes too long.
-func (p *Partition[K, V]) GetOrCreateWitTimeout(key K, duration time.Duration, create func(key K) (V, error)) (V, error) {
+func (p *Partition[K, V]) doGetOrCreateWitTimeout(key K, duration time.Duration, create func(key K) (V, error)) (V, error) {
 	resultch := make(chan V, 1)
 	errch := make(chan error, 1)
 
@@ -438,7 +472,7 @@ func (p *Partition[K, V]) clearOnRebuild(changeset ...identity.Identity) {
 
 	shouldDelete := func(key K, v V) bool {
 		// We always clear elements marked as stale.
-		if resource.IsStaleAny(v) {
+		if resource.StaleVersion(v) > 0 {
 			return true
 		}
 
@@ -493,8 +527,8 @@ func (p *Partition[K, V]) Keys() []K {
 
 func (p *Partition[K, V]) clearStale() {
 	p.c.DeleteFunc(func(key K, v V) bool {
-		isStale := resource.IsStaleAny(v)
-		if isStale {
+		staleVersion := resource.StaleVersion(v)
+		if staleVersion > 0 {
 			p.trace.Log(
 				logg.StringFunc(
 					func() string {
@@ -504,7 +538,7 @@ func (p *Partition[K, V]) clearStale() {
 			)
 		}
 
-		return isStale
+		return staleVersion > 0
 	})
 }
 

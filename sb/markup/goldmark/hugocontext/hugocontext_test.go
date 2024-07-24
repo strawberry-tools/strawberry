@@ -1,4 +1,4 @@
-// Copyright 2018 The Hugo Authors. All rights reserved.
+// Copyright 2024 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,13 +11,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package hugo
+package hugocontext
 
-// CurrentVersion represents the current build version.
-// This should be the only one.
-var CurrentVersion = Version{
-	Major:      0,
-	Minor:      125,
-	PatchLevel: 7,
-	Suffix:     "",
+import (
+	"testing"
+
+	qt "github.com/frankban/quicktest"
+)
+
+func TestWrap(t *testing.T) {
+	c := qt.New(t)
+
+	b := []byte("test")
+
+	c.Assert(Wrap(b, 42), qt.Equals, "{{__hugo_ctx pid=42}}\ntest{{__hugo_ctx/}}\n")
+}
+
+func BenchmarkWrap(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Wrap([]byte("test"), 42)
+	}
 }

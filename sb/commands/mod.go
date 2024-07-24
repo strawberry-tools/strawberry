@@ -64,6 +64,7 @@ removed from Strawberry, but we need to test this out in "real life" to get a fe
 so this may/will change in future versions of Strawberry.
 `,
 				withc: func(cmd *cobra.Command, r *rootCommand) {
+					cmd.ValidArgsFunction = cobra.NoFileCompletions
 					applyLocalFlagsBuildConfig(cmd, r)
 				},
 				run: func(ctx context.Context, cd *simplecobra.Commandeer, r *rootCommand, args []string) error {
@@ -91,6 +92,7 @@ so this may/will change in future versions of Strawberry.
 	inside a subfolder on GitHub, as one example.
 	`,
 				withc: func(cmd *cobra.Command, r *rootCommand) {
+					cmd.ValidArgsFunction = cobra.NoFileCompletions
 					applyLocalFlagsBuildConfig(cmd, r)
 				},
 				run: func(ctx context.Context, cd *simplecobra.Commandeer, r *rootCommand, args []string) error {
@@ -110,6 +112,7 @@ so this may/will change in future versions of Strawberry.
 				short: "Verify dependencies.",
 				long:  `Verify checks that the dependencies of the current module, which are stored in a local downloaded source cache, have not been modified since being downloaded.`,
 				withc: func(cmd *cobra.Command, r *rootCommand) {
+					cmd.ValidArgsFunction = cobra.NoFileCompletions
 					applyLocalFlagsBuildConfig(cmd, r)
 					cmd.Flags().BoolVarP(&clean, "clean", "", false, "delete module cache for dependencies that fail verification")
 				},
@@ -129,6 +132,7 @@ so this may/will change in future versions of Strawberry.
 Note that for vendored modules, that is the version listed and not the one from go.mod.
 `,
 				withc: func(cmd *cobra.Command, r *rootCommand) {
+					cmd.ValidArgsFunction = cobra.NoFileCompletions
 					applyLocalFlagsBuildConfig(cmd, r)
 					cmd.Flags().BoolVarP(&clean, "clean", "", false, "delete module cache for dependencies that fail verification")
 				},
@@ -146,8 +150,10 @@ Note that for vendored modules, that is the version listed and not the one from 
 				short: "Delete the Strawberry Module cache for the current project.",
 				long:  `Delete the Strawberry Module cache for the current project.`,
 				withc: func(cmd *cobra.Command, r *rootCommand) {
+					cmd.ValidArgsFunction = cobra.NoFileCompletions
 					applyLocalFlagsBuildConfig(cmd, r)
 					cmd.Flags().StringVarP(&pattern, "pattern", "", "", `pattern matching module paths to clean (all if not set), e.g. "**hugo*"`)
+					_ = cmd.RegisterFlagCompletionFunc("pattern", cobra.NoFileCompletions)
 					cmd.Flags().BoolVarP(&all, "all", "", false, "clean entire module cache")
 				},
 				run: func(ctx context.Context, cd *simplecobra.Commandeer, r *rootCommand, args []string) error {
@@ -169,6 +175,7 @@ Note that for vendored modules, that is the version listed and not the one from 
 				name:  "tidy",
 				short: "Remove unused entries in go.mod and go.sum.",
 				withc: func(cmd *cobra.Command, r *rootCommand) {
+					cmd.ValidArgsFunction = cobra.NoFileCompletions
 					applyLocalFlagsBuildConfig(cmd, r)
 				},
 				run: func(ctx context.Context, cd *simplecobra.Commandeer, r *rootCommand, args []string) error {
@@ -186,6 +193,7 @@ Note that for vendored modules, that is the version listed and not the one from 
 	If a module is vendored, that is where Strawberry will look for it's dependencies.
 	`,
 				withc: func(cmd *cobra.Command, r *rootCommand) {
+					cmd.ValidArgsFunction = cobra.NoFileCompletions
 					applyLocalFlagsBuildConfig(cmd, r)
 				},
 				run: func(ctx context.Context, cd *simplecobra.Commandeer, r *rootCommand, args []string) error {
@@ -227,6 +235,7 @@ Run "go help get" for more information. All flags available for "go get" is also
 ` + commonUsageMod,
 				withc: func(cmd *cobra.Command, r *rootCommand) {
 					cmd.DisableFlagParsing = true
+					cmd.ValidArgsFunction = cobra.NoFileCompletions
 				},
 				run: func(ctx context.Context, cd *simplecobra.Commandeer, r *rootCommand, args []string) error {
 					// We currently just pass on the flags we get to Go and

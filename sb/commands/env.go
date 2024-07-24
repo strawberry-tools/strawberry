@@ -18,9 +18,10 @@ import (
 	"context"
 	"runtime"
 
-	"github.com/bep/simplecobra"
-
 	"github.com/strawberry-tools/strawberry/common/hugo"
+
+	"github.com/bep/simplecobra"
+	"github.com/spf13/cobra"
 )
 
 func newEnvCommand() simplecobra.Commander {
@@ -48,6 +49,9 @@ func newEnvCommand() simplecobra.Commander {
 				}
 			}
 			return nil
+		},
+		withc: func(cmd *cobra.Command, r *rootCommand) {
+			cmd.ValidArgsFunction = cobra.NoFileCompletions
 		},
 	}
 }

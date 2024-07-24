@@ -25,8 +25,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bep/logg"
-	"github.com/strawberry-tools/strawberry/cache/dynacache"
+	"github.com/strawberry-tools/strawberry/common/herrors"
+	"github.com/strawberry-tools/strawberry/common/loggers"
+	"github.com/strawberry-tools/strawberry/common/para"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/strawberry-tools/strawberry/hugofs"
 	"github.com/strawberry-tools/strawberry/hugofs/files"
@@ -35,21 +38,15 @@ import (
 	"github.com/strawberry-tools/strawberry/identity"
 	"github.com/strawberry-tools/strawberry/output"
 	"github.com/strawberry-tools/strawberry/publisher"
-	"github.com/strawberry-tools/strawberry/source"
-	"github.com/strawberry-tools/strawberry/tpl"
-
-	"github.com/strawberry-tools/strawberry/common/herrors"
-	"github.com/strawberry-tools/strawberry/common/loggers"
-	"github.com/strawberry-tools/strawberry/common/para"
-	"github.com/strawberry-tools/strawberry/common/paths"
-	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/strawberry-tools/strawberry/resources/page/siteidentities"
 	"github.com/strawberry-tools/strawberry/resources/postpub"
+	"github.com/strawberry-tools/strawberry/source"
+	"github.com/strawberry-tools/strawberry/tpl"
 
-	"github.com/spf13/afero"
-
+	"github.com/bep/logg"
 	"github.com/fsnotify/fsnotify"
+	"github.com/spf13/afero"
 )
 
 // Build builds all sites. If filesystem events are provided,
@@ -275,7 +272,7 @@ func (h *HugoSites) assemble(ctx context.Context, l logg.LevelLogger, bcfg *Buil
 
 	changes := assembleChanges.Changes()
 
-	// Changes from the assemble step (e.g. lastMod, cascase) needs a re-calculation
+	// Changes from the assemble step (e.g. lastMod, cascade) needs a re-calculation
 	// of what needs to be re-built.
 	if len(changes) > 0 {
 		if err := h.resolveAndClearStateForIdentities(ctx, l, nil, changes); err != nil {
@@ -596,6 +593,10 @@ type pathChange struct {
 	isDir bool
 }
 
+func (p pathChange) isStructuralChange() bool {
+	return p.delete || p.isDir
+}
+
 // processPartial prepares the Sites' sources for a partial rebuild.
 func (h *HugoSites) processPartial(ctx context.Context, l logg.LevelLogger, config *BuildCfg, init func(config *BuildCfg) error, events []fsnotify.Event) error {
 	h.Log.Trace(logg.StringFunc(func() string {
@@ -610,7 +611,7 @@ func (h *HugoSites) processPartial(ctx context.Context, l logg.LevelLogger, conf
 
 	// For a list of events for the different OSes, see the test output in https://github.com/bep/fsnotifyeventlister/.
 	events = h.fileEventsFilter(events)
-	events = h.fileEventsTranslate(events)
+	events = h.fileEventsTrim(events)
 	eventInfos := h.fileEventsApplyInfo(events)
 
 	logger := h.Log
@@ -759,17 +760,7 @@ func (h *HugoSites) processPartial(ctx context.Context, l logg.LevelLogger, conf
 			}
 		case files.ComponentFolderAssets:
 			logger.Println("Asset changed", pathInfo.Path())
-
-			var hasID bool
-			r, _ := h.ResourceSpec.ResourceCache.Get(context.Background(), dynacache.CleanKey(pathInfo.Base()))
-			identity.WalkIdentitiesShallow(r, func(level int, rid identity.Identity) bool {
-				hasID = true
-				changes = append(changes, rid)
-				return false
-			})
-			if !hasID {
-				changes = append(changes, pathInfo)
-			}
+			changes = append(changes, pathInfo)
 		case files.ComponentFolderData:
 			logger.Println("Data changed", pathInfo.Path())
 
@@ -920,6 +911,17 @@ func (h *HugoSites) processPartial(ctx context.Context, l logg.LevelLogger, conf
 	}
 
 	return nil
+}
+
+func (h *HugoSites) LogServerAddresses() {
+	if h.hugoInfo.IsMultihost() {
+		for _, s := range h.Sites {
+			h.Log.Printf("Web Server is available at %s (bind address %s) %s\n", s.conf.C.BaseURL, s.conf.C.ServerInterface, s.Language().Lang)
+		}
+	} else {
+		s := h.Sites[0]
+		h.Log.Printf("Web Server is available at %s (bind address %s)\n", s.conf.C.BaseURL, s.conf.C.ServerInterface)
+	}
 }
 
 func (h *HugoSites) processFull(ctx context.Context, l logg.LevelLogger, config BuildCfg) (err error) {

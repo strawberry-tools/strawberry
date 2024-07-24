@@ -123,14 +123,14 @@ func NewHugoSites(cfg deps.DepsCfg) (*HugoSites, error) {
 			HandlerPost:        logHookLast,
 			Stdout:             cfg.LogOut,
 			Stderr:             cfg.LogOut,
-			StoreErrors:        conf.Running(),
+			StoreErrors:        conf.Watching(),
 			SuppressStatements: conf.IgnoredLogs(),
 		}
 		logger = loggers.New(logOpts)
 
 	}
 
-	memCache := dynacache.New(dynacache.Options{Running: conf.Running(), Log: logger})
+	memCache := dynacache.New(dynacache.Options{Watching: conf.Watching(), Log: logger})
 
 	firstSiteDeps := &deps.Deps{
 		Fs:                  cfg.Fs,
@@ -449,7 +449,9 @@ func (s *Site) Params() maps.Params {
 
 // Deprecated: Use taxonomies instead.
 func (s *Site) Author() map[string]any {
-	hugo.Deprecate(".Site.Author", "Use taxonomies instead.", "v0.124.0")
+	if len(s.conf.Author) != 0 {
+		hugo.Deprecate(".Site.Author", "Use taxonomies instead.", "v0.124.0")
+	}
 	return s.conf.Author
 }
 

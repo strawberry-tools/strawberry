@@ -133,7 +133,7 @@ type pageTrees struct {
 func (t *pageTrees) collectAndMarkStaleIdentities(p *paths.Path) []identity.Identity {
 	key := p.Base()
 	var ids []identity.Identity
-	// We need only one identity sample per dimensio.
+	// We need only one identity sample per dimension.
 	nCount := 0
 	cb := func(n contentNodeI) bool {
 		if n == nil {
@@ -489,12 +489,17 @@ func (m *pageMap) forEachResourceInPage(
 
 	rw.Handle = func(resourceKey string, n contentNodeI, match doctree.DimensionFlag) (bool, error) {
 		if isBranch {
-			ownerKey, _ := m.treePages.LongestPrefixAll(resourceKey)
-			if ownerKey != keyPage && path.Dir(ownerKey) != path.Dir(resourceKey) {
+			// A resourceKey always represents a filename with extension.
+			// A page key points to the logical path of a page, which when sourced from the filesystem
+			// may represent a directory (bundles) or a single content file (e.g. p1.md).
+			// So, to avoid any overlapping ambiguity, we start looking from the owning directory.
+			ownerKey, _ := m.treePages.LongestPrefixAll(path.Dir(resourceKey))
+			if ownerKey != keyPage {
 				// Stop walking downwards, someone else owns this resource.
 				rw.SkipPrefix(ownerKey + "/")
 				return false, nil
 			}
+
 		}
 		return handle(resourceKey, n, match)
 	}
@@ -820,6 +825,9 @@ func (s *contentNodeShifter) Insert(old, new contentNodeI) contentNodeI {
 			panic(fmt.Sprintf("unknown type %T", new))
 		}
 		if vv.s.languagei == newp.s.languagei {
+			if newp != old {
+				resource.MarkStale(old)
+			}
 			return new
 		}
 		is := make(contentNodeIs, s.numLanguages)
@@ -831,7 +839,10 @@ func (s *contentNodeShifter) Insert(old, new contentNodeI) contentNodeI {
 		if !ok {
 			panic(fmt.Sprintf("unknown type %T", new))
 		}
-		resource.MarkStale(vv[newp.s.languagei])
+		oldp := vv[newp.s.languagei]
+		if oldp != newp {
+			resource.MarkStale(oldp)
+		}
 		vv[newp.s.languagei] = new
 		return vv
 	case *resourceSource:
@@ -840,6 +851,9 @@ func (s *contentNodeShifter) Insert(old, new contentNodeI) contentNodeI {
 			panic(fmt.Sprintf("unknown type %T", new))
 		}
 		if vv.LangIndex() == newp.LangIndex() {
+			if vv != newp {
+				resource.MarkStale(vv)
+			}
 			return new
 		}
 		rs := make(resourceSources, s.numLanguages)
@@ -851,7 +865,10 @@ func (s *contentNodeShifter) Insert(old, new contentNodeI) contentNodeI {
 		if !ok {
 			panic(fmt.Sprintf("unknown type %T", new))
 		}
-		resource.MarkStale(vv[newp.LangIndex()])
+		oldp := vv[newp.LangIndex()]
+		if oldp != newp {
+			resource.MarkStale(oldp)
+		}
 		vv[newp.LangIndex()] = newp
 		return vv
 	default:
@@ -1049,7 +1066,7 @@ func (h *HugoSites) resolveAndClearStateForIdentities(
 	)
 
 	for _, id := range changes {
-		if staler, ok := id.(resource.Staler); ok && !staler.IsStale() {
+		if staler, ok := id.(resource.Staler); ok {
 			var msgDetail string
 			if p, ok := id.(*pageState); ok && p.File() != nil {
 				msgDetail = fmt.Sprintf(" (%s)", p.File().Filename())
@@ -1079,7 +1096,7 @@ func (h *HugoSites) resolveAndClearStateForIdentities(
 				return b
 			}
 
-			h.MemCache.ClearMatching(shouldDelete)
+			h.MemCache.ClearMatching(nil, shouldDelete)
 
 			return ll, nil
 		}); err != nil {
@@ -1087,7 +1104,7 @@ func (h *HugoSites) resolveAndClearStateForIdentities(
 		}
 	}
 
-	// Drain the the cache eviction stack.
+	// Drain the cache eviction stack.
 	evicted := h.Deps.MemCache.DrainEvictedIdentities()
 	if len(evicted) < 200 {
 		changes = append(changes, evicted...)
@@ -1598,7 +1615,7 @@ func (sa *sitePagesAssembler) assembleResources() error {
 			targetPaths := ps.targetPaths()
 			baseTarget := targetPaths.SubResourceBaseTarget
 			duplicateResourceFiles := true
-			if ps.s.ContentSpec.Converters.IsGoldmark(ps.m.pageConfig.Markup) {
+			if ps.m.pageConfig.IsGoldmark {
 				duplicateResourceFiles = ps.s.ContentSpec.Converters.GetMarkupConfig().Goldmark.DuplicateResourceFiles
 			}
 

@@ -59,6 +59,7 @@ Import from Jekyll requires two paths, e.g. ` + "`strawberry import jekyll jekyl
 					return c.importFromJekyll(args)
 				},
 				withc: func(cmd *cobra.Command, r *rootCommand) {
+					cmd.ValidArgsFunction = cobra.NoFileCompletions
 					cmd.Flags().BoolVar(&c.force, "force", false, "allow import into non-empty target directory")
 				},
 			},

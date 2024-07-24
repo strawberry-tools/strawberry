@@ -17,15 +17,16 @@ package goldmark
 import (
 	"bytes"
 
-	"github.com/gohugoio/hugo-goldmark-extensions/passthrough"
-	"github.com/yuin/goldmark/util"
-
+	"github.com/strawberry-tools/strawberry/markup/converter"
 	"github.com/strawberry-tools/strawberry/markup/goldmark/codeblocks"
 	"github.com/strawberry-tools/strawberry/markup/goldmark/goldmark_config"
+	"github.com/strawberry-tools/strawberry/markup/goldmark/hugocontext"
 	"github.com/strawberry-tools/strawberry/markup/goldmark/images"
 	"github.com/strawberry-tools/strawberry/markup/goldmark/internal/extensions/attributes"
 	"github.com/strawberry-tools/strawberry/markup/goldmark/internal/render"
+	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
 
+	"github.com/gohugoio/hugo-goldmark-extensions/passthrough"
 	"github.com/yuin/goldmark"
 	emoji "github.com/yuin/goldmark-emoji"
 	"github.com/yuin/goldmark/ast"
@@ -34,9 +35,7 @@ import (
 	"github.com/yuin/goldmark/renderer"
 	"github.com/yuin/goldmark/renderer/html"
 	"github.com/yuin/goldmark/text"
-
-	"github.com/strawberry-tools/strawberry/markup/converter"
-	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
+	"github.com/yuin/goldmark/util"
 )
 
 const (
@@ -103,6 +102,7 @@ func newMarkdown(pcfg converter.ProviderConfig) goldmark.Markdown {
 		renderer.WithNodeRenderers(util.Prioritized(emoji.NewHTMLRenderer(), 200)))
 	var (
 		extensions = []goldmark.Extender{
+			hugocontext.New(),
 			newLinks(cfg),
 			newTocExtension(tocRendererOptions),
 		}
