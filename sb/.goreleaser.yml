@@ -57,7 +57,7 @@ changelog:
 announce:
   skip: "{{ gt .Patch 0 }}"
   mastodon:
-    enabled: true
+    enabled: false
     server: "https://nanobyte.cafe"
   mattermost:
-    enabled: true
+    enabled: false
