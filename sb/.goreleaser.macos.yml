@@ -4,7 +4,6 @@ builds:
   - goos:
       - darwin
     goarch:
-      - amd64
       - arm64
     ldflags:
       #  -extldflags "-static" is purposely left out on macOS due to compiling libSASS
