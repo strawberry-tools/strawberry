@@ -49,6 +49,7 @@ var (
 	_ resource.ReadSeekCloserResource    = (*resourceAdapter)(nil)
 	_ resource.Resource                  = (*resourceAdapter)(nil)
 	_ resource.Staler                    = (*resourceAdapterInner)(nil)
+	_ identity.IdentityGroupProvider     = (*resourceAdapterInner)(nil)
 	_ resource.Source                    = (*resourceAdapter)(nil)
 	_ resource.Identifier                = (*resourceAdapter)(nil)
 	_ resource.ResourceNameTitleProvider = (*resourceAdapter)(nil)
@@ -263,7 +264,7 @@ func (r *resourceAdapter) Exif() *exif.ExifInfo {
 	return r.getImageOps().Exif()
 }
 
-func (r *resourceAdapter) Colors() ([]string, error) {
+func (r *resourceAdapter) Colors() ([]images.Color, error) {
 	return r.getImageOps().Colors()
 }
 
@@ -657,8 +658,13 @@ type resourceAdapterInner struct {
 	*publishOnce
 }
 
-func (r *resourceAdapterInner) IsStale() bool {
-	return r.Staler.IsStale() || r.target.IsStale()
+func (r *resourceAdapterInner) GetIdentityGroup() identity.Identity {
+	return r.target.GetIdentityGroup()
+}
+
+func (r *resourceAdapterInner) StaleVersion() uint32 {
+	// Both of these are incremented on change.
+	return r.Staler.StaleVersion() + r.target.StaleVersion()
 }
 
 type resourceTransformations struct {

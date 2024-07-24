@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"runtime"
 	"sort"
 	"strings"
 	"sync"
@@ -37,9 +38,17 @@ import (
 
 type TestOpt func(*IntegrationTestConfig)
 
+// TestOptRunning will enable running in integration tests.
 func TestOptRunning() TestOpt {
 	return func(c *IntegrationTestConfig) {
 		c.Running = true
+	}
+}
+
+// TestOptWatching will enable watching in integration tests.
+func TestOptWatching() TestOpt {
+	return func(c *IntegrationTestConfig) {
+		c.Watching = true
 	}
 }
 
@@ -569,6 +578,10 @@ func (s *IntegrationTestBuilder) initBuilder() error {
 				"running": s.Cfg.Running,
 				"watch":   s.Cfg.Running,
 			})
+		} else if s.Cfg.Watching {
+			flags.Set("internal", maps.Params{
+				"watch": s.Cfg.Watching,
+			})
 		}
 
 		if s.Cfg.WorkingDir != "" {
@@ -685,8 +698,17 @@ func (s *IntegrationTestBuilder) build(cfg BuildCfg) error {
 	return nil
 }
 
+// We simulate the fsnotify events.
+// See the test output in https://github.com/bep/fsnotifyeventlister for what events gets produced
+// by the different OSes.
 func (s *IntegrationTestBuilder) changeEvents() []fsnotify.Event {
-	var events []fsnotify.Event
+	var (
+		events    []fsnotify.Event
+		isLinux   = runtime.GOOS == "linux"
+		isMacOs   = runtime.GOOS == "darwin"
+		isWindows = runtime.GOOS == "windows"
+	)
+
 	for _, v := range s.removedFiles {
 		events = append(events, fsnotify.Event{
 			Name: v,
@@ -713,12 +735,32 @@ func (s *IntegrationTestBuilder) changeEvents() []fsnotify.Event {
 			Name: v,
 			Op:   fsnotify.Write,
 		})
+		if isLinux || isWindows {
+			// Duplicate write events, for some reason.
+			events = append(events, fsnotify.Event{
+				Name: v,
+				Op:   fsnotify.Write,
+			})
+		}
+		if isMacOs {
+			events = append(events, fsnotify.Event{
+				Name: v,
+				Op:   fsnotify.Chmod,
+			})
+		}
 	}
 	for _, v := range s.createdFiles {
 		events = append(events, fsnotify.Event{
 			Name: v,
 			Op:   fsnotify.Create,
 		})
+		if isLinux || isWindows {
+			events = append(events, fsnotify.Event{
+				Name: v,
+				Op:   fsnotify.Write,
+			})
+		}
+
 	}
 
 	// Shuffle events.
@@ -786,6 +828,11 @@ type IntegrationTestConfig struct {
 
 	// Whether to simulate server mode.
 	Running bool
+
+	// Watch for changes.
+	// This is (currently) always set to true when Running is set.
+	// Note that the CLI for the server does allow for --watch=false, but that is not used in these test.
+	Watching bool
 
 	// Will print the log buffer after the build
 	Verbose bool

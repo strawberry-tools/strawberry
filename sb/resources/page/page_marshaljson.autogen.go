@@ -17,9 +17,10 @@ package page
 
 import (
 	"encoding/json"
+	"time"
+
 	"github.com/strawberry-tools/strawberry/common/paths"
 	"github.com/strawberry-tools/strawberry/config"
-	"time"
 )
 
 func MarshalPageToJSON(p Page) ([]byte, error) {

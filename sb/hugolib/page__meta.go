@@ -74,7 +74,9 @@ type pageMeta struct {
 // Prepare for a rebuild of the data passed in from front matter.
 func (m *pageMeta) setMetaPostPrepareRebuild() {
 	params := xmaps.Clone[map[string]any](m.paramsOriginal)
-	m.pageMetaParams.pageConfig.Params = params
+	m.pageMetaParams.pageConfig = &pagemeta.PageConfig{
+		Params: params,
+	}
 	m.pageMetaFrontMatter = pageMetaFrontMatter{}
 }
 
@@ -275,6 +277,7 @@ func (p *pageMeta) Weight() int {
 
 func (p *pageMeta) setMetaPre(pi *contentParseInfo, logger loggers.Logger, conf config.AllProvider) error {
 	frontmatter := pi.frontMatter
+
 	if frontmatter != nil {
 		pcfg := p.pageConfig
 		if pcfg == nil {
@@ -362,6 +365,7 @@ func (ps *pageState) setMetaPost(cascade map[page.PageMatcher]maps.Params) error
 	if ps.m.setMetaPostCount > 1 {
 		ps.m.setMetaPostCascadeChanged = cascadeHashPre != identity.HashUint64(ps.m.pageConfig.Cascade)
 		if !ps.m.setMetaPostCascadeChanged {
+
 			// No changes, restore any value that may be changed by aggregation.
 			ps.m.pageConfig.Dates = ps.m.datesOriginal
 			return nil
@@ -676,7 +680,7 @@ params:
 }
 
 // shouldList returns whether this page should be included in the list of pages.
-// glogal indicates site.Pages etc.
+// global indicates site.Pages etc.
 func (p *pageMeta) shouldList(global bool) bool {
 	if p.isStandalone() {
 		// Never list 404, sitemap and similar.
@@ -737,6 +741,8 @@ func (p *pageMeta) applyDefaultValues() error {
 		}
 	}
 
+	p.pageConfig.IsGoldmark = p.s.ContentSpec.Converters.IsGoldmark(p.pageConfig.Markup)
+
 	if p.pageConfig.Title == "" && p.f == nil {
 		switch p.Kind() {
 		case kinds.KindHome:
@@ -794,12 +800,26 @@ func (p *pageMeta) newContentConverter(ps *pageState, markup string) (converter.
 		path = p.Path()
 	}
 
+	doc := newPageForRenderHook(ps)
+
+	documentLookup := func(id uint64) any {
+		if id == ps.pid {
+			// This prevents infinite recursion in some cases.
+			return doc
+		}
+		if v, ok := ps.pageOutput.pco.otherOutputs[id]; ok {
+			return v.po.p
+		}
+		return nil
+	}
+
 	cpp, err := cp.New(
 		converter.DocumentContext{
-			Document:     newPageForRenderHook(ps),
-			DocumentID:   id,
-			DocumentName: path,
-			Filename:     filename,
+			Document:       doc,
+			DocumentLookup: documentLookup,
+			DocumentID:     id,
+			DocumentName:   path,
+			Filename:       filename,
 		},
 	)
 	if err != nil {

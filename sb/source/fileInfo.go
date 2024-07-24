@@ -18,15 +18,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bep/gitmap"
+	"github.com/strawberry-tools/strawberry/common/hugio"
 	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/strawberry-tools/strawberry/common/paths"
-
-	"github.com/strawberry-tools/strawberry/common/hugio"
-
+	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/hugofs"
 
-	"github.com/strawberry-tools/strawberry/helpers"
+	"github.com/bep/gitmap"
 )
 
 // File describes a source file.

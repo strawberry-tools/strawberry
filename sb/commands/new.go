@@ -62,8 +62,15 @@ Ensure you run this within the root directory of your site.`,
 					return create.NewContent(h, contentType, args[0], force)
 				},
 				withc: func(cmd *cobra.Command, r *rootCommand) {
+					cmd.ValidArgsFunction = func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
+						if len(args) != 0 {
+							return []string{}, cobra.ShellCompDirectiveNoFileComp
+						}
+						return []string{}, cobra.ShellCompDirectiveNoFileComp | cobra.ShellCompDirectiveFilterDirs
+					}
 					cmd.Flags().StringVarP(&contentType, "kind", "k", "", "content type to create")
 					cmd.Flags().String("editor", "", "edit new content with this editor, if provided")
+					_ = cmd.RegisterFlagCompletionFunc("editor", cobra.NoFileCompletions)
 					cmd.Flags().BoolVarP(&force, "force", "f", false, "overwrite file if it already exists")
 					applyLocalFlagsBuildConfig(cmd, r)
 				},
@@ -105,8 +112,15 @@ Use ` + "`strawberry new [contentPath]`" + ` to create new content.`,
 					return nil
 				},
 				withc: func(cmd *cobra.Command, r *rootCommand) {
+					cmd.ValidArgsFunction = func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
+						if len(args) != 0 {
+							return []string{}, cobra.ShellCompDirectiveNoFileComp
+						}
+						return []string{}, cobra.ShellCompDirectiveNoFileComp | cobra.ShellCompDirectiveFilterDirs
+					}
 					cmd.Flags().BoolVarP(&force, "force", "f", false, "init inside non-empty directory")
 					cmd.Flags().StringVar(&format, "format", "yml", "preferred file format (yml, toml, or json)")
+					_ = cmd.RegisterFlagCompletionFunc("format", cobra.FixedCompletions([]string{"yaml", "toml", "json"}, cobra.ShellCompDirectiveNoFileComp))
 				},
 			},
 			&simpleCommand{
@@ -138,6 +152,9 @@ according to your needs.`,
 					}
 
 					return nil
+				},
+				withc: func(cmd *cobra.Command, r *rootCommand) {
+					cmd.ValidArgsFunction = cobra.NoFileCompletions
 				},
 			},
 		},

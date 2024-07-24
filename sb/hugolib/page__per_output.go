@@ -22,26 +22,24 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/mitchellh/mapstructure"
-	"github.com/spf13/cast"
+	bp "github.com/strawberry-tools/strawberry/bufferpool"
 	"github.com/strawberry-tools/strawberry/common/text"
 	"github.com/strawberry-tools/strawberry/common/types/hstring"
+	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/identity"
-	"github.com/strawberry-tools/strawberry/parser/pageparser"
-
+	"github.com/strawberry-tools/strawberry/markup/converter"
 	"github.com/strawberry-tools/strawberry/markup/converter/hooks"
+	"github.com/strawberry-tools/strawberry/markup/goldmark/hugocontext"
 	"github.com/strawberry-tools/strawberry/markup/highlight/chromalexers"
 	"github.com/strawberry-tools/strawberry/markup/tableofcontents"
-
-	"github.com/strawberry-tools/strawberry/markup/converter"
-
-	bp "github.com/strawberry-tools/strawberry/bufferpool"
-	"github.com/strawberry-tools/strawberry/tpl"
-
-	"github.com/strawberry-tools/strawberry/helpers"
 	"github.com/strawberry-tools/strawberry/output"
+	"github.com/strawberry-tools/strawberry/parser/pageparser"
 	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/strawberry-tools/strawberry/resources/resource"
+	"github.com/strawberry-tools/strawberry/tpl"
+
+	"github.com/mitchellh/mapstructure"
+	"github.com/spf13/cast"
 )
 
 var (
@@ -68,8 +66,9 @@ var (
 
 func newPageContentOutput(po *pageOutput) (*pageContentOutput, error) {
 	cp := &pageContentOutput{
-		po:          po,
-		renderHooks: &renderHooks{},
+		po:           po,
+		renderHooks:  &renderHooks{},
+		otherOutputs: make(map[uint64]*pageContentOutput),
 	}
 	return cp, nil
 }
@@ -83,8 +82,12 @@ type renderHooks struct {
 type pageContentOutput struct {
 	po *pageOutput
 
-	contentRenderedVersion int  // Incremented on reset.
-	contentRendered        bool // Set on content render.
+	// Other pages involved in rendering of this page,
+	// typically included with .RenderShortcodes.
+	otherOutputs map[uint64]*pageContentOutput
+
+	contentRenderedVersion uint32 // Incremented on reset.
+	contentRendered        bool   // Set on content render.
 
 	// Renders Markdown hooks.
 	renderHooks *renderHooks
@@ -163,6 +166,13 @@ func (pco *pageContentOutput) RenderShortcodes(ctx context.Context) (template.HT
 
 	if cb != nil {
 		cb(pco, ct)
+	}
+
+	if tpl.Context.IsInGoldmark.Get(ctx) {
+		// This content will be parsed and rendered by Goldmark.
+		// Wrap it in a special Hugo markup to assign the correct Page from
+		// the stack.
+		return template.HTML(hugocontext.Wrap(c, pco.po.p.pid)), nil
 	}
 
 	return helpers.BytesToHTML(c), nil
@@ -363,9 +373,11 @@ func (pco *pageContentOutput) RenderString(ctx context.Context, args ...any) (te
 	}
 
 	if opts.Display == "inline" {
-		// We may have to rethink this in the future when we get other
-		// renderers.
-		rendered = pco.po.p.s.ContentSpec.TrimShortHTML(rendered)
+		markup := pco.po.p.m.pageConfig.Markup
+		if opts.Markup != "" {
+			markup = pco.po.p.s.ContentSpec.ResolveMarkup(opts.Markup)
+		}
+		rendered = pco.po.p.s.ContentSpec.TrimShortHTML(rendered, markup)
 	}
 
 	return template.HTML(string(rendered)), nil
