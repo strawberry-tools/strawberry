@@ -89,10 +89,6 @@ type Site struct {
 	publisher          publisher.Publisher
 	frontmatterHandler pagemeta.FrontMatterHandler
 
-	// We render each site for all the relevant output formats in serial with
-	// this rendering context pointing to the current one.
-	rc *siteRenderingContext
-
 	// The output formats that we need to render this site in. This slice
 	// will be fixed once set.
 	// This will be the union of Site.Pages' outputFormats.
@@ -440,7 +436,7 @@ func (s *Site) Current() page.Site {
 
 // MainSections returns the list of main sections.
 func (s *Site) MainSections() []string {
-	s.checkReady()
+	s.CheckReady()
 	return s.conf.C.MainSections
 }
 
@@ -459,7 +455,7 @@ func (s *Site) BaseURL() string {
 
 // Deprecated: Use .Site.Lastmod instead.
 func (s *Site) LastChange() time.Time {
-	s.checkReady()
+	s.CheckReady()
 	hugo.Deprecate(".Site.LastChange", "Use .Site.Lastmod instead.", "v0.123.0")
 	return s.lastmod
 }
@@ -548,7 +544,7 @@ func (s *Site) ForEeachIdentityByName(name string, f func(identity.Identity) boo
 // Pages returns all pages.
 // This is for the current language only.
 func (s *Site) Pages() page.Pages {
-	s.checkReady()
+	s.CheckReady()
 	return s.pageMap.getPagesInSection(
 		pageMapQueryPagesInSection{
 			pageMapQueryPagesBelowPath: pageMapQueryPagesBelowPath{
@@ -565,7 +561,7 @@ func (s *Site) Pages() page.Pages {
 // RegularPages returns all the regular pages.
 // This is for the current language only.
 func (s *Site) RegularPages() page.Pages {
-	s.checkReady()
+	s.CheckReady()
 	return s.pageMap.getPagesInSection(
 		pageMapQueryPagesInSection{
 			pageMapQueryPagesBelowPath: pageMapQueryPagesBelowPath{
@@ -580,17 +576,17 @@ func (s *Site) RegularPages() page.Pages {
 
 // AllPages returns all pages for all sites.
 func (s *Site) AllPages() page.Pages {
-	s.checkReady()
+	s.CheckReady()
 	return s.h.Pages()
 }
 
 // AllRegularPages returns all regular pages for all sites.
 func (s *Site) AllRegularPages() page.Pages {
-	s.checkReady()
+	s.CheckReady()
 	return s.h.RegularPages()
 }
 
-func (s *Site) checkReady() {
+func (s *Site) CheckReady() {
 	if s.state != siteStateReady {
 		panic("this method cannot be called before the site is fully initialized")
 	}

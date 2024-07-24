@@ -20,15 +20,15 @@ import (
 	"reflect"
 	"regexp"
 	"strings"
+	"sync"
 	"unicode"
 
 	bp "github.com/strawberry-tools/strawberry/bufferpool"
 	"github.com/strawberry-tools/strawberry/common/hcontext"
 	"github.com/strawberry-tools/strawberry/identity"
-	"github.com/strawberry-tools/strawberry/output/layouts"
-
+	"github.com/strawberry-tools/strawberry/langs"
 	"github.com/strawberry-tools/strawberry/output"
-
+	"github.com/strawberry-tools/strawberry/output/layouts"
 	htmltemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/htmltemplate"
 	texttemplate "github.com/strawberry-tools/strawberry/tpl/internal/go_templates/texttemplate"
 )
@@ -160,6 +160,11 @@ type TemplateFuncGetter interface {
 	GetFunc(name string) (reflect.Value, bool)
 }
 
+type RenderingContext struct {
+	Site       site
+	SiteOutIdx int
+}
+
 type contextKey string
 
 // Context manages values passed in the context to templates.
@@ -190,6 +195,15 @@ func init() {
 type page interface {
 	IsNode() bool
 }
+
+type site interface {
+	Language() *langs.Language
+}
+
+const (
+	HugoDeferredTemplatePrefix = "__hdeferred/"
+	HugoDeferredTemplateSuffix = "__d="
+)
 
 const hugoNewLinePlaceholder = "___hugonl_"
 
@@ -227,4 +241,14 @@ func StripHTML(s string) string {
 	}
 
 	return s
+}
+
+type DeferredExecution struct {
+	Mu           sync.Mutex
+	Ctx          context.Context
+	TemplateName string
+	Data         any
+
+	Executed bool
+	Result   string
 }

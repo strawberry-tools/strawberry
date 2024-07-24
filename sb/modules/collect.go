@@ -24,23 +24,19 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bep/debounce"
 	"github.com/strawberry-tools/strawberry/common/herrors"
-	"github.com/strawberry-tools/strawberry/common/loggers"
-
-	"github.com/spf13/cast"
-
-	"github.com/strawberry-tools/strawberry/common/maps"
-
 	"github.com/strawberry-tools/strawberry/common/hugo"
+	"github.com/strawberry-tools/strawberry/common/loggers"
+	"github.com/strawberry-tools/strawberry/common/maps"
+	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/config"
+	"github.com/strawberry-tools/strawberry/hugofs/files"
 	"github.com/strawberry-tools/strawberry/parser/metadecoders"
 
-	"github.com/strawberry-tools/strawberry/hugofs/files"
-
-	"golang.org/x/mod/module"
-
+	"github.com/bep/debounce"
 	"github.com/spf13/afero"
-	"github.com/strawberry-tools/strawberry/config"
+	"github.com/spf13/cast"
+	"golang.org/x/mod/module"
 )
 
 var ErrNotExist = errors.New("module does not exist")
@@ -657,7 +653,13 @@ func (c *collector) normalizeMounts(owner *moduleAdapter, mounts []Mount) ([]Mou
 		// Verify that Source exists
 		_, err := c.fs.Stat(sourceDir)
 		if err != nil {
-			if strings.HasSuffix(sourceDir, files.FilenameHugoStatsJSON) {
+			if paths.IsSameFilePath(sourceDir, c.ccfg.PublishDir) {
+				// This is a little exotic, but there are use cases for mounting the public folder.
+				// This will typically also be in .gitingore, so create it.
+				if err := c.fs.MkdirAll(sourceDir, 0o755); err != nil {
+					return nil, fmt.Errorf("%s: %q", errMsg, err)
+				}
+			} else if strings.HasSuffix(sourceDir, files.FilenameHugoStatsJSON) {
 				// A common pattern for Tailwind 3 is to mount that file to get it on the server watch list.
 
 				// A common pattern is also to add hugo_stats.json to .gitignore.
@@ -669,6 +671,8 @@ func (c *collector) normalizeMounts(owner *moduleAdapter, mounts []Mount) ([]Mou
 				}
 				f.Close()
 			} else {
+				// TODO(bep) commenting out for now, as this will create to much noise.
+				// c.logger.Warnf("module %q: mount source %q does not exist", owner.Path(), sourceDir)
 				continue
 			}
 		}

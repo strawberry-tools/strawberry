@@ -54,7 +54,7 @@ import (
 )
 
 func (s *Site) Taxonomies() page.TaxonomyList {
-	s.checkReady()
+	s.CheckReady()
 	s.init.taxonomies.Do(context.Background())
 	return s.taxonomies
 }
@@ -192,12 +192,8 @@ func (s *Site) prepareInits() {
 	})
 }
 
-type siteRenderingContext struct {
-	output.Format
-}
-
 func (s *Site) Menus() navigation.Menus {
-	s.checkReady()
+	s.CheckReady()
 	s.init.menus.Do(context.Background())
 	return s.menus
 }
@@ -802,7 +798,7 @@ func (s *Site) errorCollator(results <-chan error, errs chan<- error) {
 // as possible for existing sites. Most sites will use {{ .Site.GetPage "section" "my/section" }},
 // i.e. 2 arguments, so we test for that.
 func (s *Site) GetPage(ref ...string) (page.Page, error) {
-	s.checkReady()
+	s.CheckReady()
 	p, err := s.s.getPageForRefs(ref...)
 
 	if p == nil {

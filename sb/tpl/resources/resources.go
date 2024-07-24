@@ -18,28 +18,20 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"sync"
 
+	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/strawberry-tools/strawberry/common/maps"
-	"github.com/strawberry-tools/strawberry/common/paths"
-
-	"github.com/strawberry-tools/strawberry/tpl/internal/resourcehelpers"
-
-	"github.com/strawberry-tools/strawberry/resources/postpub"
-
 	"github.com/strawberry-tools/strawberry/deps"
 	"github.com/strawberry-tools/strawberry/resources"
+	"github.com/strawberry-tools/strawberry/resources/postpub"
 	"github.com/strawberry-tools/strawberry/resources/resource"
-
 	"github.com/strawberry-tools/strawberry/resources/resource_factories/bundler"
 	"github.com/strawberry-tools/strawberry/resources/resource_factories/create"
-	"github.com/strawberry-tools/strawberry/resources/resource_transformers/babel"
 	"github.com/strawberry-tools/strawberry/resources/resource_transformers/integrity"
 	"github.com/strawberry-tools/strawberry/resources/resource_transformers/minifier"
-	"github.com/strawberry-tools/strawberry/resources/resource_transformers/postcss"
 	"github.com/strawberry-tools/strawberry/resources/resource_transformers/templates"
-	"github.com/strawberry-tools/strawberry/resources/resource_transformers/tocss/dartsass"
-	"github.com/strawberry-tools/strawberry/resources/resource_transformers/tocss/scss"
+	"github.com/strawberry-tools/strawberry/tpl/css"
+	"github.com/strawberry-tools/strawberry/tpl/js"
 
 	"github.com/spf13/cast"
 )
@@ -50,26 +42,18 @@ func New(deps *deps.Deps) (*Namespace, error) {
 		return &Namespace{}, nil
 	}
 
-	scssClient, err := scss.New(deps.BaseFs.Assets, deps.ResourceSpec)
-	if err != nil {
-		return nil, err
-	}
-
 	minifyClient, err := minifier.New(deps.ResourceSpec)
 	if err != nil {
 		return nil, err
 	}
 
 	return &Namespace{
-		deps:              deps,
-		scssClientLibSass: scssClient,
-		createClient:      create.New(deps.ResourceSpec),
-		bundlerClient:     bundler.New(deps.ResourceSpec),
-		integrityClient:   integrity.New(deps.ResourceSpec),
-		minifyClient:      minifyClient,
-		postcssClient:     postcss.New(deps.ResourceSpec),
-		templatesClient:   templates.New(deps.ResourceSpec, deps),
-		babelClient:       babel.New(deps.ResourceSpec),
+		deps:            deps,
+		createClient:    create.New(deps.ResourceSpec),
+		bundlerClient:   bundler.New(deps.ResourceSpec),
+		integrityClient: integrity.New(deps.ResourceSpec),
+		minifyClient:    minifyClient,
+		templatesClient: templates.New(deps.ResourceSpec, deps),
 	}, nil
 }
 
@@ -79,33 +63,16 @@ var _ resource.ResourceFinder = (*Namespace)(nil)
 type Namespace struct {
 	deps *deps.Deps
 
-	createClient      *create.Client
-	bundlerClient     *bundler.Client
-	scssClientLibSass *scss.Client
-	integrityClient   *integrity.Client
-	minifyClient      *minifier.Client
-	postcssClient     *postcss.Client
-	babelClient       *babel.Client
-	templatesClient   *templates.Client
+	createClient    *create.Client
+	bundlerClient   *bundler.Client
+	integrityClient *integrity.Client
+	minifyClient    *minifier.Client
+	templatesClient *templates.Client
 
-	// The Dart Client requires a os/exec process, so  only
-	// create it if we really need it.
-	// This is mostly to avoid creating one per site build test.
-	scssClientDartSassInit sync.Once
-	scssClientDartSass     *dartsass.Client
-}
-
-func (ns *Namespace) getscssClientDartSass() (*dartsass.Client, error) {
-	var err error
-	ns.scssClientDartSassInit.Do(func() {
-		ns.scssClientDartSass, err = dartsass.New(ns.deps.BaseFs.Assets, ns.deps.ResourceSpec)
-		if err != nil {
-			return
-		}
-		ns.deps.BuildClosers.Add(ns.scssClientDartSass)
-	})
-
-	return ns.scssClientDartSass, err
+	// We moved some CSS and JS related functions to the css and js package in Hugo 0.128.0.
+	// Keep this here until the deprecation period is over.
+	cssNs *css.Namespace
+	jsNs  *js.Namespace
 }
 
 // Copy copies r to the new targetPath in s.
@@ -337,89 +304,17 @@ func (ns *Namespace) Minify(r resources.ResourceTransformer) (resource.Resource,
 // ToCSS converts the given Resource to CSS. You can optional provide an Options object
 // as second argument. As an option, you can e.g. specify e.g. the target path (string)
 // for the converted CSS resource.
+// Deprecated: Moved to the css namespace in Hugo 0.128.0.
 func (ns *Namespace) ToCSS(args ...any) (resource.Resource, error) {
-	if len(args) > 2 {
-		return nil, errors.New("must not provide more arguments than resource object and options")
-	}
-
-	const (
-		// Transpiler implementation can be controlled from the client by
-		// setting the 'transpiler' option.
-		// Default is currently 'libsass', but that may change.
-		transpilerDart    = "dartsass"
-		transpilerLibSass = "libsass"
-	)
-
-	var (
-		r          resources.ResourceTransformer
-		m          map[string]any
-		targetPath string
-		err        error
-		ok         bool
-		transpiler = transpilerLibSass
-	)
-
-	r, targetPath, ok = resourcehelpers.ResolveIfFirstArgIsString(args)
-
-	if !ok {
-		r, m, err = resourcehelpers.ResolveArgs(args)
-		if err != nil {
-			return nil, err
-		}
-	}
-
-	if m != nil {
-		if t, _, found := maps.LookupEqualFold(m, "transpiler"); found {
-			switch t {
-			case transpilerDart, transpilerLibSass:
-				transpiler = cast.ToString(t)
-			default:
-				return nil, fmt.Errorf("unsupported transpiler %q; valid values are %q or %q", t, transpilerLibSass, transpilerDart)
-			}
-		}
-	}
-
-	if transpiler == transpilerLibSass {
-		var options scss.Options
-		if targetPath != "" {
-			options.TargetPath = paths.ToSlashTrimLeading(targetPath)
-		} else if m != nil {
-			options, err = scss.DecodeOptions(m)
-			if err != nil {
-				return nil, err
-			}
-		}
-
-		return ns.scssClientLibSass.ToCSS(r, options)
-	}
-
-	if m == nil {
-		m = make(map[string]any)
-	}
-	if targetPath != "" {
-		m["targetPath"] = targetPath
-	}
-
-	client, err := ns.getscssClientDartSass()
-	if err != nil {
-		return nil, err
-	}
-
-	return client.ToCSS(r, m)
+	hugo.Deprecate("resources.ToCSS", "Use css.SASS.", "v0.128.0")
+	return ns.cssNs.Sass(args...)
 }
 
-// PostCSS processes the given Resource with PostCSS
+// PostCSS processes the given Resource with PostCSS.
+// Deprecated: Moved to the css namespace in Hugo 0.128.0.
 func (ns *Namespace) PostCSS(args ...any) (resource.Resource, error) {
-	if len(args) > 2 {
-		return nil, errors.New("must not provide more arguments than resource object and options")
-	}
-
-	r, m, err := resourcehelpers.ResolveArgs(args)
-	if err != nil {
-		return nil, err
-	}
-
-	return ns.postcssClient.Process(r, m)
+	hugo.Deprecate("resources.PostCSS", "Use css.PostCSS.", "v0.128.0")
+	return ns.cssNs.PostCSS(args...)
 }
 
 // PostProcess processes r after the build.
@@ -428,22 +323,8 @@ func (ns *Namespace) PostProcess(r resource.Resource) (postpub.PostPublishedReso
 }
 
 // Babel processes the given Resource with Babel.
+// Deprecated: Moved to the js namespace in Hugo 0.128.0.
 func (ns *Namespace) Babel(args ...any) (resource.Resource, error) {
-	if len(args) > 2 {
-		return nil, errors.New("must not provide more arguments than resource object and options")
-	}
-
-	r, m, err := resourcehelpers.ResolveArgs(args)
-	if err != nil {
-		return nil, err
-	}
-	var options babel.Options
-	if m != nil {
-		options, err = babel.DecodeOptions(m)
-		if err != nil {
-			return nil, err
-		}
-	}
-
-	return ns.babelClient.Process(r, options)
+	hugo.Deprecate("resources.Babel", "Use js.Babel.", "v0.128.0")
+	return ns.jsNs.Babel(args...)
 }
