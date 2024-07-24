@@ -179,6 +179,9 @@ type Config struct {
 	// Server configuration.
 	Server config.Server `mapstructure:"-"`
 
+	// Pagination configuration.
+	Pagination config.Pagination `mapstructure:"-"`
+
 	// Privacy configuration.
 	Privacy privacy.Config `mapstructure:"-"`
 
@@ -322,9 +325,13 @@ func (c *Config) CompileConfig(logger loggers.Logger) error {
 		}
 	}
 
+	for i, s := range c.IgnoreLogs {
+		c.IgnoreLogs[i] = strings.ToLower(s)
+	}
+
 	ignoredLogIDs := make(map[string]bool)
 	for _, err := range c.IgnoreLogs {
-		ignoredLogIDs[strings.ToLower(err)] = true
+		ignoredLogIDs[err] = true
 	}
 
 	baseURL, err := urls.NewBaseURLFromString(c.BaseURL)
@@ -377,6 +384,17 @@ func (c *Config) CompileConfig(logger loggers.Logger) error {
 	httpCache, err := c.HTTPCache.Compile()
 	if err != nil {
 		return err
+	}
+
+	// Legacy paginate values.
+	if c.Paginate != 0 {
+		hugo.Deprecate("site config key paginate", "Use paginator.pagerSize instead.", "v0.128.0")
+		c.Pagination.PagerSize = c.Paginate
+	}
+
+	if c.PaginatePath != "" {
+		hugo.Deprecate("site config key paginatePath", "Use paginator.path instead.", "v0.128.0")
+		c.Pagination.Path = c.PaginatePath
 	}
 
 	c.C = &ConfigCompiled{
@@ -567,9 +585,11 @@ type RootConfig struct {
 	HasCJKLanguage bool
 
 	// The default number of pages per page when paginating.
+	// Deprecated: Use the Pagination struct.
 	Paginate int
 
 	// The path to use when creating pagination URLs, e.g. "page" in /page/2/.
+	// Deprecated: Use the Pagination struct.
 	PaginatePath string
 
 	// Whether to pluralize default list titles.

@@ -563,7 +563,7 @@ title: "p1"
 
 	b = hugolib.Test(t, files, hugolib.TestOptWarn())
 
-	b.AssertLogNotContains("WARN")
+	b.AssertLogContains("! WARN")
 }
 
 func TestPagesFromGoTmplPathWarningsPathResource(t *testing.T) {
@@ -598,7 +598,7 @@ value: data1
 
 	b = hugolib.Test(t, files, hugolib.TestOptWarn())
 
-	b.AssertLogNotContains("WARN")
+	b.AssertLogContains("! WARN")
 }
 
 func TestPagesFromGoTmplShortcodeNoPreceddingCharacterIssue12544(t *testing.T) {

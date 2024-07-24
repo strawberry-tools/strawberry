@@ -56,12 +56,16 @@ func (d Dates) IsDateOrLastModAfter(in Dates) bool {
 	return d.Date.After(in.Date) || d.Lastmod.After(in.Lastmod)
 }
 
-func (d *Dates) UpdateDateAndLastmodIfAfter(in Dates) {
+func (d *Dates) UpdateDateAndLastmodAndPublishDateIfAfter(in Dates) {
 	if in.Date.After(d.Date) {
 		d.Date = in.Date
 	}
 	if in.Lastmod.After(d.Lastmod) {
 		d.Lastmod = in.Lastmod
+	}
+
+	if in.PublishDate.After(d.PublishDate) && in.PublishDate.Before(htime.Now()) {
+		d.PublishDate = in.PublishDate
 	}
 }
 
