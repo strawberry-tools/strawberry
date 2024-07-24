@@ -24,6 +24,7 @@ import (
 	"github.com/strawberry-tools/strawberry/common/hexec"
 	"github.com/strawberry-tools/strawberry/common/loggers"
 	"github.com/strawberry-tools/strawberry/common/paths"
+	"github.com/strawberry-tools/strawberry/common/types"
 	"github.com/strawberry-tools/strawberry/config"
 	"github.com/strawberry-tools/strawberry/config/allconfig"
 	"github.com/strawberry-tools/strawberry/helpers"
@@ -49,6 +50,8 @@ func NewSpec(
 	logger loggers.Logger,
 	errorHandler herrors.ErrorSender,
 	execHelper *hexec.Exec,
+	buildClosers types.CloseAdder,
+	rebuilder identity.SignalRebuilder,
 ) (*Spec, error) {
 	conf := s.Cfg.GetConfig().(*allconfig.Config)
 	imgConfig := conf.Imaging
@@ -83,10 +86,12 @@ func NewSpec(
 	}
 
 	rs := &Spec{
-		PathSpec:    s,
-		Logger:      logger,
-		ErrorSender: errorHandler,
-		imaging:     imaging,
+		PathSpec:     s,
+		Logger:       logger,
+		ErrorSender:  errorHandler,
+		BuildClosers: buildClosers,
+		Rebuilder:    rebuilder,
+		imaging:      imaging,
 		ImageCache: newImageCache(
 			fileCaches.ImageCache(),
 			memCache,
@@ -107,8 +112,10 @@ func NewSpec(
 type Spec struct {
 	*helpers.PathSpec
 
-	Logger      loggers.Logger
-	ErrorSender herrors.ErrorSender
+	Logger       loggers.Logger
+	ErrorSender  herrors.ErrorSender
+	BuildClosers types.CloseAdder
+	Rebuilder    identity.SignalRebuilder
 
 	TextTemplates tpl.TemplateParseFinder
 

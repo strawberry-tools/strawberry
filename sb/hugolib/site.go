@@ -363,14 +363,14 @@ func (s *Site) watching() bool {
 	return s.h != nil && s.h.Configs.Base.Internal.Watch
 }
 
-type whatChanged struct {
+type WhatChanged struct {
 	mu sync.Mutex
 
 	needsPagesAssembly bool
 	identitySet        identity.Identities
 }
 
-func (w *whatChanged) Add(ids ...identity.Identity) {
+func (w *WhatChanged) Add(ids ...identity.Identity) {
 	w.mu.Lock()
 	defer w.mu.Unlock()
 
@@ -383,24 +383,24 @@ func (w *whatChanged) Add(ids ...identity.Identity) {
 	}
 }
 
-func (w *whatChanged) Clear() {
+func (w *WhatChanged) Clear() {
 	w.mu.Lock()
 	defer w.mu.Unlock()
 	w.clear()
 }
 
-func (w *whatChanged) clear() {
+func (w *WhatChanged) clear() {
 	w.identitySet = identity.Identities{}
 }
 
-func (w *whatChanged) Changes() []identity.Identity {
+func (w *WhatChanged) Changes() []identity.Identity {
 	if w == nil || w.identitySet == nil {
 		return nil
 	}
 	return w.identitySet.AsSlice()
 }
 
-func (w *whatChanged) Drain() []identity.Identity {
+func (w *WhatChanged) Drain() []identity.Identity {
 	w.mu.Lock()
 	defer w.mu.Unlock()
 	ids := w.identitySet.AsSlice()

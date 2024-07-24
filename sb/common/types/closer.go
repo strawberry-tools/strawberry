@@ -1,4 +1,4 @@
-// Copyright 2018 The Hugo Authors. All rights reserved.
+// Copyright 2024 The Hugo Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,13 +11,37 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package hugo
+package types
 
-// CurrentVersion represents the current build version.
-// This should be the only one.
-var CurrentVersion = Version{
-	Major:      0,
-	Minor:      127,
-	PatchLevel: 0,
-	Suffix:     "",
+import "sync"
+
+type Closer interface {
+	Close() error
+}
+
+type CloseAdder interface {
+	Add(Closer)
+}
+
+type Closers struct {
+	mu sync.Mutex
+	cs []Closer
+}
+
+func (cs *Closers) Add(c Closer) {
+	cs.mu.Lock()
+	defer cs.mu.Unlock()
+	cs.cs = append(cs.cs, c)
+}
+
+func (cs *Closers) Close() error {
+	cs.mu.Lock()
+	defer cs.mu.Unlock()
+	for _, c := range cs.cs {
+		c.Close()
+	}
+
+	cs.cs = cs.cs[:0]
+
+	return nil
 }

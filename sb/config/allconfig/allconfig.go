@@ -26,8 +26,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/spf13/afero"
 	"github.com/strawberry-tools/strawberry/cache/filecache"
+	"github.com/strawberry-tools/strawberry/cache/httpcache"
 	"github.com/strawberry-tools/strawberry/common/hugo"
 	"github.com/strawberry-tools/strawberry/common/loggers"
 	"github.com/strawberry-tools/strawberry/common/maps"
@@ -54,6 +54,7 @@ import (
 	"github.com/strawberry-tools/strawberry/resources/page"
 	"github.com/strawberry-tools/strawberry/resources/page/pagemeta"
 
+	"github.com/spf13/afero"
 	xmaps "golang.org/x/exp/maps"
 )
 
@@ -118,6 +119,10 @@ type Config struct {
 	// The caches configuration section contains cache-related configuration options.
 	// <docsmeta>{"identifiers": ["caches"] }</docsmeta>
 	Caches filecache.Configs `mapstructure:"-"`
+
+	// The httpcache configuration section contains HTTP-cache-related configuration options.
+	// <docsmeta>{"identifiers": ["httpcache"] }</docsmeta>
+	HTTPCache httpcache.Config `mapstructure:"-"`
 
 	// The markup configuration section contains markup-related configuration options.
 	// <docsmeta>{"identifiers": ["markup"] }</docsmeta>
@@ -369,6 +374,11 @@ func (c *Config) CompileConfig(logger loggers.Logger) error {
 		}
 	}
 
+	httpCache, err := c.HTTPCache.Compile()
+	if err != nil {
+		return err
+	}
+
 	c.C = &ConfigCompiled{
 		Timeout:           timeout,
 		BaseURL:           baseURL,
@@ -384,6 +394,7 @@ func (c *Config) CompileConfig(logger loggers.Logger) error {
 		SegmentFilter:     c.Segments.Config.Get(func(s string) { logger.Warnf("Render segment %q not found in configuration", s) }, c.RootConfig.RenderSegments...),
 		MainSections:      c.MainSections,
 		Clock:             clock,
+		HTTPCache:         httpCache,
 		transientErr:      transientErr,
 	}
 
@@ -423,6 +434,7 @@ type ConfigCompiled struct {
 	SegmentFilter     segments.SegmentFilter
 	MainSections      []string
 	Clock             time.Time
+	HTTPCache         httpcache.ConfigCompiled
 
 	// This is set to the last transient error found during config compilation.
 	// With themes/modules we compute the configuration in multiple passes, and
